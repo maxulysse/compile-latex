@@ -14,7 +14,7 @@ switch (params) {
 		text = Channel.from(
 			"COMPILE LATEX BEAMER ~ version $version",
 			"    Usage:",
-			"       nextflow run main.nf --tex <file.tex> (--BTB || --KI || --SLL)",
+			"       nextflow run main.nf --tex <file.tex>",
 			"    --help",
 			"       you're reading it",
 			"    --version",
@@ -55,30 +55,12 @@ if (params.tex) {
 		"COMPILE LATEX BEAMER ~ version $version",
 		"No tex input file selected",
 		"    Usage:",
-		"       nextflow run main.nf --tex <file.tex> (--BTB || --KI || --SLL)")
+		"       nextflow run main.nf --tex <file.tex>")
 	text.subscribe { println "$it" }
 	exit 1
 }
 
 themeDir = '~/workspace/beamer-templates'
-
-if (!params.BTB && !params.KI && !params.SLL) {
-	text = Channel.from(
-		"COMPILE LATEX BEAMER ~ version $version",
-		"No theme selected (--BTB || --KI || --SLL)",
-		"    Usage:",
-		"       nextflow run main.nf --tex <file.tex> (--BTB ||--KI || --SLL)")
-	text.subscribe { println "$it" }
-	exit 1
-} else if ((params.BTB && params.KI) || (params.BTB && params.SLL) || (params.KI && params.SLL)) {
-	text = Channel.from(
-		"COMPILE LATEX BEAMER ~ version $version",
-		"Problem with theme selected (--BTB || --KI || --SLL)",
-		"    Usage:",
-		"       nextflow run main.nf --tex <file.tex> (--KI || --SLL)")
-	text.subscribe { println "$it" }
-	exit 1
-}
 
 /*
 ========================================================================================
@@ -86,64 +68,19 @@ if (!params.BTB && !params.KI && !params.SLL) {
 ========================================================================================
 */
 
-if (params.BTB || params.KI) {
-	process RunXelatex {
-		publishDir ".", mode: 'move'
+process RunXelatex {
+	publishDir ".", mode: 'move'
 
-		input:
-		file tex from tex
+	input:
+	file tex from tex
 
-		output:
-		file("${pdf}") into pdf_final
+	output:
+	file("${pdf}") into pdf_final
 
-		"""
-		ln -s ${themeDir}/* .
+	"""
+	ln -s ${themeDir}/* .
 
-		xelatex ${tex}
-		xelatex ${tex}
-		"""
-	}
-} else {
-	process RunLatex {
-		input:
-		file tex from tex
-
-		output:
-		file("*.dvi") into dvi_input
-
-		"""
-		ln -s ${themeDir}/* .
-
-		latex ${tex}
-		latex ${tex}
-		"""
-	}
-	process RunDVIPS {
-		input:
-		file dvi from dvi_input
-
-		output:
-		file("*.ps") into ps_input
-
-		"""
-		ln -s ${themeDir}/* .
-
-		dvips ${dvi}
-		"""
-	}
-	process RunPS2PDF {
-		publishDir ".", mode: 'move'
-
-		input:
-		file ps from ps_input
-
-		output:
-		file("${pdf}") into pdf_final
-
-		"""
-		ln -s ${themeDir}/* .
-
- 		ps2pdf ${ps}
-		"""
-	}
+	xelatex ${tex}
+	xelatex ${tex}
+	"""
 }
