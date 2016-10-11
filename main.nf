@@ -16,7 +16,7 @@ switch (params) {
 		text = Channel.from(
 			"COMPILE LATEX BEAMER ~ version $version",
 			"    Usage:",
-			"       nextflow run main.nf --tex <file.tex>",
+			"       nextflow run main.nf --tex <file.tex> (--BTB || --KI || --SLL)",
 			"    --help",
 			"       you're reading it",
 			"    --version",
@@ -57,12 +57,39 @@ if (params.tex) {
 		"COMPILE LATEX BEAMER ~ version $version",
 		"No tex input file selected",
 		"    Usage:",
-		"       nextflow run main.nf --tex <file.tex>")
+		"       nextflow run main.nf --tex <file.tex> (--BTB || --KI || --SLL)")
 	text.subscribe { println "$it" }
 	exit 1
 }
 
-themeDir = '~/workspace/beamer-templates'
+if (!params.BTB && !params.KI && !params.SLL) {
+	text = Channel.from(
+		"COMPILE LATEX BEAMER ~ version $version",
+		"No theme selected (--BTB || --KI || --SLL)",
+		"    Usage:",
+		"       nextflow run main.nf --tex <file.tex> (--BTB ||--KI || --SLL)")
+	text.subscribe { println "$it" }
+	exit 1
+} else if ((params.BTB && params.KI) || (params.BTB && params.SLL) || (params.KI && params.SLL)) {
+	text = Channel.from(
+		"COMPILE LATEX BEAMER ~ version $version",
+		"Problem with theme selected (--BTB || --KI || --SLL)",
+		"    Usage:",
+		"       nextflow run main.nf --tex <file.tex> (--KI || --SLL)")
+	text.subscribe { println "$it" }
+	exit 1
+} 
+
+if (params.BTB) {
+	themeSty  = file("/home/max/workspace/beamer-templates/beamerthemeBTB.sty")
+	themelogo = file("/home/max/workspace/beamer-templates/Barntumörbanken.pdf")
+} else if (params.KI) {
+	themeSty  = file("/home/max/workspace/beamer-templates/beamerthemeKI.sty")
+	themelogo = file("/home/max/workspace/beamer-templates/KI.pdf")
+} else if (params.SLL) {
+	themeSty  = file("/home/max/workspace/beamer-templates/beamerthemeSciLifeLab.sty")
+	themelogo = file("/home/max/workspace/beamer-templates/SciLifeLab.pdf")
+}
 
 /*
 ========================================================================================
@@ -74,14 +101,14 @@ process RunXelatex {
 	publishDir ".", mode: 'move'
 
 	input:
-	file tex from tex
+	file tex
+	file themelogo
+	file themeSty
 
 	output:
 	file("${pdf}") into pdf_final
 
 	"""
-	ln -s ${themeDir}/* .
-
 	xelatex ${tex}
 	xelatex ${tex}
 	"""
