@@ -81,14 +81,14 @@ if (!params.BTB && !params.KI && !params.SLL) {
 } 
 
 if (params.BTB) {
-	themeSty  = file("/home/max/workspace/beamer-templates/beamerthemeBTB.sty")
-	themelogo = file("/home/max/workspace/beamer-templates/Barntumörbanken.pdf")
+	themeSty  = '~/workspace/beamer-templates/beamerthemeBTB.sty'
+	themeLogo = '~/workspace/beamer-templates/Barntumörbanken.pdf'
 } else if (params.KI) {
-	themeSty  = file("/home/max/workspace/beamer-templates/beamerthemeKI.sty")
-	themelogo = file("/home/max/workspace/beamer-templates/KI.pdf")
+	themeSty  = '~/workspace/beamer-templates/beamerthemeKI.sty'
+	themeLogo = '~/workspace/beamer-templates/KI.pdf'
 } else if (params.SLL) {
-	themeSty  = file("/home/max/workspace/beamer-templates/beamerthemeSciLifeLab.sty")
-	themelogo = file("/home/max/workspace/beamer-templates/SciLifeLab.pdf")
+	themeSty  = '~/workspace/beamer-templates/beamerthemeSciLifeLab.sty'
+	themeLogo = '~/workspace/beamer-templates/SciLifeLab.pdf'
 }
 
 /*
@@ -102,13 +102,14 @@ process RunXelatex {
 
 	input:
 	file tex
-	file themelogo
-	file themeSty
 
 	output:
 	file("${pdf}") into pdf_final
 
 	"""
+	ln -s ${themeSty} beamerthemeTheme.sty
+	ln -s ${themeLogo} .
+
 	xelatex ${tex}
 	xelatex ${tex}
 	"""
