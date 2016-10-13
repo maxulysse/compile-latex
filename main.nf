@@ -4,7 +4,7 @@
 +vim: syntax=groovy
 +-*- mode: groovy;-*-
 ========================================================================================
-=                     C O M P I L E      L A T E X      B E A M E R                    =
+=             C   O   M   P   I   L   E       -      B   E   A   M   E   R             =
 ========================================================================================
 */
 
@@ -14,7 +14,7 @@ String dateUpdate = "2016-10-10"
 switch (params) {
 	case {params.help} :
 		text = Channel.from(
-			"COMPILE LATEX BEAMER ~ version $version",
+			"COMPILE-BEAMER ~ version $version",
 			"    Usage:",
 			"       nextflow run main.nf --tex <file.tex> (--BTB || --KI || --SLL)",
 			"    --help",
@@ -26,8 +26,7 @@ switch (params) {
 
 	case {params.version} :
 		text = Channel.from(
-			"COMPILE LATEX BEAMER",
-			"  Version $version",
+			"COMPILE-BEAMER ~ version $version",
 			"  Last update on $dateUpdate",
 			"Project : $workflow.projectDir",
 			"Cmd line: $workflow.commandLine")
@@ -37,8 +36,8 @@ switch (params) {
 
 workflow.onComplete {
 	text = Channel.from(
-		"COMPILE LATEX BEAMER",
-		"Version     : $version",
+		"COMPILE-BEAMER ~ version $version",
+		"Git info    : $workflow.repository - $workflow.revision [$workflow.commitId]",
 		"Command line: ${workflow.commandLine}",
 		"Completed at: ${workflow.complete}",
 		"Duration    : ${workflow.duration}",
