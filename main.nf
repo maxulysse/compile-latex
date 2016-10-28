@@ -9,74 +9,28 @@
 */
 
 String version = "0.0.5"
-String dateUpdate = "2016-10-10"
 
 switch (params) {
 	case {params.help} :
-		text = Channel.from(
-			"COMPILE-BEAMER ~ version $version",
-			"    Usage:",
-			"       nextflow run main.nf --tex <file.tex> (--BTB || --KI || --SLL)",
-			"    --help",
-			"       you're reading it",
-			"    --version",
-			"       displays version number")
-		text.subscribe { println "$it" }
+		help_message("$version")
 		exit 1
 
 	case {params.version} :
-		text = Channel.from(
-			"COMPILE-BEAMER ~ version $version",
-			"  Last update on $dateUpdate",
-			"Project : $workflow.projectDir",
-			"Cmd line: $workflow.commandLine")
-		text.subscribe { println "$it" }
+		version_message("$version")
 		exit 1
 }
 
-workflow.onComplete {
-	text = Channel.from(
-		"COMPILE-BEAMER ~ version $version",
-		"Git info    : $workflow.repository - $workflow.revision [$workflow.commitId]",
-		"Command line: ${workflow.commandLine}",
-		"Completed at: ${workflow.complete}",
-		"Duration    : ${workflow.duration}",
-		"Success     : ${workflow.success}",
-		"workDir     : ${workflow.workDir}",
-		"Exit status : ${workflow.exitStatus}",
-		"Error report: ${workflow.errorReport ?: '-'}")
-	text.subscribe { log.info "$it" }
-}
-
-if (params.tex) {
+if (! params.tex) {
+	exit 1, 'You need to specify a tex file, see --help for more information'
+} else {
 	tex = file(params.tex)
 	pdf = "$params.tex".replaceFirst(/.tex/, ".pdf")
-} else {
-	text = Channel.from(
-		"COMPILE LATEX BEAMER ~ version $version",
-		"No tex input file selected",
-		"    Usage:",
-		"       nextflow run main.nf --tex <file.tex> (--BTB || --KI || --SLL)")
-	text.subscribe { println "$it" }
-	exit 1
 }
 
 if (!params.BTB && !params.KI && !params.SLL) {
-	text = Channel.from(
-		"COMPILE LATEX BEAMER ~ version $version",
-		"No theme selected (--BTB || --KI || --SLL)",
-		"    Usage:",
-		"       nextflow run main.nf --tex <file.tex> (--BTB ||--KI || --SLL)")
-	text.subscribe { println "$it" }
-	exit 1
+	exit 1, 'You need to specify a theme, see --help for more information'
 } else if ((params.BTB && params.KI) || (params.BTB && params.SLL) || (params.KI && params.SLL)) {
-	text = Channel.from(
-		"COMPILE LATEX BEAMER ~ version $version",
-		"Problem with theme selected (--BTB || --KI || --SLL)",
-		"    Usage:",
-		"       nextflow run main.nf --tex <file.tex> (--KI || --SLL)")
-	text.subscribe { println "$it" }
-	exit 1
+	exit 1, 'You need to specify only one theme, see --help for more information'
 } 
 
 if (params.BTB) {
@@ -112,4 +66,33 @@ process RunXelatex {
 	xelatex ${tex}
 	xelatex ${tex}
 	"""
+}
+
+workflow.onComplete {
+	log.info "COMPILE-BEAMER ~ version $version"
+	log.info "Git info    : $workflow.repository - $workflow.revision [$workflow.commitId]"
+	log.info "Command line: ${workflow.commandLine}"
+	log.info "Completed at: ${workflow.complete}"
+	log.info "Duration    : ${workflow.duration}"
+	log.info "Success     : ${workflow.success}"
+	log.info "workDir     : ${workflow.workDir}"
+	log.info "Exit status : ${workflow.exitStatus}"
+	log.info "Error report: ${workflow.errorReport ?: '-'}"
+}
+
+
+def help_message(version) {
+	log.info "COMPILE-BEAMER ~ version $version"
+	log.info "    Usage:"
+	log.info "       nextflow run main.nf --tex <file.tex> (--BTB || --KI || --SLL)"
+	log.info "    --help"
+	log.info "       you're reading it"
+	log.info "    --version"
+	log.info "       displays version number"
+}
+
+def version_message(version) {
+	log.info "COMPILE-BEAMER ~ version $version"
+	log.info "Project : $workflow.projectDir"
+	log.info "Cmd line: $workflow.commandLine"
 }
