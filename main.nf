@@ -3,9 +3,9 @@
 /*
 +vim: syntax=groovy
 +-*- mode: groovy;-*-
-========================================================================================
-=             C   O   M   P   I   L   E       -      B   E   A   M   E   R             =
-========================================================================================
+=====================
+=  COMPILE - BEAMER =
+=====================
 */
 
 String version = "0.0.5"
@@ -20,7 +20,7 @@ switch (params) {
 		exit 1
 }
 
-if (! params.tex) {
+if (!params.tex) {
 	exit 1, 'You need to specify a tex file, see --help for more information'
 } else {
 	tex = file(params.tex)
@@ -70,7 +70,6 @@ process RunXelatex {
 
 workflow.onComplete {
 	log.info "COMPILE-BEAMER ~ version $version"
-	log.info "Git info    : $workflow.repository - $workflow.revision [$workflow.commitId]"
 	log.info "Command line: ${workflow.commandLine}"
 	log.info "Completed at: ${workflow.complete}"
 	log.info "Duration    : ${workflow.duration}"
@@ -79,7 +78,6 @@ workflow.onComplete {
 	log.info "Exit status : ${workflow.exitStatus}"
 	log.info "Error report: ${workflow.errorReport ?: '-'}"
 }
-
 
 def help_message(version) {
 	log.info "COMPILE-BEAMER ~ version $version"
