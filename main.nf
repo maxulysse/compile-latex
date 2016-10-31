@@ -45,9 +45,9 @@ if (params.BTB) {
 }
 
 /*
-========================================================================================
-=                                   P R O C E S S E S                                  =
-========================================================================================
+=====================
+=     PROCESSES     =
+=====================
 */
 
 process RunXelatex {
@@ -78,6 +78,12 @@ workflow.onComplete {
 	log.info "Exit status : ${workflow.exitStatus}"
 	log.info "Error report: ${workflow.errorReport ?: '-'}"
 }
+
+/*
+=====================
+=     FUNCTIONS     =
+=====================
+*/
 
 def help_message(version) {
 	log.info "COMPILE-BEAMER ~ version $version"
