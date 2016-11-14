@@ -20,6 +20,10 @@ switch (params) {
 		exit 1
 }
 
+if (params.pictures) {
+	pictures = file(params.pictures)
+} else { pictures = file("pictures") }
+
 if (!params.tex) {
 	exit 1, 'You need to specify a tex file, see --help for more information'
 } else {
@@ -33,17 +37,20 @@ if (!params.BTB && !params.KI && !params.SLL) {
 	exit 1, 'You need to specify only one theme, see --help for more information'
 } 
 
-if (params.BTB) {
-	themeSty  = '~/workspace/beamer-templates/beamerthemeBTB.sty'
-	themeLogo = '~/workspace/beamer-templates/Barntumörbanken.pdf'
-} else if (params.KI) {
-	themeSty  = '~/workspace/beamer-templates/beamerthemeKI.sty'
-	themeLogo = '~/workspace/beamer-templates/KI.pdf'
-} else if (params.SLL) {
-	themeSty  = '~/workspace/beamer-templates/beamerthemeSciLifeLab.sty'
-	themeLogo = '~/workspace/beamer-templates/SciLifeLab.pdf'
+switch (params) {
+	case {params.BTB} :
+		themeSty  = "beamer-templates/beamerthemeBTB.sty"
+		themeLogo = "beamer-templates/Barntumörbanken.pdf"
+		break
+	case {params.KI} :
+		themeSty  = "beamer-templates/beamerthemeKI.sty"
+		themeLogo = "beamer-templates/KI.pdf"
+		break
+	case {params.SLL} :
+		themeSty  = "beamer-templates/beamerthemeSciLifeLab.sty"
+		themeLogo = "beamer-templates/SciLifeLab.pdf"
+		break
 }
-
 /*
 =====================
 =     PROCESSES     =
@@ -55,9 +62,12 @@ process RunXelatex {
 
 	input:
 	file tex
+	file pictures
 
 	output:
 	file("${pdf}") into pdf_final
+
+	script:
 
 	"""
 	ln -s ${themeSty} beamerthemeTheme.sty
