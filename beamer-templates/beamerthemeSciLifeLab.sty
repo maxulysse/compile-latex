@@ -1,0 +1,109 @@
+% set personal infos + logo
+\titlegraphic{\vfill\includegraphics[width = 5cm]{SciLifeLab}}
+
+% the various libraries we will be using
+\RequirePackage[none]{hyphenat}
+\RequirePackage{fontspec}
+
+% outertheme
+\ifsplit
+	\useoutertheme{split}
+\else
+	\useoutertheme{miniframes}
+\fi
+
+% define colors:
+\definecolor{scilifegreen}{RGB}{141, 198, 63}
+\definecolor{scilifesilver}{RGB}{128, 128, 128}
+
+% set colours
+\setbeamercolor{itemize item}{fg = scilifegreen}
+\setbeamercolor{enumerate item}{fg = scilifegreen}
+
+\setbeamercolor{title}{fg = black}
+\setbeamercolor{author}{fg = black}
+\setbeamercolor{institute}{fg = black}
+\setbeamercolor{date}{fg = black}
+\setbeamercolor{frametitle}{fg = scilifegreen}
+
+\setbeamercolor{section in toc}{fg = scilifegreen}
+\setbeamercolor{author in head/foot}{fg = white, bg = scilifegreen}
+\setbeamercolor{title in head/foot}{fg = white, bg = scilifegreen!90}
+\setbeamercolor{date in head/foot}{fg = white, bg = scilifegreen!80}
+\setbeamercolor{section in head/foot}{fg = white, bg = scilifegreen}
+\setbeamercolor{subsection in head/foot}{fg = white, bg = scilifegreen!90}
+\setbeamercolor{alerted text}{fg = red}
+\setbeamercolor{footline}{fg = scilifesilver}
+\setbeamercolor{footlinecolor}{fg = white, bg = scilifegreen}
+
+% set fonts
+% download and install required fonts here: https://www.google.com/fonts#UsePlace:use/Collection:Droid+Sans:400,700|Droid+Sans+Mono|Droid+Serif:400,400italic,700,700italic
+
+\setmainfont{Droid Sans}
+\setsansfont{Droid Serif}
+\setmonofont{Droid Sans Mono}
+
+\setbeamerfont{title}{family=\rm}
+\setbeamerfont{author}{family=\rm}
+\setbeamerfont{date}{family=\rm, size=\small}
+\setbeamerfont{frametitle}{family=\rm}
+\setbeamerfont{footline}{family=\rm}
+\setbeamerfont{author in head/foot}{family=\rm}
+\setbeamerfont{title in head/foot}{family=\rm}
+\setbeamerfont{section in head/foot}{family=\rm}
+\setbeamerfont{subsection in head/foot}{family=\rm}
+\setbeamerfont{date in head/foot}{family=\rm}
+\setbeamerfont{section in toc}{family=\rm}
+
+% background of title page
+\setbeamertemplate{background canvas}{
+	\ifnum\c@framenumber=0
+		% On title page
+		\color{white}\rule{\paperwidth}{\paperheight}
+	\fi
+}
+
+\makeatother
+
+% disable navigation
+\setbeamertemplate{navigation symbols}{}
+
+% customize footline
+\setbeamertemplate{footline}{
+	\hbox{
+		\begin{beamercolorbox}[wd = .4\paperwidth, ht = .03\paperheight, dp=1ex, center]{author in head/foot}
+			\usebeamerfont{author in head/foot}\insertshortauthor
+		\end{beamercolorbox}
+		\begin{beamercolorbox}[wd = .4\paperwidth, ht = .03\paperheight, dp = 1ex, center]{title in head/foot}
+			\usebeamerfont{title in head/foot}\insertshorttitle
+		\end{beamercolorbox}
+		\begin{beamercolorbox}[wd = .2\paperwidth, ht = .03\paperheight, dp = 1ex, right]{date in head/foot}
+			\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+			\insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+		\end{beamercolorbox}
+	}
+}
+
+% remove line before footnote:
+\renewcommand*\footnoterule{}
+
+% set beamer covered text:
+\setbeamercovered{transparent}
+
+% section and subsection titles
+\AtBeginSection[]{
+	\ifsplit
+	\begin{frame}[plain]
+		\frametitle{Outline}
+		\tableofcontents[currentsection]
+	\end{frame}
+	\addtocounter{framenumber}{-1}
+	\else
+	\begin{frame}[plain]
+		\frametitle{Outline}
+		\tableofcontents[currentsection]
+	\end{frame}
+	\addtocounter{framenumber}{-1}
+	\subsection{}
+	\fi
+}
