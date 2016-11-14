@@ -1,8 +1,8 @@
 #!/usr/bin/env nextflow
 
 /*
-+vim: syntax=groovy
-+-*- mode: groovy;-*-
+vim: syntax=groovy
+-*- mode: groovy;-*-
 =====================
 =  COMPILE - BEAMER =
 =====================
@@ -35,7 +35,7 @@ if (!params.BTB && !params.KI && !params.SLL) {
 	exit 1, 'You need to specify a theme, see --help for more information'
 } else if ((params.BTB && params.KI) || (params.BTB && params.SLL) || (params.KI && params.SLL)) {
 	exit 1, 'You need to specify only one theme, see --help for more information'
-} 
+}
 
 switch (params) {
 	case {params.BTB} :
@@ -68,7 +68,6 @@ process RunXelatex {
 	file("${pdf}") into pdf_final
 
 	script:
-
 	"""
 	ln -s ${themeSty} beamerthemeTheme.sty
 	ln -s ${themeLogo} .
