@@ -7,4 +7,4 @@ machine:
 test:
   override:
     - curl -fsSL get.nextflow.io | bash
-    - ./nextflow run main.nf -profile docker --tex sample.tex
+    - ./nextflow run main.nf -with-docker -profile docker --tex sample.tex
