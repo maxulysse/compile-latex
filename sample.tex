@@ -11,39 +11,57 @@
 % I suggest using the split outer theme if subsections are meaningful, miniframes otherwise.
 
 \lstset{
-	basicstyle=\tiny\ttfamily,
-	escapechar=*,
-	framesep=4pt,
-	breakatwhitespace=true,
-	keywordstyle=\color{blue}\tiny\bfseries,
-	breakindent=2ex,
-	morekeywords={}
+  basicstyle=\tiny\ttfamily,
+  escapechar=*,
+  framesep=4pt,
+  breakatwhitespace=true,
+  keywordstyle=\color{blue}\tiny\bfseries,
+  breakindent=2ex,
+  morekeywords={}
 }
 
 \resetcounteronoverlays{lstlisting}
 
 \usetheme{Theme}
 
-\title{Compile-beamer Sample}
+\title{compile-beamer}
 \subtitle{with SciLifeLab template}
 \author{MaxUlysse}
 \institute{Barntumörbanken / SciLifeLab}
-\date{2016/11/26}
+\date{2016/12/02}
 
 \begin{document}
 
-	\begin{frame}[noframenumbering, plain]
-		\titlepage
-	\end{frame}
+\begin{frame}[noframenumbering, plain]
+\titlepage
+\end{frame}
 
-	\begin{frame}[fragile]
-		\frametitle{Compile Beamer}
-		Just a simple beamer compiler with Nextflow
-		\begin{lstlisting}[title=Usage]
-			nextflow run main.nf --tex sample.tex --theme SLL
-		\end{lstlisting}
-		\begin{lstlisting}[title=This file was made using]
-			nextflow run main.nf --tex <file.tex> --theme <BTB || KI || SLL>
-		\end{lstlisting}
-	\end{frame}
+\begin{frame}[fragile]
+\frametitle{compile-beamer}
+Just a simple beamer compiler with Nextflow
+\begin{lstlisting}[title=Usage]
+nextflow run main.nf --tex <file.tex> --theme <BTB || KI || SLL> \
+[--pictures] [pictures directory]
+\end{lstlisting}
+\begin{lstlisting}[title=This file was made using]
+nextflow run main.nf --tex sample.tex --theme SLL
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{How to insert picture}
+\begin{lstlisting}[title=Code]
+\begin{center}
+\includegraphics[width=.8\linewidth]{pictures/Snowpocalypse-SciLifeLab.jpg}
+\end{center}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+\frametitle{How to insert picture}
+\begin{center}
+\includegraphics[width=.8\linewidth]{pictures/Snowpocalypse-SciLifeLab.jpg}
+\end{center}
+\end{frame}
+
 \end{document}
