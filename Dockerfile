@@ -6,7 +6,8 @@ RUN apt-get update && apt-get install -y \
   git
  
 # Install some Google Web Fonts
-RUN find fonts/ -name "*.ttf" -exec install -m644 {} /usr/share/fonts/truetype/google-fonts/ \; || return 1
+RUN cp $(ls -1 $(PWD)/fonts/**/*.ttf) /usr/share/fonts/truetype/google-fonts/.
+RUN chown /usr/share/fonts/truetype/google-fonts/* 777
 RUN fc-cache -f -v
 
 # Install the texlive-xetex package which includes the Xelatex executable.
