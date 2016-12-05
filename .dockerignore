@@ -1,0 +1,10 @@
+.git*
+LICENSE
+README.md
+circle.yml
+main.nf
+nextflow.config
+sample.*
+beamer-templates/*
+conf/*
+pictures/*
