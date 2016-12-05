@@ -6,10 +6,10 @@ RUN apt-get update && apt-get install -y \
   git
  
 # Install some Google Web Fonts
-RUN cp $(ls -1 $(PWD)/fonts/**/*.ttf) /usr/share/fonts/truetype/google-fonts/.
-RUN chown /usr/share/fonts/truetype/google-fonts/* 777
-RUN fc-cache -f -v
+CMD cp $(ls -1 ${PWD}/fonts/**/*.ttf) /usr/share/fonts/truetype/google-fonts/.
+CMD chown /usr/share/fonts/truetype/google-fonts/* 777
+CMD fc-cache -f -v
 
 # Install the texlive-xetex package which includes the Xelatex executable.
-RUN git clone https://github.com/scottkosty/install-tl-ubuntu.git
-RUN cd install-tl-ubuntu; ./install-tl-ubuntu
+CMD git clone https://github.com/scottkosty/install-tl-ubuntu.git
+CMD cd install-tl-ubuntu; ./install-tl-ubuntu
