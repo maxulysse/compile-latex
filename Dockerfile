@@ -5,12 +5,9 @@ FROM ubuntu:16.04
 MAINTAINER Maxime Garcia "max.u.garcia@gmail.com"
 
 # Install pre-requistes
-RUN apt-get update --fix-missing && apt-get install -q -y \
-  git /
-  lsb-release /
-  mercurial /
-  wget
-
+RUN apt-get update && apt-get install -y \
+  git
+ 
 # Install all Google Web Fonts
 RUN find $PWD/fonts/ -name "*.ttf" -exec install -m644 {} /usr/share/fonts/truetype/google-fonts/ \; || return 1
 RUN fc-cache -f -v
