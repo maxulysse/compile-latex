@@ -13,5 +13,5 @@ Usage:
 [license-badge]:	https://img.shields.io/badge/license-MIT-blue.svg
 [docker-badge]:		https://img.shields.io/docker/automated/maxulysse/compile-beamer.svg
 [docker-link]:		http://docker.io/
-[circleci-badge]:	https://img.shields.io/circleci/project/github/maxulysse/compile-beamer.svg
+[circleci-badge]:	https://img.shields.io/circleci/project/github/MaxUlysse/compile-beamer.svg
 [circleci-link]:	https://circleci.com/gh/MaxUlysse/compile-beamer
