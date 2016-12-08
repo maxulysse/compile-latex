@@ -6,5 +6,6 @@ machine:
     
 test:
   override:
+    - docker pull maxulysse/compile-beamer
     - curl -fsSL get.nextflow.io | bash
     - ./nextflow run main.nf -with-docker -profile docker --tex sample.tex --theme SLL
