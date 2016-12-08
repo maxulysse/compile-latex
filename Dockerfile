@@ -11,4 +11,4 @@ RUN git clone --depth 1 https://github.com/google/fonts.git google-fonts
 RUN mkdir -p /usr/share/fonts/truetype/google-fonts/
 RUN find $PWD/google-fonts/ -name "*.ttf" -exec install -m644 {} /usr/share/fonts/truetype/google-fonts/ \; || return 1
 RUN rm -rf $PWD/google-fonts
-RUN fc-cache -f -v
+CMD fc-cache -f -v
