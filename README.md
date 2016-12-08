@@ -1,4 +1,4 @@
-# ![compile-beamer version][version-badge]] [![works on my machine][works-badge]][works-link] [![MIT License][license-badge]](LICENSE) [![Nextflow version][nextflow-badge]][nextflow-link] [![CircleCI status][circleci-badge]][circleci-link] [![Docker status][docker-badge]][docker-link]
+# ![compile-beamer version][version-badge] [![MIT License][license-badge]](LICENSE) [![Nextflow version][nextflow-badge]][nextflow-link] [![works on my machine][works-badge]][works-link] [![CircleCI status][circleci-badge]][circleci-link] [![Docker status][docker-badge]][docker-link]
 
 Beamer compiler in Nextflow using XeLaTex. Beamer presentations can be easily compiled with different themes. A Docker container can be used, it's an Ubuntu 16.04 image containing texlive-xetex, and google fonts.
 
