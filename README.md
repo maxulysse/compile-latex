@@ -23,7 +23,7 @@ nextflow run MaxUlysse/compile-beamer /
 [works-badge]:		https://img.shields.io/badge/works-on_my_machine-blue.svg
 [works-link]:		https://github.com/nikku/works-on-my-machine
 [nextflow-badge]:	https://img.shields.io/badge/nextflow-%E2%89%A50.22.2-brightgreen.svg
-[nextflow-link]:	https://nextflow.io/
+[nextflow-link]:	https://www.nextflow.io/
 [circleci-badge]:	https://circleci.com/gh/MaxUlysse/compile-beamer.svg?style=shield
 [circleci-link]:	https://circleci.com/gh/MaxUlysse/compile-beamer
 [travis-badge]:		https://img.shields.io/travis/MaxUlysse/compile-beamer.svg
