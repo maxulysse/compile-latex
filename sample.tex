@@ -33,7 +33,7 @@
 \begin{document}
 
 \begin{frame}[noframenumbering, plain]
-\titlepage
+	\titlepage
 \end{frame}
 
 \begin{frame}[fragile]
@@ -41,7 +41,7 @@
 Just a simple beamer compiler with Nextflow
 \begin{lstlisting}[title=Usage]
 nextflow run main.nf --tex <file.tex> --theme <BTB || KI || SLL> \
-[--pictures] [pictures directory]
+[--pictures <pictures directory>]
 \end{lstlisting}
 \begin{lstlisting}[title=This file was made using]
 nextflow run main.nf --tex sample.tex --theme SLL
@@ -58,10 +58,10 @@ nextflow run main.nf --tex sample.tex --theme SLL
 \end{frame}
 
 \begin{frame}
-\frametitle{How to insert picture}
-\begin{center}
-\includegraphics[width=.8\linewidth]{pictures/Snowpocalypse-SciLifeLab.jpg}
-\end{center}
+	\frametitle{How to insert picture}
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{pictures/Snowpocalypse-SciLifeLab.jpg}
+	\end{center}
 \end{frame}
 
 \end{document}
