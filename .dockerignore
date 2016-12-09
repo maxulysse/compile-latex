@@ -2,6 +2,7 @@
 LICENSE
 README.md
 circle.yml
+.travis.yml
 main.nf
 nextflow.config
 sample.*
