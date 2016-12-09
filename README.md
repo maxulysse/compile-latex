@@ -1,4 +1,4 @@
-# [![compile-beamer version][version-badge]][version-link] [![MIT License][license-badge]](LICENSE) [![Nextflow version][nextflow-badge]][nextflow-link] [![works on my machine][works-badge]][works-link] [![CircleCI status][circleci-badge]][circleci-link] [![Docker status][docker-badge]][docker-link]
+[![compile-beamer version][version-badge]][version-link] [![MIT License][license-badge]](LICENSE) [![Nextflow version][nextflow-badge]][nextflow-link] [![works on my machine][works-badge]][works-link] [![CircleCI status][circleci-badge]][circleci-link] [![Docker status][docker-badge]][docker-link]
 
 Beamer compiler in Nextflow using XeLaTex. Beamer presentations can be easily compiled with different themes. A Docker container can be used, it's an Ubuntu 16.04 image containing texlive-xetex, and google fonts.
 
@@ -26,4 +26,4 @@ nextflow run MaxUlysse/compile-beamer /
 [circleci-badge]:	https://circleci.com/gh/MaxUlysse/compile-beamer.svg?style=shield
 [circleci-link]:	https://circleci.com/gh/MaxUlysse/compile-beamer
 [docker-badge]:		https://img.shields.io/docker/automated/maxulysse/compile-beamer.svg
-[docker-link]:		https://cloud.docker.com/app/maxulysse/repository/docker/maxulysse/compile-beamer
+[docker-link]:		https://hub.docker.com/r/maxulysse/compile-beamer
