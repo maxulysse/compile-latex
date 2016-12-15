@@ -5,7 +5,8 @@ MAINTAINER Maxime Garcia <max@ithake.eu>
 RUN apt-get update && apt-get install -y \
   git \
   fontconfig \
-  texlive-xetex
+  texlive-xetex \
+  python-pygments
 
 # Install Google Web Fonts
 RUN git clone --depth 1 https://github.com/google/fonts.git google-fonts

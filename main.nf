@@ -9,7 +9,7 @@ vim: syntax=groovy
 */
 
 revision = grabGitRevision() ?: ''
-version = 'v1.0'
+version = 'v1.1.0'
 
 switch (params) {
 	case {params.help} :
@@ -51,8 +51,8 @@ process RunXelatex {
 
 	script:
 	"""
-	xelatex ${tex}
-	xelatex ${tex}
+	xelatex -shell-escape ${tex}
+	xelatex -shell-escape ${tex}
 	"""
 }
 
