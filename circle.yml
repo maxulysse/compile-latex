@@ -8,7 +8,8 @@ machine:
   environment:
     NXF_VER: 0.23.0
 
-  pre:
+  dependencies:
+    override:
     - docker pull maxulysse/compile-beamer
     - curl -fsSL get.nextflow.io | bash
 
