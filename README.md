@@ -12,14 +12,14 @@ It's an Ubuntu 16.04 image containing texlive-xetex, python-pygments (for minted
 nextflow run MaxUlysse/compile-beamer /
 -profile docker -with-docker /
 --tex <file.tex> /
---theme <BTB||KI||SLL>
+--theme <BTB||KI||SciLifeLab>
 ```
 
 ## Usage without Docker:
 ```bash
 nextflow run MaxUlysse/compile-beamer /
 --tex <file.tex> /
---theme <BTB||KI||SLL>
+--theme <BTB||KI||SciLifeLab>
 ```
 
 [version-badge]:    https://img.shields.io/badge/compile--beamer-v1.1.0-green.svg
