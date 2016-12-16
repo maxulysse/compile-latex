@@ -8,10 +8,10 @@ machine:
   environment:
     NXF_VER: 0.23.0
 
-  dependencies:
-    override:
-    - docker pull maxulysse/compile-beamer
-    - curl -fsSL get.nextflow.io | bash
+dependencies:
+  override:
+  - docker pull maxulysse/compile-beamer
+  - curl -fsSL get.nextflow.io | bash
 
 test:
   post:
