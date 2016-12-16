@@ -6,7 +6,7 @@ machine:
     - docker
 
   environment:
-    - NXF_VER: 0.23.0
+    NXF_VER: 0.23.0
 
   pre:
     - docker pull maxulysse/compile-beamer
