@@ -15,4 +15,4 @@ install:
   - curl -fsSL get.nextflow.io | bash
 
 script:
-  - ./nextflow run main.nf -with-docker -profile docker --tex sample.tex --theme SLL
+  - ./nextflow run . -with-docker -profile docker --tex sample.tex --theme SLL
