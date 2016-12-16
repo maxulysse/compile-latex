@@ -1,6 +1,7 @@
 %!TEX program = xelatex
 \documentclass{beamer}
 \RequirePackage{minted}
+\RequirePackage{inputenc}
 
 % Don't delete:
 \newif\ifsplit
@@ -29,13 +30,12 @@
 	\begin{minted}[fontsize=\tiny]{bash}
 nextflow run MaxUlysse/compile-beamer \
   --tex <file.tex> \
-  --theme <BTB||KI||SLL> \
+  --theme <BTB||KI||SciLifeLab> \
   [--pictures <pictures directory>]
 	\end{minted}
 	\begin{minted}[fontsize=\tiny]{bash}
 nextflow run MaxUlysse/compile-beamer \
-  --tex sample.tex \
-  --theme SLL
+  --tex sample.tex
 	\end{minted}
 \end{frame}
 

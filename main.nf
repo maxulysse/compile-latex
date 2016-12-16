@@ -89,9 +89,9 @@ def defineTheme(theme) {
 		workflow.projectDir + params.style_KI,
 		workflow.projectDir + params.logo_KI
 		]
-	} else if (theme == 'SLL') { return [
-		workflow.projectDir + params.style_SLL,
-		workflow.projectDir + params.logo_SLL
+	} else if (theme == 'SciLifeLab') { return [
+		workflow.projectDir + params.style_SciLifeLab,
+		workflow.projectDir + params.logo_SciLifeLab
 		]
 	} else {
 		exit 1, "Theme $theme unknown, see --help for more information"
@@ -101,7 +101,7 @@ def defineTheme(theme) {
 def helpMessage(version, revision) {
 	log.info "COMPILE-BEAMER ~ $version - revision: $revision"
 	log.info "    Usage:"
-	log.info "       nextflow run MaxUlysse/compile-beamer --tex <input.tex> --theme <BTB || KI || SLL>"
+	log.info "       nextflow run MaxUlysse/compile-beamer --tex <input.tex> --theme <BTB||KI||SciLifeLab>"
 	log.info "    --help"
 	log.info "       you're reading it"
 	log.info "    --version"
