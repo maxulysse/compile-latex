@@ -9,7 +9,7 @@ vim: syntax=groovy
 */
 
 revision = grabGitRevision() ?: ''
-version = 'v1.1.0'
+version = 'v1.1.1'
 
 switch (params) {
 	case {params.help} :
