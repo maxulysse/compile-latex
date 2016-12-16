@@ -1,11 +1,17 @@
 machine:
   java:
     version: openjdk7
+
   services:
     - docker
-    
-test:
-  override:
+
+  env:
+    - NXF_VER=0.23.0
+
+  pre:
     - docker pull maxulysse/compile-beamer
     - curl -fsSL get.nextflow.io | bash
+
+test:
+  post:
     - ./nextflow run main.nf -with-docker -profile docker --tex sample.tex --theme SLL
