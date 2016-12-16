@@ -2,7 +2,10 @@
 
 [![compile-beamer version][version-badge]][version-link] [![MIT License][license-badge]][license-link] [![Nextflow version][nextflow-badge]][nextflow-link] [![works on my machine][works-badge]][works-link] [![CircleCI status][circleci-badge]][circleci-link] [![Travis status][travis-badge]][travis-link] [![Docker status][docker-badge]][docker-link]
 
-Beamer compiler in Nextflow using XeLaTex. Beamer presentations can be easily compiled with different themes. A Docker container can be used, it's an Ubuntu 16.04 image containing texlive-xetex, and google fonts.
+Beamer compiler in Nextflow using XeLaTex.
+Beamer presentations can be easily compiled with different themes.
+A Docker container is provided.
+It's an Ubuntu 16.04 image containing texlive-xetex, python-pygments (for minted) and google fonts.
 
 ## Usage with Docker:
 ```bash
