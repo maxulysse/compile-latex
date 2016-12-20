@@ -25,34 +25,34 @@
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{compile-beamer}
-	Just a simple beamer compiler with Nextflow
-	\begin{minted}[fontsize=\tiny]{bash}
+  \frametitle{compile-beamer}
+  Just a simple beamer compiler with Nextflow
+  \begin{minted}[fontsize=\tiny]{bash}
 nextflow run MaxUlysse/compile-beamer \
   --tex <file.tex> \
   --theme <BTB||KI||SciLifeLab> \
   [--pictures <pictures directory>]
-	\end{minted}
-	\begin{minted}[fontsize=\tiny]{bash}
+  \end{minted}
+  \begin{minted}[fontsize=\tiny]{bash}
 nextflow run MaxUlysse/compile-beamer \
   --tex sample.tex
-	\end{minted}
+  \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
-	\frametitle{How to insert picture}
-	\begin{minted}[fontsize=\tiny]{latex}
+  \frametitle{How to insert picture}
+  \begin{minted}[fontsize=\tiny]{latex}
 \begin{center}
   \includegraphics[width=.8\linewidth]{pictures/Snowpocalypse-SciLifeLab.jpg}
 \end{center}
-	\end{minted}
+  \end{minted}
 \end{frame}
 
 \begin{frame}
-	\frametitle{How to insert picture}
-	\begin{center}
-		\includegraphics[width=.8\linewidth]{pictures/Snowpocalypse-SciLifeLab.jpg}
-	\end{center}
+  \frametitle{How to insert picture}
+  \begin{center}
+    \includegraphics[width=.8\linewidth]{pictures/Snowpocalypse-SciLifeLab.jpg}
+  \end{center}
 \end{frame}
 
 \end{document}
