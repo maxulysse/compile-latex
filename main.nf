@@ -3,13 +3,30 @@
 /*
 vim: syntax=groovy
 -*- mode: groovy;-*-
-=====================
-=  COMPILE - BEAMER =
-=====================
+================================================================================
+=                   C  O  M  P  I  L  E  -  B  E  A  M  E  R                   =
+================================================================================
+@Author
+Maxime Garcia <maxime.garcia@scilifelab.se> [@MaxUlysse]
+--------------------------------------------------------------------------------
+ @Homepage
+ https://github.com/MaxUlysse/compile-beamer
+--------------------------------------------------------------------------------
+ @Documentation
+ https://github.com/MaxUlysse/compile-beamer/blob/master/README.md
+--------------------------------------------------------------------------------
+@Licence
+ https://github.com/MaxUlysse/compile-beamer/blob/master/LICENSE
+--------------------------------------------------------------------------------
+ Processes overview
+ - RunXelatex - Run xelatex twice on given tex file
+================================================================================
+=                           C O N F I G U R A T I O N                          =
+================================================================================
 */
 
 revision = grabGitRevision() ?: ''
-version = 'v1.1.1'
+version = 'v1.1.2'
 
 switch (params) {
 	case {params.help} :
@@ -32,9 +49,9 @@ tex = file(params.tex)
 startMessage(version, revision)
 
 /*
-=====================
-=     PROCESSES     =
-=====================
+================================================================================
+=                                 P R O C E S S                                =
+================================================================================
 */
 
 process RunXelatex {
@@ -57,9 +74,9 @@ process RunXelatex {
 }
 
 /*
-=====================
-=     FUNCTIONS     =
-=====================
+================================================================================
+=                               F U N C T I O N S                              =
+================================================================================
 */
 
 def grabGitRevision() { // Borrowed from https://github.com/NBISweden/wgs-structvar
@@ -102,6 +119,11 @@ def helpMessage(version, revision) {
 	log.info "COMPILE-BEAMER ~ $version - revision: $revision"
 	log.info "    Usage:"
 	log.info "       nextflow run MaxUlysse/compile-beamer --tex <input.tex> --theme <BTB||KI||SciLifeLab>"
+	log.info "    --tex"
+	log.info "      Compile the given tex file"
+	log.info "    --theme"
+	log.info "      Compile using given theme. Default is ScilifeLab."
+	log.info "        Also available are KI and BTB."
 	log.info "    --help"
 	log.info "       you're reading it"
 	log.info "    --version"
@@ -110,32 +132,37 @@ def helpMessage(version, revision) {
 
 def startMessage(version, revision) {
 	log.info "COMPILE-BEAMER ~ $version - revision: $revision"
-	log.info "Project     : $workflow.projectDir"
-	log.info "Directory   : $workflow.launchDir"
-	log.info "workDir     : $workflow.workDir"
 	log.info "Command line: $workflow.commandLine"
+	log.info "Project Dir : $workflow.projectDir"
+	log.info "Launch Dir  : $workflow.launchDir"
+	log.info "Work Dir    : $workflow.workDir"
 }
 
 def versionMessage(version, revision) {
 	log.info "COMPILE-BEAMER"
 	log.info "  version $version"
-	log.info "  revision: $revision"
-	log.info "Git info  : repository - $revision [$workflow.commitId]"
+	if (workflow.commitId) {
+		log.info "Git info    : $workflow.repository - $workflow.revision [$workflow.commitId]"
+	} else {
+		log.info "  revision  : $revision"
+	}
 	log.info "Project   : $workflow.projectDir"
 	log.info "Directory : $workflow.launchDir"
 }
 
 workflow.onComplete {
+	log.info "N E X T F L O W ~ $workflow.nextflow.version - $workflow.nextflow.build"
 	log.info "COMPILE-BEAMER ~ $version - revision: $revision"
-	log.info "Project     : $workflow.projectDir"
-	log.info "workDir     : $workflow.workDir"
 	log.info "Command line: $workflow.commandLine"
+	log.info "Project Dir : $workflow.projectDir"
+	log.info "Launch Dir  : $workflow.launchDir"
+	log.info "Work Dir    : $workflow.workDir"
 	log.info "Theme used  : $params.theme"
 	log.info "Completed at: $workflow.complete"
 	log.info "Duration    : $workflow.duration"
 	log.info "Success     : $workflow.success"
 	log.info "Exit status : $workflow.exitStatus"
-	log.info "Error report: ${workflow.errorReport ?: '-'}"
+	log.info "Error report:" + (workflow.errorReport ?: '-')
 }
 
 workflow.onError {
