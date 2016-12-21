@@ -26,7 +26,7 @@ Maxime Garcia <maxime.garcia@scilifelab.se> [@MaxUlysse]
 */
 
 revision = grabGitRevision() ?: ''
-version = 'v1.1.2'
+version = 'v1.1.3'
 
 switch (params) {
 	case {params.help} :
