@@ -15,4 +15,4 @@ dependencies:
 
 test:
   post:
-    - ./nextflow run . -with-docker -profile docker --tex sample.tex
+    - ./nextflow run . -with-docker -profile docker

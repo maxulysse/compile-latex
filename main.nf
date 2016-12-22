@@ -7,7 +7,7 @@ vim: syntax=groovy
 =                   C  O  M  P  I  L  E  -  B  E  A  M  E  R                   =
 ================================================================================
 @Author
-Maxime Garcia <maxime.garcia@scilifelab.se> [@MaxUlysse]
+Maxime Garcia <maxime@ithake.eu> [@MaxUlysse]
 --------------------------------------------------------------------------------
  @Homepage
  https://github.com/MaxUlysse/compile-beamer
@@ -55,6 +55,7 @@ startMessage(version, revision)
 */
 
 process RunXelatex {
+  tag {tex}
 	publishDir ".", mode: 'move'
 
 	input:

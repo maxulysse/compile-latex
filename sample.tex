@@ -27,15 +27,16 @@
 \begin{frame}[fragile]
   \frametitle{compile-beamer}
   Just a simple beamer compiler with Nextflow
+  Usage :
   \begin{minted}[fontsize=\tiny]{bash}
 nextflow run MaxUlysse/compile-beamer \
   --tex <file.tex> \
   --theme <BTB||KI||SciLifeLab> \
   [--pictures <pictures directory>]
   \end{minted}
+  This pdf was compiled using
   \begin{minted}[fontsize=\tiny]{bash}
-nextflow run MaxUlysse/compile-beamer \
-  --tex sample.tex
+nextflow run MaxUlysse/compile-beamer
   \end{minted}
 \end{frame}
 
