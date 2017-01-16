@@ -10,9 +10,8 @@ machine:
 
 dependencies:
   override:
-  - docker pull maxulysse/compile-beamer:1.2
   - curl -fsSL get.nextflow.io | bash
 
 test:
   post:
-    - ./nextflow run . -with-docker -profile docker
+    - ./nextflow run . -profile docker

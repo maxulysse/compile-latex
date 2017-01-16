@@ -11,8 +11,7 @@ env:
   - NXF_VER=0.23.0
 
 install:
-  - docker pull maxulysse/compile-beamer:1.2
   - curl -fsSL get.nextflow.io | bash
 
 script:
-  - ./nextflow run . -with-docker -profile docker
+  - ./nextflow run . -profile docker
