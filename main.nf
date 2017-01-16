@@ -69,8 +69,8 @@ process RunXelatex {
 
 	script:
 	"""
-	xelatex -shell-escape ${tex}
-	xelatex -shell-escape ${tex}
+	xelatex -shell-escape ${tex.baseName}
+	xelatex -shell-escape ${tex.baseName}
 	"""
 }
 

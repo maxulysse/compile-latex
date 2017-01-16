@@ -5,9 +5,9 @@
 Beamer compiler in Nextflow using XeLaTex.
 Beamer presentations can be easily compiled with different themes.
 A Docker container is provided.
-It's an Ubuntu 16.04 image containing texlive-xetex, python-pygments (for minted) and google fonts.
+It's an Debian 8.6 image containing texlive-xetex, python-pygments (for minted) and google fonts.
 
-## Usage with Docker:
+## Usage with Docker
 ```bash
 nextflow run MaxUlysse/compile-beamer /
 -profile docker -with-docker /
@@ -15,15 +15,15 @@ nextflow run MaxUlysse/compile-beamer /
 --theme <BTB||KI||SciLifeLab>
 ```
 
-## Usage without Docker:
+## Usage without Docker
 ```bash
 nextflow run MaxUlysse/compile-beamer /
 --tex <file.tex> /
 --theme <BTB||KI||SciLifeLab>
 ```
 
-[version-badge]:    https://img.shields.io/badge/compile--beamer-v1.1.3-green.svg
-[version-link]:     https://github.com/MaxUlysse/compile-beamer/releases/tag/v1.1.3
+[version-badge]:    https://img.shields.io/badge/compile--beamer-1.2-green.svg
+[version-link]:     https://github.com/MaxUlysse/compile-beamer/releases/tag/1.2
 [license-badge]:    https://img.shields.io/badge/license-MIT-blue.svg
 [license-link]:     https://github.com/MaxUlysse/compile-beamer/blob/master/LICENSE
 [works-badge]:      https://img.shields.io/badge/works-on_my_machine-blue.svg

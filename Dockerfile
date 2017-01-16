@@ -1,14 +1,18 @@
-FROM ubuntu:16.04
+FROM debian:8.6
+
 MAINTAINER Maxime Garcia <max@ithake.eu>
 
 # Install pre-requistes
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
   wget \
+  ca-certificates \
   fontconfig \
   texlive-xetex \
+  texlive-fonts-recommended \
+  lmodern \
   python-pygments
 
-# Download only needed Google Web Fonts
+# Download needed Google Fonts
 RUN mkdir google-fonts/
 RUN wget https://github.com/google/fonts/raw/master/apache/droidsans/DroidSans-Bold.ttf -O google-fonts/DroidSans-Bold.ttf
 RUN wget https://github.com/google/fonts/raw/master/apache/droidsans/DroidSans.ttf -O google-fonts/DroidSans.ttf
