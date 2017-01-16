@@ -22,8 +22,8 @@ nextflow run MaxUlysse/compile-beamer /
 --theme <BTB||KI||SciLifeLab>
 ```
 
-[version-badge]:    https://img.shields.io/badge/compile--beamer-1.2-green.svg
-[version-link]:     https://github.com/MaxUlysse/compile-beamer/releases/tag/1.2
+[version-badge]:    https://img.shields.io/badge/compile--beamer-1.2.1-green.svg
+[version-link]:     https://github.com/MaxUlysse/compile-beamer/releases/tag/1.2.1
 [license-badge]:    https://img.shields.io/badge/license-MIT-blue.svg
 [license-link]:     https://github.com/MaxUlysse/compile-beamer/blob/master/LICENSE
 [works-badge]:      https://img.shields.io/badge/works-on_my_machine-blue.svg
