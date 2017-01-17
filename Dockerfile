@@ -4,16 +4,21 @@ MAINTAINER Maxime Garcia <max@ithake.eu>
 
 # Install pre-requistes
 RUN apt-get update && apt-get install -y --no-install-recommends \
-  wget \
   ca-certificates \
   fontconfig \
-  texlive-xetex \
-  texlive-fonts-recommended \
   lmodern \
-  python-pygments
+  python-pygments \
+  texlive-fonts-recommended \
+  texlive-xetex \
+  wget \
+  && rm -rf /var/lib/apt/lists/*
+
+# Default to UTF-8 file.encoding
+ENV LANG C.UTF-8
 
 # Download needed Google Fonts
 RUN mkdir google-fonts/
+
 RUN wget https://github.com/google/fonts/raw/master/apache/droidsans/DroidSans-Bold.ttf -O google-fonts/DroidSans-Bold.ttf
 RUN wget https://github.com/google/fonts/raw/master/apache/droidsans/DroidSans.ttf -O google-fonts/DroidSans.ttf
 RUN wget https://github.com/google/fonts/raw/master/apache/droidsansmono/DroidSansMono.ttf -O google-fonts/DroidSansMono.ttf
