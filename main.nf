@@ -65,7 +65,7 @@ process RunXelatex {
 	file 'beamertheme.pdf' from themeLogo
 
 	output:
-	file("*.pdf") into pdf
+	file("${tex.baseName}.pdf") into pdf
 
 	script:
 	"""
