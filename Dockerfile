@@ -1,7 +1,7 @@
 FROM debian:8.6
 
 LABEL author="Maxime Garcia" \
-	description="FastQC 0.11.5 image for use in CAW" \
+	description="texlive-xetex image for compile-beamer" \
 	maintainer="max@ithake.eu"
 
 # Install pre-requistes
@@ -17,12 +17,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Default to UTF-8 file.encoding
 ENV LANG C.UTF-8
-ENV GOOGLE_FONTS_URL https://github.com/google/fonts/raw/master/apache
 
 # Download and install needed Google Fonts
-RUN mkdir google-fonts/
-WORKDIR google-fonts/
-RUN wget $GOOGLE_FONTS_URL/droidsans/DroidSans-Bold.ttf \
+ENV GOOGLE_FONTS_URL https://github.com/google/fonts/raw/master/apache
+RUN mkdir google-fonts/ \
+	&& wget \
+	$GOOGLE_FONTS_URL/droidsans/DroidSans-Bold.ttf \
 	$GOOGLE_FONTS_URL/droidsans/DroidSans.ttf \
 	$GOOGLE_FONTS_URL/droidsansmono/DroidSansMono.ttf \
 	$GOOGLE_FONTS_URL/droidserif/DroidSerif-Bold.ttf \
