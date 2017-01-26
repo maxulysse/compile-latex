@@ -1,10 +1,11 @@
 .git*
-LICENSE
-circle.yml
-.travis.yml
-main.nf
-nextflow.config
-sample.*
 beamer-templates/*
 conf/*
 pictures/*
+.travis.yml
+circle.yml
+LICENSE
+main.nf
+nextflow.config
+sample.*
+Singularity
