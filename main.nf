@@ -26,7 +26,7 @@ Maxime Garcia <maxime@ithake.eu> [@MaxUlysse]
 */
 
 revision = grabGitRevision() ?: ''
-version = 'v1.2.1'
+version = '1.2.1'
 
 switch (params) {
 	case {params.help} :
