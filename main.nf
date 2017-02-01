@@ -26,7 +26,7 @@ Maxime Garcia <maxime@ithake.eu> [@MaxUlysse]
 */
 
 revision = grabGitRevision() ?: ''
-version = '1.2.1'
+version = '1.3'
 
 switch (params) {
 	case {params.help} :
@@ -39,9 +39,6 @@ switch (params) {
 }
 
 if (!params.tex) {exit 1, 'No tex file, see --help for more information'}
-if (!params.theme) {exit 1, 'No theme selected, see --help for more information'}
-
-(themeStyle, themeLogo) = defineTheme(params.theme)
 
 pictures = file(params.pictures)
 tex = file(params.tex)
@@ -55,14 +52,13 @@ startMessage(version, revision)
 */
 
 process RunXelatex {
-  tag {tex}
+	tag {tex}
+
 	publishDir ".", mode: 'move'
 
 	input:
 	file tex
 	file pictures
-	file 'beamerthemeTheme.sty' from themeStyle
-	file 'beamertheme.pdf' from themeLogo
 
 	output:
 	file("${tex.baseName}.pdf") into pdf
@@ -98,33 +94,12 @@ def grabGitRevision() { // Borrowed from https://github.com/NBISweden/wgs-struct
 	return revision.substring(0,10)
 }
 
-def defineTheme(theme) {
-	if (theme == 'BTB') { return [
-		workflow.projectDir + params.style_BTB,
-		workflow.projectDir + params.logo_BTB
-		]
-	} else if (theme == 'KI') { return [
-		workflow.projectDir + params.style_KI,
-		workflow.projectDir + params.logo_KI
-		]
-	} else if (theme == 'SciLifeLab') { return [
-		workflow.projectDir + params.style_SciLifeLab,
-		workflow.projectDir + params.logo_SciLifeLab
-		]
-	} else {
-		exit 1, "Theme $theme unknown, see --help for more information"
-	}
-}
-
 def helpMessage(version, revision) {
 	log.info "COMPILE-BEAMER ~ $version - revision: $revision"
 	log.info "    Usage:"
 	log.info "       nextflow run MaxUlysse/compile-beamer --tex <input.tex> --theme <BTB||KI||SciLifeLab>"
 	log.info "    --tex"
 	log.info "      Compile the given tex file"
-	log.info "    --theme"
-	log.info "      Compile using given theme. Default is ScilifeLab."
-	log.info "        Also available are KI and BTB."
 	log.info "    --help"
 	log.info "       you're reading it"
 	log.info "    --version"
@@ -158,7 +133,6 @@ workflow.onComplete {
 	log.info "Project Dir : $workflow.projectDir"
 	log.info "Launch Dir  : $workflow.launchDir"
 	log.info "Work Dir    : $workflow.workDir"
-	log.info "Theme used  : $params.theme"
 	log.info "Completed at: $workflow.complete"
 	log.info "Duration    : $workflow.duration"
 	log.info "Success     : $workflow.success"
