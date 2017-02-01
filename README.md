@@ -9,7 +9,7 @@
 
 Beamer compiler in Nextflow using XeLaTex.
 
-Beamer presentations can be easily compiled with different themes. A Docker container is provided. It's a `debian:8.6` image containing `texlive-xetex`, `python-pygments` (for `minted`) and `google fonts`.
+Beamer presentations can be easily compiled with different themes. A Docker container is provided. It's a `debian:8.6` image containing `texlive-xetex`, `mtheme`, `python-pygments` (for `minted`) and `Fira fonts`.
 
 ## Usage with Docker
 
