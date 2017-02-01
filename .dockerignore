@@ -1,5 +1,4 @@
 .git*
-beamer-templates/*
 conf/*
 pictures/*
 .travis.yml
