@@ -1,11 +1,4 @@
-# compile-beamer [![compile-beamer version][version-badge]][version-link]
-
-[![Nextflow version][nextflow-badge]][nextflow-link]
-[![works on my machine][works-badge]][works-link]
-[![CircleCI status][circleci-badge]][circleci-link]
-[![Travis status][travis-badge]][travis-link]
-[![Docker status][docker-badge]][docker-link]
-[![Singularity status][singularity-badge]][singularity-link]
+# compile-beamer [![compile-beamer version][version-badge]][version-link] [![Nextflow version][nextflow-badge]][nextflow-link] [![works on my machine][works-badge]][works-link] [![CircleCI status][circleci-badge]][circleci-link] [![Travis status][travis-badge]][travis-link] [![Docker status][docker-badge]][docker-link] [![Singularity status][singularity-badge]][singularity-link]
 
 Beamer compiler in Nextflow using XeLaTex.
 

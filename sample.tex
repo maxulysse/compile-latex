@@ -3,27 +3,28 @@
 \RequirePackage{minted}
 \RequirePackage{inputenc}
 
-% Don't delete:
-\newif\ifsplit
-% It is necessary for switching from one outer theme to the other. By default, a miniframes outer theme is used for the header.
-% Uncomment the following line to switch to a split outer theme:
-\splittrue
-% I suggest using the split outer theme if subsections are meaningful, miniframes otherwise.
+\usetheme[
+	progressbar=frametitle,
+	sectionpage=none,
+	numbering=fraction
+]{metropolis}
 
-\usetheme{metropolis}
+\setbeamercolor{progress bar}{fg=green,bg=white}
 
 \title{compile-beamer}
 \subtitle{with metropolis theme}
 \author{MaxUlysse}
-\institute{Barntumörbanken / SciLifeLab}
-\date{2016/12/02}
+\institute{
+	SciLifeLab\\
+	\vfill\includegraphics[width=3cm]{pictures/SciLifeLab}
+}
+\date{2017/02/06}
 
 \begin{document}
 
 \maketitle
 
-\begin{frame}[fragile]
-  \frametitle{compile-beamer}
+\begin{frame}[fragile]{compile-beamer}
   Just a simple beamer compiler with Nextflow
   Usage :
   \begin{minted}[fontsize=\tiny]{bash}
@@ -38,8 +39,7 @@ nextflow run MaxUlysse/compile-beamer
   \end{minted}
 \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{How to insert picture}
+\begin{frame}[fragile]{How to insert picture}
   \begin{minted}[fontsize=\tiny]{latex}
 \begin{center}
   \includegraphics[width=.8\linewidth]{pictures/Snowpocalypse-SciLifeLab.jpg}
@@ -47,8 +47,7 @@ nextflow run MaxUlysse/compile-beamer
   \end{minted}
 \end{frame}
 
-\begin{frame}
-  \frametitle{How to insert picture}
+\begin{frame}{How to insert picture}
   \begin{center}
     \includegraphics[width=.8\linewidth]{pictures/Snowpocalypse-SciLifeLab.jpg}
   \end{center}
