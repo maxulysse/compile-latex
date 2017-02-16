@@ -1,24 +1,32 @@
-# compile-beamer [![compile-beamer version][version-badge]][version-link] [![Nextflow version][nextflow-badge]][nextflow-link] [![works on my machine][works-badge]][works-link] [![CircleCI status][circleci-badge]][circleci-link] [![Travis status][travis-badge]][travis-link] [![Docker status][docker-badge]][docker-link] [![Singularity status][singularity-badge]][singularity-link]
+# compile-beamer [![compile-beamer version][version-badge]][version-link] [![Nextflow version][nextflow-badge]][nextflow-link] [![works on my machine][works-badge]][works-link] [![CircleCI status][circleci-badge]][circleci-link] [![Travis status][travis-badge]][travis-link] [![Docker status][docker-badge]][docker-link]
+
+<!-- [![Singularity status][singularity-badge]][singularity-link] -->
 
 Beamer compiler in Nextflow using XeLaTex.
 
-Beamer presentations can be easily compiled with different themes. A Docker container is provided. It's a `debian:8.6` image containing `texlive-xetex`, `mtheme`, `python-pygments` (for `minted`) and `Fira fonts`.
+Beamer presentations can be easily compiled with different themes. A Docker container is provided. It's a `debian:8.6` image containing `texlive-xetex`, `mtheme`, `python-pygments` (for `minted`) and `Fira fonts`. A singularity image based on the docker image can be built using `singularity.sh`.
 
 ## Usage with Docker
 
 ```bash
 nextflow run MaxUlysse/compile-beamer /
--profile docker -with-docker /
---tex <file.tex> /
---theme <BTB||KI||SciLifeLab>
+-profile docker /
+--tex <file.tex>
 ```
 
-## Usage without Docker
+## Usage with Singularity
 
 ```bash
 nextflow run MaxUlysse/compile-beamer /
---tex <file.tex> /
---theme <BTB||KI||SciLifeLab>
+-profile singularity /
+--tex <file.tex>
+```
+
+## Usage without Containers
+
+```bash
+nextflow run MaxUlysse/compile-beamer /
+--tex <file.tex>
 ```
 
 [circleci-badge]: https://circleci.com/gh/MaxUlysse/compile-beamer.svg?style=shield
