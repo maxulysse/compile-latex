@@ -2,17 +2,15 @@
 [![compile-beamer version][version-badge]][version-link]
 [![Licence][licence-badge]][licence-link]
 [![Nextflow version][nextflow-badge]][nextflow-link]
-[![Docker status][docker-badge]][docker-link]
 [![CircleCI status][circleci-badge]][circleci-link]
 [![Travis status][travis-badge]][travis-link]
-<!-- [![works on my machine][works-badge]][works-link] -->
-<!-- [![Singularity status][singularity-badge]][singularity-link] -->
+[![works on my machine][works-badge]][works-link]
 
 Beamer compiler in Nextflow using XeLaTex.
 
 Beamer presentations can be easily compiled with different themes. A Docker container is provided. It's a `debian:8.6` image containing `texlive-xetex`, `mtheme`, `python-pygments` (for `minted`) and `Fira fonts`. A singularity image based on the docker image can be built using `singularity.sh`.
 
-## Usage with Docker
+## Usage with Docker [![Docker status][docker-badge]][docker-link]
 
 ```bash
 nextflow run MaxUlysse/compile-beamer /
@@ -21,6 +19,7 @@ nextflow run MaxUlysse/compile-beamer /
 ```
 
 ## Usage with Singularity
+<!-- [![Singularity status][singularity-badge]][singularity-link] -->
 
 ```bash
 nextflow run MaxUlysse/compile-beamer /
@@ -49,5 +48,5 @@ nextflow run MaxUlysse/compile-beamer /
 [travis-link]: https://travis-ci.org/MaxUlysse/compile-beamer
 [version-badge]: https://img.shields.io/github/release/maxulysse/compile-beamer.svg
 [version-link]: https://github.com/MaxUlysse/compile-beamer/releases/releases/latest
-[works-badge]: https://img.shields.io/badge/works-on_my_machine-blue.svg
+[works-badge]: https://img.shields.io/badge/works-on_my_machine-green.svg
 [works-link]: https://github.com/nikku/works-on-my-machine
