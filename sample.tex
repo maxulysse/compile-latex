@@ -1,24 +1,34 @@
 %!TEX program = xelatex
 \documentclass{beamer}
-\RequirePackage{minted}
-\RequirePackage{inputenc}
 
+% Correct the path when including svg pictures
+\RequirePackage{import}
+% For nice verbatim
+\RequirePackage{minted}
+
+% Arrange theme
 \usetheme[
 	progressbar=frametitle,
 	sectionpage=none,
 	numbering=fraction
 ]{metropolis}
 
+% Color the progress bar
 \setbeamercolor{progress bar}{fg=green,bg=white}
 
+\author{MaxUlysse}
 \title{compile-beamer}
 \subtitle{with metropolis theme}
-\author{MaxUlysse}
 \institute{
-	SciLifeLab\\
-	\vfill\includegraphics[width=3cm]{pictures/SciLifeLab}
+	SciLifeLab - Karolinska Institutet\\
+	% Don't forget logos
+	\vfill
+	\includegraphics[height=1cm]{pictures/SciLifeLab}
+	\hfill
+	\includegraphics[height=1cm]{pictures/KI}
+	\vfill
 }
-\date{2017/02/06}
+\date{\today}
 
 \begin{document}
 
@@ -39,7 +49,7 @@ nextflow run MaxUlysse/compile-beamer
   \end{minted}
 \end{frame}
 
-\begin{frame}[fragile]{How to insert picture}
+\begin{frame}[fragile]{How to insert picture - Code}
   \begin{minted}[fontsize=\tiny]{latex}
 \begin{center}
   \includegraphics[width=.8\linewidth]{pictures/Snowpocalypse-SciLifeLab.jpg}
@@ -47,10 +57,25 @@ nextflow run MaxUlysse/compile-beamer
   \end{minted}
 \end{frame}
 
-\begin{frame}{How to insert picture}
+\begin{frame}{How to insert picture - Result}
   \begin{center}
     \includegraphics[width=.8\linewidth]{pictures/Snowpocalypse-SciLifeLab.jpg}
   \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{How to use background - Code}
+  \begin{minted}[fontsize=\tiny]{latex}
+\usebackgroundtemplate{
+	\includegraphics[width=\paperwidth]{pictures/Snowpocalypse-SciLifeLab.jpg}
+}
+  \end{minted}
+\end{frame}
+
+\usebackgroundtemplate{
+	\includegraphics[width=\paperwidth]{pictures/Snowpocalypse-SciLifeLab.jpg}
+}
+
+\begin{frame}{How to use background - Result}
 \end{frame}
 
 \end{document}
