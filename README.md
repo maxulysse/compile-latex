@@ -48,5 +48,5 @@ nextflow run MaxUlysse/compile-beamer /
 [travis-link]: https://travis-ci.org/MaxUlysse/compile-beamer
 [version-badge]: https://img.shields.io/github/release/maxulysse/compile-beamer.svg
 [version-link]: https://github.com/MaxUlysse/compile-beamer/releases/releases/latest
-[works-badge]: https://img.shields.io/badge/works-on_my_machine-green.svg
+[works-badge]: https://img.shields.io/badge/works-on_my_machine-brightgreen.svg
 [works-link]: https://github.com/nikku/works-on-my-machine
