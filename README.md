@@ -37,8 +37,8 @@ nextflow run MaxUlysse/compile-beamer /
 
 [circleci-badge]: https://circleci.com/gh/MaxUlysse/compile-beamer.svg?style=shield
 [circleci-link]: https://circleci.com/gh/MaxUlysse/compile-beamer
-[coveralls-badge]: https://coveralls.io/repos/github/MaxUlysse/compile-beamer/badge.svg?branch=master
-[coveralls-badge]: https://coveralls.io/github/MaxUlysse/compile-beamer?branch=master
+[coveralls-badge]: https://img.shields.io/coveralls/MaxUlysse/compile-beamer/master.svg
+[coveralls-link]: https://coveralls.io/github/MaxUlysse/compile-beamer?branch=master
 [docker-badge]: https://img.shields.io/docker/automated/maxulysse/compile-beamer.svg
 [docker-link]: https://hub.docker.com/r/maxulysse/compile-beamer
 [licence-badge]: https://img.shields.io/github/license/MaxUlysse/compile-beamer.svg
