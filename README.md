@@ -1,10 +1,10 @@
 # compile-beamer
-[![compile-beamer version][version-badge]][version-link]
+[![Version][version-badge]][version-link]
 [![Licence][licence-badge]][licence-link]
 [![Nextflow version][nextflow-badge]][nextflow-link]
 [![CircleCI status][circleci-badge]][circleci-link]
 [![Travis status][travis-badge]][travis-link]
-[![Coveralls status][coveralls-badge]][coveralls-badge]
+[![Coveralls status][coveralls-badge]][coveralls-link]
 [![works on my machine][works-badge]][works-link]
 
 Beamer compiler in Nextflow using XeLaTex.
@@ -49,7 +49,7 @@ nextflow run MaxUlysse/compile-beamer /
 [singularity-link]: https://singularity-hub.org/collections/46/
 [travis-badge]: https://img.shields.io/travis/MaxUlysse/compile-beamer.svg
 [travis-link]: https://travis-ci.org/MaxUlysse/compile-beamer
-[version-badge]: https://img.shields.io/github/release/maxulysse/compile-beamer.svg
+[version-badge]: https://img.shields.io/github/release/MaxUlysse/compile-beamer.svg
 [version-link]: https://github.com/MaxUlysse/compile-beamer/releases/releases/latest
 [works-badge]: https://img.shields.io/badge/works-on_my_machine-brightgreen.svg
 [works-link]: https://github.com/nikku/works-on-my-machine
