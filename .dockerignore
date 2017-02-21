@@ -1,10 +1,4 @@
-.git*
-conf/*
-pictures/*
-.travis.yml
-circle.yml
-LICENSE
-main.nf
-nextflow.config
-sample.*
-Singularity
+*
+!.dockerignore
+!Dockerfile
+!README.md
