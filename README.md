@@ -14,7 +14,8 @@ nextflow run MaxUlysse/compile-beamer /
 --tex <file.tex>
 ```
 
-## Usage with Singularity <!-- [![Singularity status][singularity-badge]][singularity-link] -->
+## Usage with Singularity [![Singularity status][singularity-badge]][singularity-link]
+You need first to download the Singularity container, and specify the path to it (either in the `conf/singularity.config`, or in command line with parameter `-with-singularity [singularity image file]`)
 
 ```bash
 nextflow run MaxUlysse/compile-beamer /
@@ -39,7 +40,7 @@ nextflow run MaxUlysse/compile-beamer /
 [licence-link]: https://github.com/MaxUlysse/compile-beamer/blob/master/LICENSE
 [nextflow-badge]: https://img.shields.io/badge/nextflow-%E2%89%A50.22.2-brightgreen.svg
 [nextflow-link]: https://www.nextflow.io/
-[singularity-badge]: https://img.shields.io/badge/singularity_hub-complete-blue.svg
+[singularity-badge]: https://img.shields.io/badge/singularity_hub-container-blue.svg
 [singularity-link]: https://singularity-hub.org/collections/72/
 [travis-badge]: https://img.shields.io/travis/MaxUlysse/compile-beamer.svg
 [travis-link]: https://travis-ci.org/MaxUlysse/compile-beamer
