@@ -1,15 +1,10 @@
 # compile-beamer
-[![Version][version-badge]][version-link]
-[![Licence][licence-badge]][licence-link]
-[![Nextflow version][nextflow-badge]][nextflow-link]
-[![CircleCI status][circleci-badge]][circleci-link]
-[![Travis status][travis-badge]][travis-link]
-[![Coveralls status][coveralls-badge]][coveralls-link]
-[![works on my machine][works-badge]][works-link]
+
+[![Version][version-badge]][version-link] [![Licence][licence-badge]][licence-link] [![Nextflow version][nextflow-badge]][nextflow-link] [![CircleCI status][circleci-badge]][circleci-link] [![Travis status][travis-badge]][travis-link] [![Coveralls status][coveralls-badge]][coveralls-link] [![works on my machine][works-badge]][works-link]
 
 Beamer compiler in Nextflow using XeLaTex.
 
-Beamer presentations can be easily compiled with different themes. A Docker container is provided. It's a `debian:8.6` image containing `texlive-xetex`, `mtheme`, `python-pygments` (for `minted`) and `Fira fonts`. A singularity image based on the docker image can be built using `singularity.sh`.
+Beamer presentations can be easily compiled with different themes. A Docker container is provided. It's a `debian:8.6` image containing `texlive-xetex`, `mtheme`, `python-pygments` (for `minted`) and `Fira fonts`. A Singularity container based on the Docker container can be built using `script/singularity.sh`.
 
 ## Usage with Docker [![Docker status][docker-badge]][docker-link]
 
@@ -19,8 +14,7 @@ nextflow run MaxUlysse/compile-beamer /
 --tex <file.tex>
 ```
 
-## Usage with Singularity
-<!-- [![Singularity status][singularity-badge]][singularity-link] -->
+## Usage with Singularity <!-- [![Singularity status][singularity-badge]][singularity-link] -->
 
 ```bash
 nextflow run MaxUlysse/compile-beamer /
@@ -46,7 +40,7 @@ nextflow run MaxUlysse/compile-beamer /
 [nextflow-badge]: https://img.shields.io/badge/nextflow-%E2%89%A50.22.2-brightgreen.svg
 [nextflow-link]: https://www.nextflow.io/
 [singularity-badge]: https://img.shields.io/badge/singularity_hub-complete-blue.svg
-[singularity-link]: https://singularity-hub.org/collections/46/
+[singularity-link]: https://singularity-hub.org/collections/72/
 [travis-badge]: https://img.shields.io/travis/MaxUlysse/compile-beamer.svg
 [travis-link]: https://travis-ci.org/MaxUlysse/compile-beamer
 [version-badge]: https://img.shields.io/github/release/MaxUlysse/compile-beamer.svg
