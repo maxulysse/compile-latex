@@ -5,4 +5,4 @@ docker run \
 -v /tmp/compile-beamer:/output \
 --privileged -t --rm \
 singularityware/docker2singularity \
-maxulysse/compile-beamer:1.3
+maxulysse/compile-beamer:1.4
