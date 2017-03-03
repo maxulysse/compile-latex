@@ -7,7 +7,7 @@ vim: syntax=groovy
 =                   C  O  M  P  I  L  E  -  B  E  A  M  E  R                   =
 ================================================================================
 @Author
-Maxime Garcia <maxime@ithake.eu> [@MaxUlysse]
+Maxime Garcia <max@ithake.eu> [@MaxUlysse]
 --------------------------------------------------------------------------------
  @Homepage
  https://github.com/MaxUlysse/compile-beamer
@@ -117,11 +117,7 @@ def startMessage(version, revision) {
 def versionMessage(version, revision) {
 	log.info "COMPILE-BEAMER"
 	log.info "  version $version"
-	if (workflow.commitId) {
-		log.info "Git info    : $workflow.repository - $workflow.revision [$workflow.commitId]"
-	} else {
-		log.info "  revision  : $revision"
-	}
+	log.info ((workflow.commitId) ? "Git info    : $workflow.repository - $workflow.revision [$workflow.commitId]" : "  revision  : $revision")
 	log.info "Project   : $workflow.projectDir"
 	log.info "Directory : $workflow.launchDir"
 }
