@@ -117,7 +117,7 @@ def startMessage(version, revision) {
 def versionMessage(version, revision) {
 	log.info "COMPILE-BEAMER"
 	log.info "  version $version"
-	log.info ((workflow.commitId) ? "Git info    : $workflow.repository - $workflow.revision [$workflow.commitId]" : "  revision  : $revision")
+	log.info ((workflow.commitId) ? "Git info   : $workflow.repository - $workflow.revision [$workflow.commitId]" : "  revision  : $revision")
 	log.info "Project   : $workflow.projectDir"
 	log.info "Directory : $workflow.launchDir"
 }
