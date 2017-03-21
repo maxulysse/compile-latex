@@ -18,7 +18,7 @@ Maxime Garcia <max@ithake.eu> [@MaxUlysse]
 @Licence
  https://github.com/MaxUlysse/compile-beamer/blob/master/LICENSE
 --------------------------------------------------------------------------------
- Processes overview
+ Process overview
  - RunXelatex - Run xelatex twice on given tex file
 ================================================================================
 =                           C O N F I G U R A T I O N                          =
@@ -26,7 +26,7 @@ Maxime Garcia <max@ithake.eu> [@MaxUlysse]
 */
 
 revision = grabGitRevision() ?: ''
-version = '1.4'
+version = '1.5'
 
 switch (params) {
 	case {params.help} :
@@ -76,22 +76,9 @@ process RunXelatex {
 ================================================================================
 */
 
-def grabGitRevision() { // Borrowed from https://github.com/NBISweden/wgs-structvar
-	if (workflow.commitId) { // it's run directly from github
-		return workflow.commitId.substring(0,10)
-	}
-	// Try to find the revision directly from git
-	headPointerFile = file("${baseDir}/.git/HEAD")
-	if (!headPointerFile.exists()) {
-		return ''
-	}
-	ref = headPointerFile.newReader().readLine().tokenize()[1]
-	refFile = file("${baseDir}/.git/$ref")
-	if (!refFile.exists()) {
-		return ''
-	}
-	revision = refFile.newReader().readLine()
-	return revision.substring(0,10)
+def grabGitRevision() {  // Borrowed idea from https://github.com/NBISweden/wgs-structvar
+  ref = file("$baseDir/.git/HEAD").exists() ?  file("$baseDir/.git/"+file("$baseDir/.git/HEAD").newReader().readLine().tokenize()[1]) : ''
+  return workflow.commitId ? workflow.commitId.substring(0,10) : file("$baseDir/.git/HEAD").exists() ? ref.newReader().readLine().substring(0,10) : ''
 }
 
 def helpMessage(version, revision) {
