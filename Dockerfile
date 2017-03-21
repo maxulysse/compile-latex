@@ -24,7 +24,7 @@ wget \
 # Set up ENV
 ENV LANG="C.UTF-8"
 
-# Install Fonts
+# Install Fonts, mtheme and update fonts/Tex cache
 RUN mkdir -p /usr/share/fonts/opentype/FiraSans/ \
 && mkdir -p /usr/share/fonts/truetype/FiraSans/ \
 && mkdir -p /usr/share/texmf/fonts/enc/dvips/ccicons \
@@ -57,17 +57,13 @@ http://mirrors.ctan.org/install/fonts/ccicons.tds.zip \
 && cp ccicons.otf /usr/share/texmf/fonts/opentype/public/ccicons \
 && cp ccicons.sty /usr/share/texmf/tex/latex/ccicons \
 && cd .. \
-&& rm -rf ccicons* Fira* __MACOSX
-
-# Install mtheme
-RUN git clone --depth 1 https://github.com/matze/mtheme.git mtheme \
+&& rm -rf ccicons* Fira* __MACOSX \
+&& git clone --depth 1 https://github.com/matze/mtheme.git mtheme \
 && cd mtheme \
 && make install \
 && mkdir /usr/share/texmf/tex/latex/mtheme \
 && mv *.sty /usr/share/texmf/tex/latex/mtheme \
 && cd .. \
-&& rm -rf mtheme
-
-# Update fonts and Tex cache
-RUN fc-cache -fv \
+&& rm -rf mtheme \
+&& fc-cache -fv \
 && texhash
