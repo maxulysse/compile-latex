@@ -14,4 +14,4 @@ install:
   - curl -fsSL get.nextflow.io | bash
 
 script:
-  - ./nextflow run . -profile docker
+  - ./script/test.sh
