@@ -25,16 +25,15 @@ Maxime Garcia <max@ithake.eu> [@MaxUlysse]
 ================================================================================
 */
 
-revision = grabGitRevision() ?: ''
 version = '1.5'
 
 switch (params) {
 	case {params.help} :
-		helpMessage(version, revision)
+		helpMessage(version, grabRevision())
 		exit 1
 
 	case {params.version} :
-		versionMessage(version, revision)
+		versionMessage(version, grabRevision())
 		exit 1
 }
 
@@ -43,7 +42,7 @@ if (!params.tex) {exit 1, 'No tex file, see --help for more information'}
 pictures = file(params.pictures)
 tex = file(params.tex)
 
-startMessage(version, revision)
+startMessage(version, grabRevision())
 
 /*
 ================================================================================
@@ -76,8 +75,8 @@ process RunXelatex {
 ================================================================================
 */
 
-def grabGitRevision() {
-	return workflow.commitId ? workflow.commitId.substring(0,10) : workflow.scriptId.substring(0,10)
+def grabRevision() {
+	return workflow.commitId ? workflow.revision : workflow.scriptId.substring(0,10)
 }
 
 def helpMessage(version, revision) {
@@ -103,7 +102,7 @@ def startMessage(version, revision) {
 def versionMessage(version, revision) {
 	log.info "COMPILE-BEAMER"
 	log.info "  version $version"
-	log.info ((workflow.commitId) ? "Git info   : $workflow.repository - $workflow.revision [$workflow.commitId]" : "  revision  : $revision")
+	log.info ((workflow.commitId) ? "Git info   : $workflow.repository - $workflow.revision [$workflow.commitId]" : "  revision: $revision")
 	log.info "Project  : $workflow.projectDir"
 	log.info "Directory: $workflow.launchDir"
 }
