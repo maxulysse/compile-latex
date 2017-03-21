@@ -76,9 +76,8 @@ process RunXelatex {
 ================================================================================
 */
 
-def grabGitRevision() {  // Borrowed idea from https://github.com/NBISweden/wgs-structvar
-  ref = file("$baseDir/.git/HEAD").exists() ?  file("$baseDir/.git/"+file("$baseDir/.git/HEAD").newReader().readLine().tokenize()[1]) : ''
-  return workflow.commitId ? workflow.commitId.substring(0,10) : file("$baseDir/.git/HEAD").exists() ? ref.newReader().readLine().substring(0,10) : ''
+def grabGitRevision() {
+	return workflow.commitId ? workflow.commitId.substring(0,10) : workflow.scriptId.substring(0,10)
 }
 
 def helpMessage(version, revision) {
@@ -105,8 +104,8 @@ def versionMessage(version, revision) {
 	log.info "COMPILE-BEAMER"
 	log.info "  version $version"
 	log.info ((workflow.commitId) ? "Git info   : $workflow.repository - $workflow.revision [$workflow.commitId]" : "  revision  : $revision")
-	log.info "Project   : $workflow.projectDir"
-	log.info "Directory : $workflow.launchDir"
+	log.info "Project  : $workflow.projectDir"
+	log.info "Directory: $workflow.launchDir"
 }
 
 workflow.onComplete {
