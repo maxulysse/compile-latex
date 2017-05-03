@@ -6,11 +6,13 @@ machine:
     - docker
 
   environment:
-    NXF_VER: 0.24.0
+    NXF_VER: 0.24.2
 
 dependencies:
   override:
   - curl -fsSL get.nextflow.io | bash
+  - chmod +x nextflow
+  - sudo mv nextflow /usr/local/bin/
 
 test:
   post:
