@@ -17,3 +17,6 @@ dependencies:
 test:
   post:
     - ./script/test.sh
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
