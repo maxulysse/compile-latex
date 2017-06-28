@@ -13,16 +13,7 @@ dependencies:
   - curl -fsSL get.nextflow.io | bash
   - chmod +x nextflow
   - sudo mv nextflow /usr/local/bin/
-  - wget https://github.com/singularityware/singularity/releases/download/2.3.1/singularity-2.3.1.tar.gz
-  - tar xvf singularity-2.3.1.tar.gz
-  - rm singularity-2.3.1.tar.gz
-  - cd singularity-2.3.1
-  - ./configure --prefix=/usr/local
-  - make
-  - sudo make install
-  - cd ..
 
 test:
   post:
     - ./scripts/test_docker.sh
-    - ./scripts/test_singularity.sh
