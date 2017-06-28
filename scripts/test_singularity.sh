@@ -2,10 +2,6 @@
 
 set -xeuo pipefail
 
-rm -rf container/*
-cd container
-singularity pull shub://MaxUlysse/compile-beamer
-mv *.img compile-beamer-1.5.img
-cd ..
+singularity pull --name container/compile-beamer-1.5.img shub://MaxUlysse/compile-beamer
 
 nextflow run . -profile singularity
