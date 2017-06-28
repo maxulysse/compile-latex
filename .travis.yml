@@ -2,6 +2,11 @@ sudo: required
 
 language: java
 
+addons:
+  apt:
+    packages:
+      - python-pip
+
 jdk: openjdk8
 
 services:
@@ -14,6 +19,7 @@ install:
   - curl -fsSL get.nextflow.io | bash
   - chmod +x nextflow
   - sudo mv nextflow /usr/local/bin/
+  - sudo pip install pylint
   - wget https://github.com/singularityware/singularity/releases/download/2.3.1/singularity-2.3.1.tar.gz
   - tar xvf singularity-2.3.1.tar.gz
   - rm singularity-2.3.1.tar.gz

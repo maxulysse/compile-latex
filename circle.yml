@@ -5,6 +5,7 @@ machine:
   services:
     - docker
 
+
   environment:
     NXF_VER: 0.25.0
 
@@ -13,6 +14,7 @@ dependencies:
   - curl -fsSL get.nextflow.io | bash
   - chmod +x nextflow
   - sudo mv nextflow /usr/local/bin/
+  - sudo pip install pylint
   - wget https://github.com/singularityware/singularity/releases/download/2.3.1/singularity-2.3.1.tar.gz
   - tar xvf singularity-2.3.1.tar.gz
   - rm singularity-2.3.1.tar.gz
