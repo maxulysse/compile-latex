@@ -21,6 +21,7 @@ dependencies:
   - cd singularity-2.3.1
   - ./configure --prefix=/usr/local/bin/singularity
   - sudo make install
+  - cd ..
 
 test:
   post:
