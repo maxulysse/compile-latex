@@ -9,9 +9,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ca-certificates \
 fontconfig \
 git \
-make \
 latexmk \
 lmodern \
+make \
 python-pygments \
 texlive-fonts-recommended \
 texlive-generic-recommended \
