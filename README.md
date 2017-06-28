@@ -15,7 +15,8 @@ nextflow run MaxUlysse/compile-beamer /
 ```
 
 ## Usage with Singularity [![Singularity status][singularity-badge]][singularity-link]
-You need first to download the Singularity container, and specify the path to it (either in the `conf/singularity.config`, or in command line with parameter `-with-singularity [singularity image file]`)
+
+You need first to download the Singularity container, and specify the path to it (either in the file `conf/singularity.config`, or in command line with parameter `-with-singularity [singularity image file]`) Or you can use the script `scripts/test_singularity.sh` to download and test the container, and then use it for your own project. (this way, tht path to the container is already in the file `conf/singularity.config`)
 
 ```bash
 nextflow run MaxUlysse/compile-beamer /
@@ -36,9 +37,9 @@ nextflow run MaxUlysse/compile-beamer /
 [docker-link]: https://hub.docker.com/r/maxulysse/compile-beamer
 [licence-badge]: https://img.shields.io/github/license/MaxUlysse/compile-beamer.svg
 [licence-link]: https://github.com/MaxUlysse/compile-beamer/blob/master/LICENSE
-[nextflow-badge]: https://img.shields.io/badge/nextflow-%E2%89%A50.22.2-brightgreen.svg
+[nextflow-badge]: https://img.shields.io/badge/nextflow-%E2%89%A50.25.0-brightgreen.svg
 [nextflow-link]: https://www.nextflow.io/
-[singularity-badge]: https://img.shields.io/badge/singularity_hub-container-blue.svg
+[singularity-badge]: https://img.shields.io/badge/singularity_hub-automated-blue.svg
 [singularity-link]: https://singularity-hub.org/collections/72/
 [travis-badge]: https://api.travis-ci.org/MaxUlysse/compile-beamer.svg
 [travis-link]: https://travis-ci.org/MaxUlysse/compile-beamer
