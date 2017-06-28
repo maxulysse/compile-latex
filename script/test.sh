@@ -1,5 +1,4 @@
 #!/bin/bash
-echo "Starting Nextflow... Command:"
-echo "nextflow run . -profile docker"
-echo "-----"
+set -xeuo pipefail
+
 nextflow run . -profile docker
