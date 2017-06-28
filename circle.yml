@@ -7,18 +7,17 @@ machine:
 
   environment:
     NXF_VER: 0.25.0
-    SGLRT_V: 2.3.1
 
 dependencies:
   override:
   - curl -fsSL get.nextflow.io | bash
   - chmod +x nextflow
   - sudo mv nextflow /usr/local/bin/
-  - git clone --branch $SGLRT_V https://github.com/singularityware/singularity.git
-  - cd singularity
-  - ./autogen.sh
-  - ./configure --prefix=/usr/local
-  - make
+  - wget https://github.com/singularityware/singularity/releases/download/2.3.1/singularity-2.3.1.tar.gz
+  - tar xvf singularity-2.3.1.tar.gz
+  - rm singularity-2.3.1.tar.gz
+  - cd singularity-2.3.1
+  - ./configure --prefix=/usr/local/singularity
   - sudo make install
 
 test:
