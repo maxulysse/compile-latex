@@ -6,7 +6,7 @@ machine:
     - docker
 
   environment:
-    NXF_VER: 0.24.2
+    NXF_VER: 0.25.0
 
 dependencies:
   override:
@@ -16,4 +16,4 @@ dependencies:
 
 test:
   post:
-    - ./script/test.sh
+    - ./scripts/test_docker.sh

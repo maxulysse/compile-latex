@@ -8,7 +8,7 @@ services:
   - docker
 
 env:
-  - NXF_VER=0.24.2
+  - NXF_VER=0.25.0
 
 install:
   - curl -fsSL get.nextflow.io | bash
@@ -16,4 +16,4 @@ install:
   - sudo mv nextflow /usr/local/bin/
 
 script:
-  - ./script/test.sh
+  - ./scripts/test_docker.sh
