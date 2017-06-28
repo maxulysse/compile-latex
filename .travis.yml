@@ -9,11 +9,19 @@ services:
 
 env:
   - NXF_VER=0.25.0
+  - SGLRT_V=2.3.1
 
 install:
   - curl -fsSL get.nextflow.io | bash
   - chmod +x nextflow
   - sudo mv nextflow /usr/local/bin/
+  - git clone --branch $SGLRT_V https://github.com/singularityware/singularity.git
+  - cd singularity
+  - ./autogen.sh
+  - ./configure --prefix=/usr/local
+  - make
+  - sudo make install
 
 script:
   - ./scripts/test_docker.sh
+  - ./scripts/test_singularity.sh
