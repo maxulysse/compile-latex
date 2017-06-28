@@ -16,18 +16,16 @@ nextflow run MaxUlysse/compile-beamer /
 
 ## Usage with Singularity [![Singularity status][singularity-badge]][singularity-link]
 
-You need first to download the Singularity container, and specify the path to it (either in the file `conf/singularity.config`, or in command line with parameter `-with-singularity [singularity image file]`) Or you can use the script `scripts/test_singularity.sh` to download and test the container, and then use it for your own project. (this way, tht path to the container is already in the file `conf/singularity.config`)
+First dowload the container using
+```bash
+singularity pull --name container/compile-beamer-1.5.img shub://MaxUlysse/compile-beamer
+```
+
+Then you can directly use compile-beamer
 
 ```bash
 nextflow run MaxUlysse/compile-beamer /
 -profile singularity /
---tex <file.tex>
-```
-
-## Usage without Containers
-
-```bash
-nextflow run MaxUlysse/compile-beamer /
 --tex <file.tex>
 ```
 
