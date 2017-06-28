@@ -4,7 +4,7 @@
 
 Beamer compiler in Nextflow using XeLaTex.
 
-Beamer presentations can be easily compiled with different themes. A Docker container is provided. It's a `debian:8.6` image containing `texlive-xetex`, `mtheme`, `python-pygments` (for `minted`) and `Fira fonts`. A Singularity container based on the Docker container can be built using `script/singularity.sh`.
+Beamer presentations can be easily compiled with different themes. A Docker container is provided. It's a `debian:8.6` image containing `texlive-xetex`, `mtheme`, `python-pygments` (for `minted`) and `Fira fonts`. A Singularity container based on the Docker container is also available.
 
 ## Usage with Docker [![Docker status][docker-badge]][docker-link]
 
