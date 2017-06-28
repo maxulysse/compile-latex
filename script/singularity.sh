@@ -1,8 +1,4 @@
 #!/bin/bash
 
-docker run \
--v /var/run/docker.sock:/var/run/docker.sock \
--v /tmp/compile-beamer:/output \
---privileged -t --rm \
-singularityware/docker2singularity \
-maxulysse/compile-beamer:1.5
+sudo singularity create compile-beamer-1.5.img
+sudo singularity import compile-beamer-1.5.img docker://maxulysse/compile-beamer:1.5
