@@ -30,8 +30,7 @@ jobs:
     steps:
       - run:
           name: Test with Docker
-          command: |
-            ./scripts/test_docker.sh
+          command: bash ./scripts/test_docker.sh
   test2:
     docker:
       - image: circleci/openjdk:8
@@ -41,8 +40,7 @@ jobs:
     steps:
       - run:
           name: Test with Singularity
-          command: |
-            ./scripts/test_singularity.sh
+          command: bash ./scripts/test_singularity.sh
 
 workflows:
   version: 2
