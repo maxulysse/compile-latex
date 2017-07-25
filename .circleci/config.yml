@@ -21,14 +21,11 @@ jobs:
             make
             sudo make install
             cd ..
-
-  test:
-    docker:
-      - image: circleci/openjdk:8
-        environment:
-          NXF_VER: 0.25.0
-    steps:
       - run:
+          name: Test with Docker
           command: |
             ./scripts/test_docker.sh
+      - run:
+          name: Test with Singularity
+          command: |
             ./scripts/test_singularity.sh
