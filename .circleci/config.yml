@@ -5,13 +5,15 @@ jobs:
       - image: circleci/openjdk:8
         environment:
           NXF_VER: 0.25.0
-  steps:
-    - run:
-        name: Install Nextflow
-        command: |
-          curl -fsSL get.nextflow.io | bash
-          chmod +x nextflow
-          sudo mv nextflow /usr/local/bin/
-    - run:
-        command: |
-          ./scripts/test_docker.sh
+    steps:
+      - run:
+          name: Install Nextflow
+          command: |
+            curl -fsSL get.nextflow.io | bash
+            chmod +x nextflow
+            sudo mv nextflow /usr/local/bin/
+  test:
+    steps:
+      - run:
+          command: |
+            ./scripts/test_docker.sh
