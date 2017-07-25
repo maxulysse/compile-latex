@@ -16,7 +16,7 @@ dependencies:
   - sudo mv nextflow /usr/local/bin/
   - wget https://github.com/singularityware/singularity/releases/download/$SGT_VER/singularity-$SGT_VER.tar.gz
   - tar xvf singularity-$SGT_VER.tar.gz
-  - cd singularity-$SGT_VER & ./configure --prefix=/usr/local & make & sudo make install
+  - cd singularity-$SGT_VER && ./configure --prefix=/usr/local && make && sudo make install
 
 test:
   post:
