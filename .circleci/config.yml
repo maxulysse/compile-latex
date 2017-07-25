@@ -5,13 +5,22 @@ jobs:
       - image: circleci/openjdk:8
         environment:
           NXF_VER: 0.25.0
+          SGT_VER: 2.3.1
     steps:
       - run:
-          name: Install Nextflow
+          name: Install Nextflow and Singularity
           command: |
             curl -fsSL get.nextflow.io | bash
             chmod +x nextflow
             sudo mv nextflow /usr/local/bin/
+            wget https://github.com/singularityware/singularity/releases/download/$SGT_VER/singularity-$SGT_VER.tar.gz
+            tar xvf singularity-$SGT_VER.tar.gz
+            cd singularity-$SGT_VER
+            ./configure --prefix=/usr/local
+            make
+            sudo make install
+            cd ..
+
   test:
     docker:
       - image: circleci/openjdk:8
@@ -21,3 +30,4 @@ jobs:
       - run:
           command: |
             ./scripts/test_docker.sh
+            ./scripts/test_singularity.sh
