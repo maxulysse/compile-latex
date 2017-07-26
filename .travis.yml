@@ -21,6 +21,7 @@ install:
   - make
   - sudo make install
   - cd ..
+  - rm -rf singularity-$SGT_VER*
 
 script:
   - ./scripts/test_docker.sh
