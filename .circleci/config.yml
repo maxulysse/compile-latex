@@ -26,5 +26,4 @@ jobs:
       - run:
           name: Run tests
           command: |
-            ./scripts/test_docker.sh
             ./scripts/test_singularity.sh
