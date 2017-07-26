@@ -2,8 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-      privileged: true
       - image: circleci/openjdk:8
+        privileged: true
         environment:
           NXF_VER: 0.25.0
           SGT_VER: 2.3.1
