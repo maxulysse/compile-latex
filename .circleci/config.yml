@@ -21,6 +21,7 @@ jobs:
             make
             sudo make install
             cd ..
+            git clone https://github.com/MaxUlysse/compile-beamer.git
   test1:
     docker:
       - image: circleci/openjdk:8
@@ -30,7 +31,9 @@ jobs:
     steps:
       - run:
           name: Test with Docker
-          command: bash ./scripts/test_docker.sh
+          command: |
+            cd compile-beamer
+            ./scripts/test_docker.sh
   test2:
     docker:
       - image: circleci/openjdk:8
@@ -40,7 +43,9 @@ jobs:
     steps:
       - run:
           name: Test with Singularity
-          command: bash ./scripts/test_singularity.sh
+          command: |
+            cd compile-beamer
+            ./scripts/test_singularity.sh
 
 workflows:
   version: 2
