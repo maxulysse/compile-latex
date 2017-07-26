@@ -3,7 +3,6 @@ jobs:
   build:
     docker:
       - image: circleci/openjdk:8
-        privileged: true
         environment:
           NXF_VER: 0.25.0
           SGT_VER: 2.3.1
@@ -24,7 +23,3 @@ jobs:
             sudo make install
             cd ..
             rm -rf singularity-$SGT_VER*
-      - run:
-          name: Run tests
-          command: |
-            ./scripts/test_singularity.sh
