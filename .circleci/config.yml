@@ -1,8 +1,8 @@
 version: 2
 jobs:
   build:
-    machine: true
     docker:
+      privileged: true
       - image: circleci/openjdk:8
         environment:
           NXF_VER: 0.25.0
