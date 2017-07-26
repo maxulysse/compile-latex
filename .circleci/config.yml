@@ -21,40 +21,5 @@ jobs:
             make
             sudo make install
             cd ..
-            git clone https://github.com/MaxUlysse/compile-beamer.git
-  test1:
-    docker:
-      - image: circleci/openjdk:8
-        environment:
-          NXF_VER: 0.25.0
-          SGT_VER: 2.3.1
-    steps:
-      - run:
-          name: Test with Docker
-          command: |
-            cd compile-beamer
             ./scripts/test_docker.sh
-  test2:
-    docker:
-      - image: circleci/openjdk:8
-        environment:
-          NXF_VER: 0.25.0
-          SGT_VER: 2.3.1
-    steps:
-      - run:
-          name: Test with Singularity
-          command: |
-            cd compile-beamer
             ./scripts/test_singularity.sh
-
-workflows:
-  version: 2
-  test:
-    jobs:
-      - build
-      - test1:
-          requires:
-            - build
-      - test2:
-          requires:
-            - build
