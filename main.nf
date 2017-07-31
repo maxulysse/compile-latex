@@ -25,9 +25,9 @@ Maxime Garcia <max.u.garcia@gmail.com> [@MaxUlysse]
 ================================================================================
 */
 
-if (!nextflow.version.matches('>= 0.25.0')) {exit 1, "Nextflow version 0.25.0 or greater is needed to run this workflow"}
+if (!nextflow.version.matches('>= 0.25.3')) exit 1, "Nextflow version 0.25.3 or greater is needed to run this workflow"
 
-version = '1.5'
+version = '1.6'
 
 switch (params) {
   case {params.help} :
@@ -39,7 +39,7 @@ switch (params) {
     exit 1
 }
 
-if (!params.tex) {exit 1, 'No tex file, see --help for more information'}
+if (!params.tex) exit 1, 'No tex file, see --help for more information'
 
 pictures = file(params.pictures)
 tex = file(params.tex)
@@ -92,7 +92,7 @@ def helpMessage() {
   // Display help message
   this.compileBeamerMessage()
   log.info "    Usage:"
-  log.info "       nextflow run MaxUlysse/compile-beamer --tex <input.tex> --theme <BTB||KI||SciLifeLab>"
+  log.info "       nextflow run MaxUlysse/compile-beamer --tex <input.tex>"
   log.info "    --tex"
   log.info "      Compile the given tex file"
   log.info "    --help"
