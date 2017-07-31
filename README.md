@@ -16,13 +16,6 @@ nextflow run MaxUlysse/compile-beamer /
 
 ## Usage with Singularity [![Singularity status][singularity-badge]][singularity-link]
 
-First dowload the container using
-```bash
-singularity pull --name container/compile-beamer-1.5.img shub://MaxUlysse/compile-beamer
-```
-
-Then you can directly use compile-beamer
-
 ```bash
 nextflow run MaxUlysse/compile-beamer /
 -profile singularity /
@@ -35,7 +28,7 @@ nextflow run MaxUlysse/compile-beamer /
 [docker-link]: https://hub.docker.com/r/maxulysse/compile-beamer
 [licence-badge]: https://img.shields.io/github/license/MaxUlysse/compile-beamer.svg
 [licence-link]: https://github.com/MaxUlysse/compile-beamer/blob/master/LICENSE
-[nextflow-badge]: https://img.shields.io/badge/nextflow-%E2%89%A50.25.0-brightgreen.svg
+[nextflow-badge]: https://img.shields.io/badge/nextflow-%E2%89%A50.25.3-brightgreen.svg
 [nextflow-link]: https://www.nextflow.io/
 [singularity-badge]: https://img.shields.io/badge/singularity_hub-automated-blue.svg
 [singularity-link]: https://singularity-hub.org/collections/170/
