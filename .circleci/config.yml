@@ -27,6 +27,10 @@ jobs:
             cd ..
             rm -rf singularity-$SGT_VER*
       - run:
+          name: Run Docker test
+          command: |
+            ./scripts/test_docker.sh
+      - run:
           name: Run Singularity test
           command: |
             ./scripts/test_singularity.sh
