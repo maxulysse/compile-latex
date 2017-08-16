@@ -14,10 +14,11 @@ jobs:
             curl -fsSL get.nextflow.io | bash
             chmod +x nextflow
             sudo mv nextflow /usr/local/bin/
-      - run:
-          name: Run Docker test
-          command: |
-            ./scripts/test_docker.sh
+      # - run:
+      #     name: Run Docker test
+      #     command: |
+      #       ./scripts/test_docker.sh
+
   "nextflow-singularity":
     docker:
       - image: circleci/openjdk:8
@@ -44,10 +45,11 @@ jobs:
             sudo make install
             cd ..
             rm -rf singularity-$SGT_VER*
-      - run:
-          name: Run Singularity test
-          command: |
-            ./scripts/test_singularity.sh
+      # - run:
+      #     name: Run Singularity test
+      #     command: |
+      #       ./scripts/test_singularity.sh
+
 workflows:
   version: 2
   build:
