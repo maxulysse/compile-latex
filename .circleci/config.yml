@@ -26,3 +26,7 @@ jobs:
             sudo make install
             cd ..
             rm -rf singularity-$SGT_VER*
+      - run:
+          name: Run Singularity test
+          command: |
+            ./scripts/test_singularity.sh
