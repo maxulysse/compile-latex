@@ -9,12 +9,15 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Nextflow and Singularity
+          name: Install Nextflow
           command: |
-            sudo apt-get install build-essential
             curl -fsSL get.nextflow.io | bash
             chmod +x nextflow
             sudo mv nextflow /usr/local/bin/
+      - run:
+          name: Install Singularity
+          command: |
+            sudo apt-get install build-essential
             wget https://github.com/singularityware/singularity/releases/download/$SGT_VER/singularity-$SGT_VER.tar.gz
             tar xvf singularity-$SGT_VER.tar.gz
             cd singularity-$SGT_VER
