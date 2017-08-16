@@ -8,8 +8,7 @@ jobs:
           SGT_VER: 2.3.1
     steps:
       - checkout
-      - setup_remote_docker:
-          version: 17.05.0-ce
+      - setup_remote_docker
       - run:
           name: Install Nextflow
           command: |
