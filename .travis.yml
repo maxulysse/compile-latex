@@ -8,7 +8,8 @@ services:
   - docker
 
 env:
-  - NXF_VER=0.25.6 SGT_VER=2.3.1
+  - NXF_VER=0.25.6 SGT_VER=2.3.1 s=test_docker
+  - NXF_VER=0.25.6 SGT_VER=2.3.1 s=test_singularity
 
 install:
   - curl -fsSL get.nextflow.io | bash
@@ -24,5 +25,4 @@ install:
   - rm -rf singularity-$SGT_VER*
 
 script:
-  - ./scripts/test_docker.sh
-  - ./scripts/test_singularity.sh
+  - "./${s}.sh"
