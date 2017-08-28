@@ -17,4 +17,3 @@ install:
 
 script:
   - "./scripts/test.sh -p $PROFILE"
-s
