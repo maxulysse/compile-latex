@@ -23,4 +23,5 @@ then
   ./scripts/install.sh -t singularity
 fi
 
+# Run test
 nextflow run . -profile $PROFILE
