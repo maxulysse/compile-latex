@@ -1,4 +1,5 @@
 #!/bin/bash
+set -xeuo pipefail
 
 TOOL="nextflow"
 
