@@ -1,24 +1,29 @@
 #!/bin/bash
+INSTALL=false
 PROFILE="docker"
 
-while [[ $# -gt 1 ]]
+while [[ $# -gt 0 ]]
 do
-    key="$1"
-    case $key in
-        -p|--profile)
-        PROFILE="$2"
-        shift
-        ;;
-        *) # unknown option
-        ;;
-    esac
+  key="$1"
+  case $key in
+    -i|--install)
+    INSTALL=true
     shift
+    ;;
+    -p|--profile)
+    PROFILE="$2"
+    shift
+    ;;
+    *) # unknown option
+    ;;
+  esac
+  shift
 done
 
 # Install Singularity
-if [ $PROFILE = singularity ]
+if [[ "$INSTALL" == true ]] && [[ "$PROFILE" == "singularity" ]]
 then
-  ./scripts/install.sh -t singularity
+  ./scripts/install.sh --tool singularity
 fi
 
 # Run test
