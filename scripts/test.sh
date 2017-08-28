@@ -21,7 +21,7 @@ do
 done
 
 # Install Singularity
-if [ $PROFILE = singularity ] && [ $INSTALL = true ]
+if [ $PROFILE=singularity ] && [ $INSTALL=true ]
 then
   ./scripts/install.sh --tool singularity
 fi
