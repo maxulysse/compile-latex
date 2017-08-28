@@ -17,4 +17,10 @@ do
     shift
 done
 
+# Install Singularity
+if [ $PROFILE = singularity ]
+then
+  ./scripts/install.sh -t singularity
+fi
+
 nextflow run . -profile $PROFILE
