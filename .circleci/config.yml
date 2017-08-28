@@ -11,13 +11,11 @@ jobs:
       - run:
           name: Install Nextflow
           command: |
-            curl -fsSL get.nextflow.io | bash
-            chmod +x nextflow
-            sudo mv nextflow /usr/local/bin/
+            ./scripts/install.sh -t nextflow
       # - run:
       #     name: Run Docker test
       #     command: |
-      #       ./scripts/test_docker.sh
+      #       ./scripts/test.sh -p docker
 
   "nextflow-singularity":
     docker:
@@ -28,27 +26,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Nextflow
+          name: Install Nextflow & Singularity
           command: |
-            curl -fsSL get.nextflow.io | bash
-            chmod +x nextflow
-            sudo mv nextflow /usr/local/bin/
-      - run:
-          name: Install Singularity
-          command: |
-            sudo apt-get install build-essential
-            wget https://github.com/singularityware/singularity/releases/download/$SGT_VER/singularity-$SGT_VER.tar.gz
-            tar xvf singularity-$SGT_VER.tar.gz
-            cd singularity-$SGT_VER
-            ./configure --prefix=/usr/local
-            make
-            sudo make install
-            cd ..
-            rm -rf singularity-$SGT_VER*
+            ./scripts/install.sh -t all
       # - run:
       #     name: Run Singularity test
       #     command: |
-      #       ./scripts/test_singularity.sh
+      #       ./scripts/test.sh -p singularity
 
 workflows:
   version: 2
