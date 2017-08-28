@@ -2,7 +2,7 @@ FROM debian:8.6
 
 LABEL author="Maxime Garcia" \
 description="Image for compile-beamer" \
-maintainer="max@ithake.eu"
+maintainer="max.u.garcia@gmail.com"
 
 # Install pre-requistes
 RUN apt-get update && apt-get install -y --no-install-recommends \
