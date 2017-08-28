@@ -1,6 +1,4 @@
 #!/bin/bash
-set -xeuo pipefail
-
 TOOL="nextflow"
 
 while [[ $# -gt 1 ]]
