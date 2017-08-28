@@ -17,5 +17,4 @@ do
     shift
 done
 
-
-nextflow run . -profile $1
+nextflow run . -profile $PROFILE
