@@ -8,7 +8,6 @@ do
   case $key in
     -i|--install)
     INSTALL=true
-    shift
     ;;
     -p|--profile)
     PROFILE="$2"
