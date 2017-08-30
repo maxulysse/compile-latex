@@ -1,4 +1,6 @@
 #!/bin/bash
+set -xeuo pipefail
+
 PROFILE="docker"
 
 while [[ $# -gt 0 ]]

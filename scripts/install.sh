@@ -1,4 +1,6 @@
 #!/bin/bash
+set -xeuo pipefail
+
 TOOL="all"
 
 while [[ $# -gt 0 ]]
