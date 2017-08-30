@@ -1,7 +1,7 @@
 #!/bin/bash
 TOOL="all"
 
-while [[ $# -gt 1 ]]
+while [[ $# -gt 0 ]]
 do
     key="$1"
     case $key in
