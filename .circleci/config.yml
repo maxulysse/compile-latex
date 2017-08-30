@@ -25,10 +25,10 @@ jobs:
           SGT_VER: 2.3.1
     steps:
       - checkout
-      - run:
-          name: Install Nextflow & Singularity
-          command: |
-            ./scripts/install.sh -t all
+      # - run:
+      #     name: Install Nextflow & Singularity
+      #     command: |
+      #       ./scripts/install.sh -t all
       # - run:
       #     name: Run Singularity test
       #     command: |
