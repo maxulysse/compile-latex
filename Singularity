@@ -1,2 +1,2 @@
 Bootstrap: docker
-From: maxulysse/compile-beamer:1.6
+From: maxulysse/compile-beamer:1.7

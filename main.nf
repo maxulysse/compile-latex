@@ -27,7 +27,7 @@ Maxime Garcia <max.u.garcia@gmail.com> [@MaxUlysse]
 
 if (!nextflow.version.matches('>= 0.25.3')) exit 1, "Nextflow version 0.25.3 or greater is needed to run this workflow"
 
-version = '1.6'
+version = '1.7'
 
 switch (params) {
   case {params.help} :
@@ -81,7 +81,6 @@ def compileBeamerMessage() {
   // Display COMPILE-BEAMER message
   log.info "COMPILE-BEAMER ~ $version - " + this.grabRevision() + (workflow.commitId ? " [$workflow.commitId]" : "")
 }
-
 
 def grabRevision() {
   // Return the same string executed from github or not
@@ -138,7 +137,7 @@ workflow.onComplete {
   log.info "Duration    : $workflow.duration"
   log.info "Success     : $workflow.success"
   log.info "Exit status : $workflow.exitStatus"
-  log.info "Error report:" + (workflow.errorReport ?: '-')
+  log.info "Error report: " + (workflow.errorReport ?: '-')
 }
 
 workflow.onError {
