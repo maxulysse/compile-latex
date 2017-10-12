@@ -31,4 +31,4 @@ do
 done
 
 # Run test
-nextflow run . -profile ${PROFILE} --tag ${tag} --tex ${TEX}
+nextflow run . -profile ${PROFILE} --tag ${TAG} --tex ${TEX}
