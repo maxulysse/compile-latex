@@ -27,30 +27,26 @@ Maxime Garcia <max.u.garcia@gmail.com> [@MaxUlysse]
 
 if (!nextflow.version.matches('>= 0.25.3')) exit 1, "Nextflow version 0.25.3 or greater is needed to run this workflow"
 
-version = '1.7'
+version = '1.7.1'
 
-switch (params) {
-  case {params.help} :
-    helpMessage()
-    exit 1
+params.help = false
+params.version = false
 
-  case {params.version} :
-    versionMessage()
-    exit 1
-}
+if (params.help) exit 0, helpMessage()
+if (params.version) exit 0, versionMessage()
 
-if (!params.tex) exit 1, 'No tex file, see --help for more information'
-
+params.pictures = 'pictures'
 pictures = file(params.pictures)
+params.tex = 'sample.tex'
 tex = file(params.tex)
-
-startMessage()
 
 /*
 ================================================================================
 =                                 P R O C E S S                                =
 ================================================================================
 */
+
+startMessage()
 
 process RunXelatex {
   tag {tex}
@@ -103,9 +99,10 @@ def helpMessage() {
 def minimalInformationMessage() {
   // Minimal information message
   log.info "Command Line: $workflow.commandLine"
-  log.info "Project Dir : $workflow.projectDir"
   log.info "Launch Dir  : $workflow.launchDir"
   log.info "Work Dir    : $workflow.workDir"
+  log.info "Profile     : $workflow.profile"
+  log.info "Container   : $workflow.container"
   log.info "Tex file    : $tex"
   log.info "Pictures in : $pictures"
 }
