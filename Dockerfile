@@ -1,4 +1,4 @@
-FROM debian:jessie-slim
+FROM debian:stretch-slim
 
 LABEL \
   author="Maxime Garcia" \
@@ -6,11 +6,10 @@ LABEL \
   maintainer="max.u.garcia@gmail.com"
 
 # Set up ENV
-ENV \
-  DEBIAN_FRONTEND=noninteractive \
-  LANG=C.UTF-8
+ENV LANG=C.UTF-8
 
 # Install pre-requistes
+ARG DEBIAN_FRONTEND=noninteractive
 RUN \
   apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
@@ -30,7 +29,8 @@ RUN \
 
 # Install Fonts, mtheme and update fonts/Tex cache
 RUN \
-  mkdir -p /usr/share/fonts/opentype/FiraSans/ \
+  mkdir -p \
+    /usr/share/fonts/opentype/FiraSans/ \
     /usr/share/fonts/truetype/FiraSans/ \
     /usr/share/texmf/fonts/enc/dvips/ccicons \
     /usr/share/texmf/fonts/map/dvips/ccicons \
@@ -39,10 +39,10 @@ RUN \
     /usr/share/texmf/fonts/type1/public/ccicons \
     /usr/share/texmf/tex/latex/ccicons \
   && wget \
+    http://mirrors.ctan.org/install/fonts/ccicons.tds.zip \
     https://carrois.com/downloads/Fira/Fira_Code_3_2.zip \
     https://carrois.com/downloads/Fira/Fira_Mono_3_2.zip \
     https://carrois.com/downloads/Fira/Fira_Sans_4_2.zip \
-    http://mirrors.ctan.org/install/fonts/ccicons.tds.zip \
     -P . \
   && unzip ccicons.tds.zip -d ccicons/ \
   && unzip Fira_Code_3_2.zip \
