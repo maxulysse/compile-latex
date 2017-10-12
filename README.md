@@ -7,7 +7,7 @@
 [![CircleCI status][circleci-badge]][circleci-link]
 [![works on my machine][works-badge]][works-link]
 
-[Beamer][beamer-link] compiler in [Nextflow][nextflow-link-link] using [XeLaTex][xetex-link].
+[Beamer][beamer-link] compiler in [Nextflow][nextflow-link] using [XeLaTex][xetex-link].
 
 ## Options
 
