@@ -8,21 +8,21 @@ Beamer presentations can be easily compiled. A Docker container is provided. It'
 
 ## Options
 
-###--tex
+### --tex
 Compile the given tex file
 
-###--pictures
+### --pictures
 Specify in which directory are the pictures
 Default is: `pictures/`
 
-###--tag
+### --tag
 Specify with tag to use for the docker container
 Default is current version
 
-###--help
+### --help
 You're reading it
 
-###--version
+### --version
 Displays version number
 
 ## Usage with Docker [![Docker status][docker-badge]][docker-link]
