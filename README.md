@@ -1,29 +1,32 @@
 # compile-beamer
 
-[![Version][version-badge]][version-link] [![License][license-badge]][license-link] [![Nextflow version][nextflow-badge]][nextflow-link] [![CircleCI status][circleci-badge]][circleci-link] [![Travis status][travis-badge]][travis-link] [![works on my machine][works-badge]][works-link]
+[![Version][version-badge]][version-link]
+[![License][license-badge]][license-link]
+[![Nextflow version][nextflow-badge]][nextflow-link]
+[![Travis status][travis-badge]][travis-link]
+[![CircleCI status][circleci-badge]][circleci-link]
+[![works on my machine][works-badge]][works-link]
 
-Beamer compiler in Nextflow using XeLaTex.
-
-Beamer presentations can be easily compiled. A Docker container is provided. It's a `debian:stretch-slim` image containing `texlive-xetex`, `mtheme`, `python-pygments` (for `minted`) and `Fira fonts`. A Singularity container based on the Docker container is also available.
+[Beamer][beamer-link] compiler in [Nextflow][nextflow-link-link] using [XeLaTex][xetex-link].
 
 ## Options
 
 ### --tex
-Compile the given tex file
+Compile the given tex file.
 
 ### --pictures
-Specify in which directory are the pictures
-Default is: `pictures/`
+Specify in which directory are the pictures.
+Default is: `pictures/`.
 
 ### --tag
-Specify with tag to use for the docker container
-Default is current version
+Specify with tag to use for the docker container.
+Default is current version.
 
 ### --help
-You're reading it
+You're reading it.
 
 ### --version
-Displays version number
+Displays version number.
 
 ## Usage with Docker [![Docker status][docker-badge]][docker-link]
 
@@ -33,6 +36,10 @@ nextflow run MaxUlysse/compile-beamer /
   --tex <file.tex>
 ```
 
+## Docker container
+Based on `debian:stretch-slim`.
+Contain: `texlive-xetex`, `mtheme`, `python-pygments` (for `minted`) and `Fira fonts`.
+
 ## Usage with Singularity [![Singularity status][singularity-badge]][singularity-link]
 
 ```bash
@@ -41,6 +48,10 @@ nextflow run MaxUlysse/compile-beamer /
   --tex <file.tex>
 ```
 
+## Singularity container
+Based on the Docker container
+
+[beamer-link]: https://github.com/josephwright/beamer
 [circleci-badge]: https://circleci.com/gh/MaxUlysse/compile-beamer.svg?style=shield
 [circleci-link]: https://circleci.com/gh/MaxUlysse/compile-beamer
 [docker-badge]: https://img.shields.io/docker/automated/maxulysse/compile-beamer.svg
@@ -57,3 +68,4 @@ nextflow run MaxUlysse/compile-beamer /
 [version-link]: https://github.com/MaxUlysse/compile-beamer/releases/releases/latest
 [works-badge]: https://img.shields.io/badge/works-on_my_machine-brightgreen.svg
 [works-link]: https://github.com/nikku/works-on-my-machine
+[xetex-link]: http://xetex.sourceforge.net/
