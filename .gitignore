@@ -1,5 +1,3 @@
 .nextflow*
-container/*
-!container/.gitkeep
 work
 sample.pdf

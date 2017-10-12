@@ -37,7 +37,7 @@ if (params.version) exit 0, versionMessage()
 
 params.pictures = 'pictures'
 pictures = file(params.pictures)
-params.tex = 'sample.tex'
+if (!params.tex) exit 1, 'No tex file, see --help for more information'
 tex = file(params.tex)
 
 /*
@@ -87,13 +87,19 @@ def helpMessage() {
   // Display help message
   this.compileBeamerMessage()
   log.info "    Usage:"
-  log.info "       nextflow run MaxUlysse/compile-beamer --tex <input.tex>"
+  log.info "      nextflow run MaxUlysse/compile-beamer --tex <input.tex>"
   log.info "    --tex"
   log.info "      Compile the given tex file"
+  log.info "    --pictures"
+  log.info "      Specify in which directory are the pictures"
+  log.info "      Default is: pictures/"
+  log.info "    --tag"
+  log.info "      Specify with tag to use for the docker container"
+  log.info "      Default is current version: $version"
   log.info "    --help"
-  log.info "       you're reading it"
+  log.info "      You're reading it"
   log.info "    --version"
-  log.info "       displays version number"
+  log.info "      Displays version number"
 }
 
 def minimalInformationMessage() {
