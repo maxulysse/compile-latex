@@ -58,17 +58,24 @@ process RunXelatex {
 
   input:
   file biblio
-  file tex
   file pictures
+  file tex
 
   output:
   file("*.pdf") into pdf
 
   script:
   scriptString = tex.baseName.startsWith("CV") ? "cp ${tex.baseName}.pdf CV-MGarcia-latest.pdf" : ""
+  if (biblio.exists())
   """
   xelatex -shell-escape ${tex}
   biber ${tex.baseName}.bcf
+  xelatex -shell-escape ${tex}
+  xelatex -shell-escape ${tex}
+  ${scriptString}
+  """
+  else
+  """
   xelatex -shell-escape ${tex}
   xelatex -shell-escape ${tex}
   ${scriptString}
@@ -115,9 +122,9 @@ def minimalInformationMessage() {
   log.info "Command Line: $workflow.commandLine"
   log.info "Launch Dir  : $workflow.launchDir"
   log.info "Work Dir    : $workflow.workDir"
-  log.info "Profile     : $workflow.profile"
   log.info "Container   : $workflow.container"
   log.info "Tex file    : $tex"
+  if (biblio.exists()) log.info "Bibliography: $biblio"
   log.info "Pictures in : $pictures"
 }
 
