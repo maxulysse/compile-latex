@@ -8,11 +8,10 @@ services:
   - docker
 
 env:
-  - NXF_VER=0.25.7 PROFILE=docker TOOL_INSTALL=nextflow
-  - NXF_VER=0.25.7 SGT_VER=2.3.2 PROFILE=singularity TOOL_INSTALL=all
+  - NXF_VER=0.25.7 TEX=sample.tex
 
-install: # Install Nextflow (and Singularity if needed)
-  - "./scripts/install.sh --tool $TOOL_INSTALL"
+install: # Install Nextflow
+  - "./scripts/install.sh"
 
 script:
-  - "./scripts/test.sh --profile $PROFILE"
+  - "./scripts/test.sh --tex $TEX"

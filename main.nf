@@ -4,19 +4,19 @@
 vim: syntax=groovy
 -*- mode: groovy;-*-
 ================================================================================
-=                   C  O  M  P  I  L  E  -  B  E  A  M  E  R                   =
+=                     C  O  M  P  I  L  E  -  L  A  T  E  X                    =
 ================================================================================
 @Author
 Maxime Garcia <max.u.garcia@gmail.com> [@MaxUlysse]
 --------------------------------------------------------------------------------
  @Homepage
- https://github.com/MaxUlysse/compile-beamer
+ https://github.com/MaxUlysse/compile-latex
 --------------------------------------------------------------------------------
  @Documentation
- https://github.com/MaxUlysse/compile-beamer/blob/master/README.md
+ https://github.com/MaxUlysse/compile-latex/blob/master/README.md
 --------------------------------------------------------------------------------
 @Licence
- https://github.com/MaxUlysse/compile-beamer/blob/master/LICENSE
+ https://github.com/MaxUlysse/compile-latex/blob/master/LICENSE
 --------------------------------------------------------------------------------
  Process overview
  - RunXelatex - Run xelatex twice on given tex file
@@ -27,13 +27,16 @@ Maxime Garcia <max.u.garcia@gmail.com> [@MaxUlysse]
 
 if (!nextflow.version.matches('>= 0.25.3')) exit 1, "Nextflow version 0.25.3 or greater is needed to run this workflow"
 
-version = '1.7.1'
+version = '2.0'
 
 params.help = false
 params.version = false
 
 if (params.help) exit 0, helpMessage()
 if (params.version) exit 0, versionMessage()
+
+params.biblio = 'biblio.bib'
+biblio = file(params.biblio)
 
 params.pictures = 'pictures'
 pictures = file(params.pictures)
@@ -54,16 +57,21 @@ process RunXelatex {
   publishDir ".", mode: 'move'
 
   input:
+  file biblio
   file tex
   file pictures
 
   output:
-  file("${tex.baseName}.pdf") into pdf
+  file("*.pdf") into pdf
 
   script:
+  scriptString = tex.baseName.startsWith("CV") ? "cp ${tex.baseName}.pdf CV-MGarcia-latest.pdf" : ""
   """
-  xelatex -shell-escape ${tex.baseName}
-  xelatex -shell-escape ${tex.baseName}
+  xelatex -shell-escape ${tex}
+  biber ${tex.baseName}.bcf
+  xelatex -shell-escape ${tex}
+  xelatex -shell-escape ${tex}
+  ${scriptString}
   """
 }
 
@@ -73,9 +81,9 @@ process RunXelatex {
 ================================================================================
 */
 
-def compileBeamerMessage() {
-  // Display COMPILE-BEAMER message
-  log.info "COMPILE-BEAMER ~ $version - " + this.grabRevision() + (workflow.commitId ? " [$workflow.commitId]" : "")
+def compileLatexMessage() {
+  // Display COMPILE-LATEX message
+  log.info "COMPILE-LATEX ~ $version - " + this.grabRevision() + (workflow.commitId ? " [$workflow.commitId]" : "")
 }
 
 def grabRevision() {
@@ -85,9 +93,9 @@ def grabRevision() {
 
 def helpMessage() {
   // Display help message
-  this.compileBeamerMessage()
+  this.compileLatexMessage()
   log.info "    Usage:"
-  log.info "      nextflow run MaxUlysse/compile-beamer --tex <input.tex>"
+  log.info "      nextflow run MaxUlysse/compile-latex --tex <input.tex>"
   log.info "    --tex"
   log.info "      Compile the given tex file"
   log.info "    --pictures"
@@ -120,13 +128,13 @@ def nextflowMessage() {
 
 def startMessage() {
   // Display start message
-  this.compileBeamerMessage()
+  this.compileLatexMessage()
   this.minimalInformationMessage()
 }
 
 def versionMessage() {
   // Display version message
-  log.info "COMPILE-BEAMER"
+  log.info "COMPILE-LATEX"
   log.info "  version $version"
   log.info workflow.commitId ? "Git info    : $workflow.repository - $workflow.revision [$workflow.commitId]" : "  revision  : " + this.grabRevision()
 }
@@ -134,7 +142,7 @@ def versionMessage() {
 workflow.onComplete {
   // Display end message
   this.nextflowMessage()
-  this.compileBeamerMessage()
+  this.compileLatexMessage()
   this.minimalInformationMessage()
   log.info "Completed at: $workflow.complete"
   log.info "Duration    : $workflow.duration"
@@ -146,6 +154,6 @@ workflow.onComplete {
 workflow.onError {
   // Display error message
   this.nextflowMessage()
-  this.compileBeamerMessage()
+  this.compileLatexMessage()
   log.info "Workflow execution stopped with the following message: $workflow.errorMessage"
 }

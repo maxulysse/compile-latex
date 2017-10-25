@@ -1,10 +1,16 @@
 %!TEX program = xelatex
 \documentclass{beamer}
 
+% Good bibliography
+\RequirePackage[backend=biber]{biblatex}
+% Icon Fonts
+\RequirePackage{academicons}
+\RequirePackage{fontawesome}
 % Correct the path when including svg pictures
 \RequirePackage{import}
 % For nice verbatim
 \RequirePackage{minted}
+\addbibresource[datatype=bibtex]{biblio.bib}
 
 % Arrange theme
 \usetheme[
@@ -17,7 +23,7 @@
 \setbeamercolor{progress bar}{fg=green,bg=white}
 
 \author{MaxUlysse}
-\title{compile-beamer}
+\title{compile-latex}
 \subtitle{with metropolis theme}
 \institute{
   SciLifeLab - Karolinska Institutet\\
@@ -34,22 +40,69 @@
 
 \maketitle
 
-\begin{frame}[fragile]{compile-beamer}
-  Just a simple beamer compiler with Nextflow
-  Usage :
+\begin{frame}[fragile]{compile-latex}
+  Just a simple latex compiler with Nextflow and a Docker container
+
+  Usage:
   \begin{minted}[fontsize=\tiny]{bash}
-nextflow run MaxUlysse/compile-beamer \
+nextflow run MaxUlysse/compile-latex \
   --tex <file.tex> \
+  [--bibliography <bib file>] \
   [--pictures <pictures directory>]
   \end{minted}
   This pdf was compiled using
   \begin{minted}[fontsize=\tiny]{bash}
-nextflow run MaxUlysse/compile-beamer
-  [by default: --tex sample.tex]
+nextflow run MaxUlysse/compile-latex \
+  --tex sample.tex
   \end{minted}
 \end{frame}
 
-\begin{frame}[fragile]{How to insert picture - Code}
+\begin{frame}[fragile]{Insert code - Code / Results}
+\tiny
+\mint{latex}|\begin{minted}[fontsize=\tiny]{latex}|
+\vspace{-2\baselineskip}
+\mint{latex}|Code to display|
+\vspace{-2\baselineskip}
+\mint{latex}|\end{minted}|
+or
+\begin{minted}[fontsize=\tiny]{latex}
+\mint{latex}|Code to display|
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Use references - Code / Results}
+\begin{minted}[fontsize=\tiny]{latex}
+The document is an example of BibTeX using in bibliography management.
+Three items are cited: \textit{The \LaTeX\ Companion} book \cite{latexcompanion},
+the Einstein journal paper \cite{einstein},
+and the Donald Knuth's website \cite{knuthwebsite}.
+The \LaTeX\ related items are \cite{latexcompanion,knuthwebsite}.
+\end{minted}
+The document is an example of BibTeX using in bibliography management.
+Three items are cited: \textit{The \LaTeX\ Companion} book \cite{latexcompanion},
+the Einstein journal paper \cite{einstein},
+and the Donald Knuth's website \cite{knuthwebsite}.
+The \LaTeX\ related items are \cite{latexcompanion,knuthwebsite}.
+\end{frame}
+
+\begin{frame}[fragile]{Print the bibliography - Code / Results}
+\begin{minted}[fontsize=\tiny]{latex}
+\printbibliography
+\end{minted}
+\printbibliography
+\end{frame}
+
+\begin{frame}[fragile]{Use Font-Awesome and Academicons - Code / Results}
+\begin{minted}[fontsize=\tiny]{latex}
+GitHub: \faGithub
+DOI: \aiDoi
+\end{minted}
+GitHub: \faGithub
+
+DOI: \aiDoi
+\end{frame}
+
+\begin{frame}[fragile]{Insert Picture - Code}
   \begin{minted}[fontsize=\tiny]{latex}
 \begin{center}
   \includegraphics[width=.8\linewidth]{pictures/SciLifeLab-Snowpocalypse.jpg}
@@ -57,13 +110,13 @@ nextflow run MaxUlysse/compile-beamer
   \end{minted}
 \end{frame}
 
-\begin{frame}{How to insert picture - Result}
+\begin{frame}{Insert Picture - Result}
   \begin{center}
     \includegraphics[width=.8\linewidth]{pictures/SciLifeLab-Snowpocalypse.jpg}
   \end{center}
 \end{frame}
 
-\begin{frame}[fragile]{How to use background - Code}
+\begin{frame}[fragile]{Change Background - Code}
   \begin{minted}[fontsize=\tiny]{latex}
 \usebackgroundtemplate{
   \includegraphics[width=\paperwidth]{pictures/SciLifelab-BlueSky.jpg}
@@ -75,7 +128,7 @@ nextflow run MaxUlysse/compile-beamer
   \includegraphics[width=\paperwidth]{pictures/SciLifelab-BlueSky.jpg}
 }
 
-\begin{frame}[plain,noframenumbering]{How to use background - Result}
+\begin{frame}[plain,noframenumbering]{Change Background - Result}
 \end{frame}
 
 \end{document}

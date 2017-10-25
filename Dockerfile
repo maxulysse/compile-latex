@@ -2,7 +2,7 @@ FROM debian:stretch-slim
 
 LABEL \
   author="Maxime Garcia" \
-  description="Image for compile-beamer" \
+  description="Image for compile-latex" \
   maintainer="max.u.garcia@gmail.com"
 
 # Set up ENV
@@ -12,63 +12,42 @@ ENV LANG=C.UTF-8
 ARG DEBIAN_FRONTEND=noninteractive
 RUN \
   apt-get update && apt-get install -y --no-install-recommends \
+    biber \
     ca-certificates \
     fontconfig \
     git \
     latexmk \
     lmodern \
-    make \
     python-pygments \
+    texlive-base \
     texlive-fonts-recommended \
-    texlive-generic-recommended \
-    texlive-latex-base \
     texlive-xetex \
-    unzip \
     wget \
+    xzdec \
   && rm -rf /var/lib/apt/lists/*
 
-# Install Fonts, mtheme and update fonts/Tex cache
+# Install Fonts, mtheme, modernCV
 RUN \
   mkdir -p \
-    /usr/share/fonts/opentype/FiraSans/ \
-    /usr/share/fonts/truetype/FiraSans/ \
-    /usr/share/texmf/fonts/enc/dvips/ccicons \
-    /usr/share/texmf/fonts/map/dvips/ccicons \
-    /usr/share/texmf/fonts/opentype/public/ccicons \
-    /usr/share/texmf/fonts/tfm/public/ccicons \
-    /usr/share/texmf/fonts/type1/public/ccicons \
-    /usr/share/texmf/tex/latex/ccicons \
-  && wget \
-    http://mirrors.ctan.org/install/fonts/ccicons.tds.zip \
-    https://carrois.com/downloads/Fira/Fira_Code_3_2.zip \
-    https://carrois.com/downloads/Fira/Fira_Mono_3_2.zip \
-    https://carrois.com/downloads/Fira/Fira_Sans_4_2.zip \
-    -P . \
-  && unzip ccicons.tds.zip -d ccicons/ \
-  && unzip Fira_Code_3_2.zip \
-  && unzip Fira_Mono_3_2.zip \
-  && unzip Fira_Sans_4_2.zip \
-  && cp Fira*/Fonts/*WEB*/*.ttf /usr/share/fonts/truetype/FiraSans/ \
-  && cp Fira*/Fonts/*OTF*/*.otf /usr/share/fonts/opentype/FiraSans/ \
-  && cp ccicons/fonts/*/*/ccicons/ccicons* ccicons/. \
-  && cp ccicons/source/*/ccicons/ccicons.* ccicons/. \
-  && cp ccicons/tex/latex/ccicons/ccicons.sty ccicons/. \
-  && cd ccicons/ \
-  && latex ccicons.ins \
-  && cp ccicons-u.enc /usr/share/texmf/fonts/enc/dvips/ccicons \
-  && cp ccicons.map /usr/share/texmf/fonts/map/dvips/ccicons \
-  && cp ccicons.tfm /usr/share/texmf/fonts/tfm/public/ccicons \
-  && cp ccicons.pfb /usr/share/texmf/fonts/type1/public/ccicons \
-  && cp ccicons.otf /usr/share/texmf/fonts/opentype/public/ccicons \
-  && cp ccicons.sty /usr/share/texmf/tex/latex/ccicons \
-  && cd .. \
-  && rm -rf ccicons* Fira* __MACOSX \
-  && git clone --depth 1 https://github.com/matze/mtheme.git mtheme \
-  && cd mtheme \
-  && make install \
-  && mkdir /usr/share/texmf/tex/latex/mtheme \
-  && mv *.sty /usr/share/texmf/tex/latex/mtheme \
-  && cd .. \
-  && rm -rf mtheme \
-  && fc-cache -fv \
-  && texhash
+    /usr/share/fonts/truetype/academicons \
+    /usr/share/fonts/truetype/fontawesome \
+  && tlmgr init-usertree \
+  && tlmgr install academicons \
+  && tlmgr install beamertheme-metropolis \
+  && tlmgr install biblatex \
+  && tlmgr install ccicons \
+  && tlmgr install fontawesome \
+  && tlmgr install logreq \
+  && tlmgr install moderncv \
+  && tlmgr install ulem \
+  && git clone https://github.com/jpswalsh/academicons.git \
+    academicons \
+	&& find academicons/ -name "*.ttf" -exec install -m644 {} /usr/share/fonts/truetype/academicons/ \; || return 1 \
+  && git clone https://github.com/FortAwesome/Font-Awesome/ \
+  fontawesome\
+	&& find fontawesome/ -name "*.ttf" -exec install -m644 {} /usr/share/fonts/truetype/fontawesome/ \; || return 1 \
+  && rm -rf \
+    academicons* \
+    fontawesome* \
+  && texhash \
+  && fc-cache -fv

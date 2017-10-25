@@ -1,19 +1,13 @@
 #!/bin/bash
 set -xeuo pipefail
 
-PROFILE=docker
-TAG=1.7.1
+TAG=2.0
 TEX=sample.tex
 
 while [[ $# -gt 0 ]]
 do
   key=$1
   case $key in
-    -p|--profile)
-    PROFILE=$2
-    shift # past argument
-    shift # past value
-    ;;
     --tag)
     TAG=$2
     shift # past argument
@@ -31,4 +25,4 @@ do
 done
 
 # Run test
-nextflow run . -profile ${PROFILE} --tag ${TAG} --tex ${TEX}
+nextflow run . --tag ${TAG} --tex ${TEX}
