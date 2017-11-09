@@ -4,7 +4,6 @@
 [![License][license-badge]][license-link]
 [![Nextflow needed][nextflow-badge]][nextflow-link]
 [![Travis status][travis-badge]][travis-link]
-[![works on my machine][works-badge]][works-link]
 [![Docker status][docker-badge]][docker-link]
 
 [LaTeX][latex-link] compiler in [Nextflow][nextflow-link] using [XeLaTex][xetex-link] within a Docker container. Made for compiling [Beamer][beamer-link] theme [Metropolis][metropolis-link], but works also with [moderncv][moderncv-link].
@@ -59,12 +58,10 @@ Based on `debian:stretch-slim` contain:
 [license-link]: https://github.com/MaxUlysse/compile-latex/blob/master/LICENSE
 [metropolis-link]: https://ctan.org/pkg/beamertheme-metropolis
 [moderncv-link]: https://ctan.org/pkg/moderncv
-[nextflow-badge]: https://img.shields.io/badge/nextflow-%E2%89%A50.25.0-brightgreen.svg
+[nextflow-badge]: https://img.shields.io/badge/nextflow-%E2%89%A50.26.0-brightgreen.svg
 [nextflow-link]: https://www.nextflow.io/
 [travis-badge]: https://api.travis-ci.org/MaxUlysse/compile-latex.svg
 [travis-link]: https://travis-ci.org/MaxUlysse/compile-latex
 [version-badge]: https://img.shields.io/github/release/MaxUlysse/compile-latex.svg
 [version-link]: https://github.com/MaxUlysse/compile-latex/releases/latest
-[works-badge]: https://img.shields.io/badge/works-on_my_machine-brightgreen.svg
-[works-link]: https://github.com/nikku/works-on-my-machine
 [xetex-link]: http://xetex.sourceforge.net

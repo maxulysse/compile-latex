@@ -3,14 +3,21 @@
 
 % Good bibliography
 \RequirePackage[backend=biber]{biblatex}
+\addbibresource[datatype=bibtex]{biblio.bib}
+
+ % Manage encoding
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[english]{babel}
+
 % Icon Fonts
 \RequirePackage{academicons}
 \RequirePackage{fontawesome}
+
 % Correct the path when including svg pictures
 \RequirePackage{import}
+
 % For nice verbatim
 \RequirePackage{minted}
-\addbibresource[datatype=bibtex]{biblio.bib}
 
 % Arrange theme
 \usetheme[
