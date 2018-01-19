@@ -5,6 +5,7 @@
 [![Nextflow needed][nextflow-badge]][nextflow-link]
 [![Travis status][travis-badge]][travis-link]
 [![Docker status][docker-badge]][docker-link]
+[![DOI][zenodo-badge]][zenodo-link]
 
 [LaTeX][latex-link] compiler in [Nextflow][nextflow-link] using [XeLaTex][xetex-link] within a Docker container. Made for compiling [Beamer][beamer-link] theme [Metropolis][metropolis-link], but works also with [moderncv][moderncv-link].
 
@@ -65,3 +66,5 @@ Based on `debian:stretch-slim` contain:
 [version-badge]: https://img.shields.io/github/release/MaxUlysse/compile-latex.svg
 [version-link]: https://github.com/MaxUlysse/compile-latex/releases/latest
 [xetex-link]: http://xetex.sourceforge.net
+[zenodo-badge]: https://zenodo.org/badge/70491982.svg
+[zenodo-link]: https://zenodo.org/badge/latestdoi/70491982
