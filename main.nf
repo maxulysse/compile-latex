@@ -57,29 +57,30 @@ process RunXelatex {
   publishDir ".", mode: 'move'
 
   input:
-  file biblio
-  file pictures
-  file tex
+    file biblio
+    file pictures
+    file tex
 
   output:
-  file("*.pdf") into pdf
+    file("*.pdf") into pdf
 
   script:
-  scriptString = tex.baseName.startsWith("CV") ? "cp ${tex.baseName}.pdf CV-MGarcia-latest.pdf" : ""
+    scriptString = tex.baseName.startsWith("CV") ? "cp ${tex.baseName}.pdf CV-MGarcia-latest.pdf" : ""
+
   if (biblio.exists())
-  """
-  xelatex -shell-escape ${tex}
-  biber ${tex.baseName}.bcf
-  xelatex -shell-escape ${tex}
-  xelatex -shell-escape ${tex}
-  ${scriptString}
-  """
+    """
+    xelatex -shell-escape ${tex}
+    biber ${tex.baseName}.bcf
+    xelatex -shell-escape ${tex}
+    xelatex -shell-escape ${tex}
+    ${scriptString}
+    """
   else
-  """
-  xelatex -shell-escape ${tex}
-  xelatex -shell-escape ${tex}
-  ${scriptString}
-  """
+    """
+    xelatex -shell-escape ${tex}
+    xelatex -shell-escape ${tex}
+    ${scriptString}
+    """
 }
 
 /*
