@@ -27,10 +27,12 @@ Maxime Garcia <max.u.garcia@gmail.com> [@MaxUlysse]
 
 if (!nextflow.version.matches('>= 0.25.3')) exit 1, "Nextflow version 0.25.3 or greater is needed to run this workflow"
 
-version = '2.0'
+version = '2.0.1'
 
 params.help = false
 params.version = false
+params.outDir = baseDir
+params.name = ''
 
 if (params.help) exit 0, helpMessage()
 if (params.version) exit 0, versionMessage()
@@ -54,7 +56,7 @@ startMessage()
 process RunXelatex {
   tag {tex}
 
-  publishDir ".", mode: 'move'
+  publishDir params.outDir, mode: 'move'
 
   input:
     file biblio
@@ -65,22 +67,16 @@ process RunXelatex {
     file("*.pdf") into pdf
 
   script:
-    scriptString = tex.baseName.startsWith("CV") ? "cp ${tex.baseName}.pdf CV-MGarcia-latest.pdf" : ""
+    xelatexScript = "xelatex -shell-escape ${tex}"
+    biblioScript = biblio.exists() ? "biber ${tex.baseName}.bcf ; ${xelatexScript}" : ""
+    nameScript = params.name == '' ? "" : "cp ${tex.baseName}.pdf ${params.name}"
 
-  if (biblio.exists())
-    """
-    xelatex -shell-escape ${tex}
-    biber ${tex.baseName}.bcf
-    xelatex -shell-escape ${tex}
-    xelatex -shell-escape ${tex}
-    ${scriptString}
-    """
-  else
-    """
-    xelatex -shell-escape ${tex}
-    xelatex -shell-escape ${tex}
-    ${scriptString}
-    """
+  """
+  ${xelatexScript}
+  ${biblioScript}
+  ${xelatexScript}
+  ${nameScript}
+  """
 }
 
 /*
