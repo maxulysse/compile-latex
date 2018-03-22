@@ -56,7 +56,7 @@ startMessage()
 process RunXelatex {
   tag {tex}
 
-  publishDir params.outDir, mode: 'move'
+  publishDir params.outDir, mode: 'link'
 
   input:
     file biblio
