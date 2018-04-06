@@ -4,14 +4,17 @@ language: java
 
 jdk: openjdk8
 
+node_js: "node"
+
 services:
   - docker
 
 env:
   - NXF_VER=0.27.0 TEX=sample.tex
 
-install: # Install Nextflow
+install:
   - "./scripts/install.sh"
+  - "npm install -g gnomon"
 
 script:
-  - "./scripts/test.sh --tex $TEX"
+  - "./scripts/test.sh --tex $TEX | gnomon --medium 120.0 --high 600.0 --real-time=false"
