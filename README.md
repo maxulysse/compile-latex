@@ -1,4 +1,4 @@
-# compile-latex
+# [![compile-latex](https://raw.githubusercontent.com/MaxUlysse/compile-latex/master/pictures/compile-latex_logo.svg "compile-latex")](https://github.com/MaxUlysse/compile-latex/) compile-latex
 
 [![Version][version-badge]][version-link]
 [![License][license-badge]][license-link]

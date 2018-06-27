@@ -10,11 +10,16 @@ services:
   - docker
 
 env:
-  - NXF_VER=0.27.0 TEX=sample.tex
+  - NXF_VER=0.30.2
+  - NXF_VER=''
+
+before_install:
+- docker pull maxulysse/compile-latex:2.0
 
 install:
-  - "./scripts/install.sh"
-  - "npm install -g gnomon"
+  - curl -fsSL get.nextflow.io | bash
+  - chmod +x nextflow
+  - sudo mv nextflow /usr/local/bin/
 
 script:
-  - "./scripts/test.sh --tex $TEX | gnomon --medium 120.0 --high 600.0 --real-time=false"
+  - "nextflow run main.nf -profile test"
