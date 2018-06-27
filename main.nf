@@ -123,13 +123,13 @@ def helpMessage() {
 
 def minimalInformationMessage() {
   // Minimal information message
-  log.info "Command Line:" + workflow.commandLine
-  log.info "Launch Dir  :" + workflow.launchDir
-  log.info "Work Dir    :" + workflow.workDir
-  log.info "Container   :" + workflow.container
-  log.info "Tex file    :" + tex
-  if (biblio.exists()) log.info "Bibliography:" + biblio
-  if (pictures.exists()) log.info "Pictures in :" + pictures
+  log.info "Command Line: " + workflow.commandLine
+  log.info "Launch Dir  : " + workflow.launchDir
+  log.info "Work Dir    : " + workflow.workDir
+  log.info "Container   : " + workflow.container
+  log.info "Tex file    : " + tex
+  if (biblio.exists()) log.info "Bibliography: " + biblio
+  if (pictures.exists()) log.info "Pictures in : " + pictures
 }
 
 def nextflowMessage() {
