@@ -71,20 +71,16 @@ process RunXelatex {
 ================================================================================
 */
 
-def ascii_art() {
+def compileLatex_ascii() {
   println ""
-  println "       _-´`-_"
-  println "    _-´      `-_"
-  println " _-´   T     X  `-_                             _ _          _       _"
-  println "|`-_      E     _-´|                           (_) |        | |     | |"
-  println "|__ `-_      _-´   |   ___ ___  _ __ ___  _ __  _| | ___    | | __ _| |_ _____  __"
-  println "|  \\   `-__-´    | |  / __/ _ \\| '_ ` _ \\| '_ \\| | |/ _ \\___| |/ _` | __/ _ \\ \\/ /"
-  println "|   \\ ____|   ,| | | | (_| (_) | | | | | | |_) | | |  __/___| | (_| | ||  __/>  <"
-  println "|____/    | | || | |  \\___\\___/|_| |_| |_| .__/|_|_|\\___|   |_|\\__,_|\\__\\___/_/\\_\\"
-  println "|     \\   | | |´   |                     | |"
-  println " `-_   \\__| |   _-´                      |_|"
-  println "    `-_   |  _-´"
-  println "       `-_|-´"
+  println "     _.-´`-._                                 _ _          _       _"
+  println " _.-´ T    X `-._                            (_) |        | |     | |"
+  println "|`-._    E   _.-´|   ___ ___  _ __ ___  _ __  _| | ___    | | __ _| |_ _____  __"
+  println "|--. `-.__.-´  . |  / __/ _ \\| '_ ` _ \\| '_ \\| | |/ _ \\___| |/ _` | __/ _ \\ \\/ /"
+  println "|   \\.---| . | | | | (_| (_) | | | | | | |_) | | |  __/___| | (_| | ||  __/>  <"
+  println "|---´\\   | | | | |  \\___\\___/|_| |_| |_| .__/|_|_|\\___|   |_|\\__,_|\\__\\___/_/\\_\\"
+  println " `-._ `--| | '_.-´                     | |"
+  println "     `-._|_.-´                         |_|"
   println ""
 }
 
@@ -139,7 +135,7 @@ def nextflowMessage() {
 
 def startMessage() {
   // Display start message
-  this.ascii_art()
+  this.compileLatex_ascii()
   this.compileLatexMessage()
   this.minimalInformationMessage()
 }
