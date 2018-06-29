@@ -9,34 +9,41 @@
 
 [LaTeX][latex-link] compiler in [Nextflow][nextflow-link] using [XeLaTex][xetex-link] within a Docker container. Made for compiling [Beamer][beamer-link] theme [Metropolis][metropolis-link], but works also with [moderncv][moderncv-link].
 
-## Options
-
-### --tex
-Compile the given tex file.
-
-### --biblio
-Specify the `bib` file for the bibliography.
-Default is: `biblio.bib`.
-
-### --pictures
-Specify path to pictures directory.
-Default is: `pictures/`.
-
-### --tag
-Specify with tag to use for the docker container.
-Default is current version.
-
-### --help
-You're reading it.
-
-### --version
-Displays version number.
-
 ## Usage
 ```bash
 nextflow run MaxUlysse/compile-latex /
   --tex <file.tex>
 ```
+
+## Options
+
+### --tex
+Compile the given tex file
+
+### --biblio
+Specify the bibliography
+
+Default: `biblio.bib`
+
+### --notes
+Generate notes with presentation
+
+### --pictures
+Specify in which directory are the pictures
+
+Default: `pictures/`
+
+### --tag
+Specify with tag to use for the docker container
+
+### --outName
+Specify output name
+
+### --outDir
+Specify output directory
+
+### --help
+You're reading it
 
 ## Result
 - [sample.pdf](https://github.com/MaxUlysse/compile-latex/blob/master/sample.pdf)

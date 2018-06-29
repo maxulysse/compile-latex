@@ -53,7 +53,8 @@ process RunXelatex {
     file("*.pdf") into pdf
 
   script:
-    xelatexScript = "xelatex -shell-escape ${tex}"
+    notes = params.notes == '' ? "" : "\"\\PassOptionsToClass{notes}{beamer}\\input{$tex}\""
+    xelatexScript = notes == '' ? "xelatex -shell-escape ${tex}" : "xelatex -shell-escape ${notes}"
     biberScript = biblio.exists() ? "biber ${tex.baseName}.bcf ; ${xelatexScript}" : ""
     renameScript = params.outName == '' ? "" : "cp ${tex.baseName}.pdf ${params.outName}"
 
@@ -74,7 +75,7 @@ process RunXelatex {
 def compileLatex_ascii() {
   println ""
   println "     _.-´`-._                                 _ _          _       _"
-  println " _.-´ T    X `-._                            (_) |        | |     | |"
+  println " _.-´  T   X `-._                            (_) |        | |     | |"
   println "|`-._    E   _.-´|   ___ ___  _ __ ___  _ __  _| | ___    | | __ _| |_ _____  __"
   println "|--. `-.__.-´  . |  / __/ _ \\| '_ ` _ \\| '_ \\| | |/ _ \\___| |/ _` | __/ _ \\ \\/ /"
   println "|   \\.---| . | | | | (_| (_) | | | | | | |_) | | |  __/___| | (_| | ||  __/>  <"
@@ -103,10 +104,12 @@ def helpMessage() {
   log.info "      Compile the given tex file"
   log.info "    --biblio"
   log.info "      Specify the bibliography"
-  log.info "      Default is: biblio.bib"
+  log.info "      Default: biblio.bib"
+  log.info "    --notes"
+  log.info "      Generate notes with presentation"
   log.info "    --pictures"
   log.info "      Specify in which directory are the pictures"
-  log.info "      Default is: pictures/"
+  log.info "      Default: pictures/"
   log.info "    --tag"
   log.info "      Specify with tag to use for the docker container"
   log.info "    --outName"
