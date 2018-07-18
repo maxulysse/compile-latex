@@ -29,7 +29,7 @@ if (!params.tex) exit 1, 'No tex file, see --help for more information'
 
 biblio = file(params.biblio)
 pictures = file(params.pictures)
-tex = file(params.tex)
+tex = Channel.fromPath(params.tex)
 
 /*
 ================================================================================
@@ -127,9 +127,9 @@ def minimalInformationMessage() {
   log.info "Launch Dir  : " + workflow.launchDir
   log.info "Work Dir    : " + workflow.workDir
   log.info "Container   : " + workflow.container
-  log.info "Tex file    : " + tex
-  if (biblio.exists()) log.info "Bibliography: " + biblio
-  if (pictures.exists()) log.info "Pictures in : " + pictures
+  log.info "Tex file(s) : " + params.tex
+  if (biblio.exists()) log.info "Bibliography: " + params.biblio
+  if (pictures.exists()) log.info "Pictures in : " + params.pictures
 }
 
 def nextflowMessage() {
