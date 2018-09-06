@@ -57,8 +57,6 @@ Based on `debian:stretch-slim` contain:
   - [`moderncv`][moderncv-link]
 
 [beamer-link]: https://github.com/josephwright/beamer
-[circleci-badge]: https://circleci.com/gh/MaxUlysse/compile-latex.svg?style=shield
-[circleci-link]: https://circleci.com/gh/MaxUlysse/compile-latex
 [docker-badge]: https://img.shields.io/docker/automated/maxulysse/compile-latex.svg
 [docker-link]: https://hub.docker.com/r/maxulysse/compile-latex
 [latex-link]: https://www.latex-project.org
