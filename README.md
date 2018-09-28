@@ -12,7 +12,13 @@
 ## Usage
 ```bash
 nextflow run MaxUlysse/compile-latex /
-  --tex <file.tex>
+  --tex <file.tex> /
+  [--biblio <biblio.bib>] /
+  [--notes|--notesOnly] /
+  [--outDir </path>] /
+  [--outName <file.pdf>] /
+  [--pictures </path/folder>] /
+  [--tag <tag>]
 ```
 
 ## Options
@@ -28,19 +34,22 @@ Default: `biblio.bib`
 ### --notes
 Generate notes with presentation
 
+### --notesOnly
+Generate only the notes
+
 ### --pictures
 Specify in which directory are the pictures
 
 Default: `pictures/`
-
-### --tag
-Specify with tag to use for the docker container
 
 ### --outName
 Specify output name
 
 ### --outDir
 Specify output directory
+
+### --tag
+Specify with tag to use for the docker container
 
 ### --help
 You're reading it
