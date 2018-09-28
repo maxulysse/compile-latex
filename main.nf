@@ -88,7 +88,7 @@ def compileLatex_ascii() {
 
 def compileLatexMessage() {
   // Display compile-latex message
-  log.info "compile-latex ~ ${params.version} - " + this.grabRevision() + (workflow.commitId ? " [$workflow.commitId]" : "")
+  log.info "compile-latex ~ ${workflow.manifest.version} - " + this.grabRevision() + (workflow.commitId ? " [$workflow.commitId]" : "")
 }
 
 def grabRevision() {
@@ -134,7 +134,7 @@ def minimalInformationMessage() {
 
 def nextflowMessage() {
   // Nextflow message (version + build)
-  log.info "N E X T F L O W  ~  version" + workflow.nextflow.version + " " + workflow.nextflow.build
+  log.info "N E X T F L O W  ~  version " + workflow.nextflow.version + " " + workflow.nextflow.build
 }
 
 def startMessage() {
