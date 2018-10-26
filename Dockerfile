@@ -12,19 +12,31 @@ ENV LANG=C.UTF-8
 ARG DEBIAN_FRONTEND=noninteractive
 RUN \
   apt-get update && apt-get install -y --no-install-recommends \
-    biber \
     ca-certificates \
     fontconfig \
     git \
-    latexmk \
     lmodern \
     python-pygments \
-    texlive-base \
-    texlive-fonts-recommended \
-    texlive-xetex \
     wget \
-    xzdec \
   && rm -rf /var/lib/apt/lists/*
+
+# Setup ENV variables
+ENV \
+  TL_BIN="install-tl-unx.tar.gz" \
+  PATH="$PATH:/usr/local/texlive/2018/bin/x86_64-linux"
+
+COPY texlive.profile /opt/
+
+# Install TeX Live
+RUN \
+  wget -q http://mirror.ctan.org/systems/texlive/tlnet/$TL_BIN \
+  -O /opt/$TL_BIN \
+  && tar xzf /opt/$TL_BIN -C /opt/ \
+  && mv /opt/install-tl-2* /opt/install-tl/ \
+  && mv /opt/texlive.profile /opt/install-tl/ \
+  && cd /opt/install-tl \
+  && ./install-tl --profile=texlive.profile \
+  && rm -rf /opt/$TL_BIN /opt/$TL_DIR
 
 # Install Fonts, mtheme, modernCV
 RUN \
@@ -34,16 +46,29 @@ RUN \
   && tlmgr init-usertree \
   && tlmgr install academicons \
   && tlmgr install beamertheme-metropolis \
+  && tlmgr install biber \
   && tlmgr install biblatex \
   && tlmgr install ccicons \
+  && tlmgr install collection-fontsrecommended \
+  && tlmgr install collection-xetex \
+  && tlmgr install contour \
+  && tlmgr install csquotes \
   && tlmgr install fontawesome \
+  && tlmgr install framed \
+  && tlmgr install fvextra \
+  && tlmgr install ifplatform \
+  && tlmgr install import \
   && tlmgr install logreq \
+  && tlmgr install minted \
   && tlmgr install moderncv \
+  && tlmgr install pgfopts \
   && tlmgr install ulem \
+  && tlmgr install upquote \
+  && tlmgr install xstring \
   && git clone https://github.com/jpswalsh/academicons.git \
     academicons \
 	&& find academicons/ -name "*.ttf" -exec install -m644 {} /usr/share/fonts/truetype/academicons/ \; || return 1 \
-  && git clone https://github.com/FortAwesome/Font-Awesome/ \
+  && git clone https://github.com/FortAwesome/Font-Awesome/ --branch v4.7.0\
   fontawesome\
 	&& find fontawesome/ -name "*.ttf" -exec install -m644 {} /usr/share/fonts/truetype/fontawesome/ \; || return 1 \
   && rm -rf \
