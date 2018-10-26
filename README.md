@@ -73,7 +73,7 @@ Based on `debian:stretch-slim` contain:
 [license-link]: https://github.com/MaxUlysse/compile-latex/blob/master/LICENSE
 [metropolis-link]: https://ctan.org/pkg/beamertheme-metropolis
 [moderncv-link]: https://ctan.org/pkg/moderncv
-[nextflow-badge]: https://img.shields.io/badge/nextflow-%E2%89%A50.30.2-brightgreen.svg
+[nextflow-badge]: https://img.shields.io/badge/nextflow-%E2%89%A518.10.1-brightgreen.svg
 [nextflow-link]: https://www.nextflow.io/
 [travis-badge]: https://api.travis-ci.org/MaxUlysse/compile-latex.svg
 [travis-link]: https://travis-ci.org/MaxUlysse/compile-latex
