@@ -42,7 +42,7 @@ RUN \
 RUN \
   mkdir -p \
     /usr/share/fonts/truetype/academicons \
-    /usr/share/fonts/truetype/fontawesome \
+  && tlmgr update --self \
   && tlmgr init-usertree \
   && tlmgr install academicons \
   && tlmgr install beamertheme-metropolis \
@@ -53,7 +53,7 @@ RUN \
   && tlmgr install collection-xetex \
   && tlmgr install contour \
   && tlmgr install csquotes \
-  && tlmgr install fontawesome \
+  && tlmgr install fontawesome5 \
   && tlmgr install framed \
   && tlmgr install fvextra \
   && tlmgr install ifplatform \
@@ -68,11 +68,7 @@ RUN \
   && git clone https://github.com/jpswalsh/academicons.git \
     academicons \
 	&& find academicons/ -name "*.ttf" -exec install -m644 {} /usr/share/fonts/truetype/academicons/ \; || return 1 \
-  && git clone https://github.com/FortAwesome/Font-Awesome/ --branch v4.7.0\
-  fontawesome\
-	&& find fontawesome/ -name "*.ttf" -exec install -m644 {} /usr/share/fonts/truetype/fontawesome/ \; || return 1 \
   && rm -rf \
     academicons* \
-    fontawesome* \
   && texhash \
-  && fc-cache -fv
+  && fc-cache -fsv
