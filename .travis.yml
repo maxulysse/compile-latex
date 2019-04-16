@@ -8,7 +8,7 @@ env:
   - NXF_VER=''
 
 before_install:
-  - docker pull maxulysse/compile-latex:2.0
+  - docker pull maxulysse/compile-latex:latest
 
 install:
   - curl -fsSL get.nextflow.io | bash
