@@ -16,6 +16,7 @@ RUN \
     fontconfig \
     git \
     lmodern \
+    procps \
     python-pygments \
     wget \
   && rm -rf /var/lib/apt/lists/*
