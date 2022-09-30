@@ -1,4 +1,4 @@
-# [![compile-latex](https://raw.githubusercontent.com/maxulysse/compile-latex/master/pictures/compile-latex_logo.png "compile-latex")](https://github.com/maxulysse/compile-latex/) compile-latex
+# [![compile-latex](https://raw.githubusercontent.com/maxulysse/compile-latex/main/pictures/compile-latex_logo.png "compile-latex")](https://github.com/maxulysse/compile-latex/) compile-latex
 
 [![Version][version-badge]][version-link]
 [![License][license-badge]][license-link]
@@ -66,7 +66,7 @@ You're reading it
 
 ## Result
 
-- [sample.pdf](https://github.com/maxulysse/compile-latex/blob/master/sample.pdf)
+- [sample.pdf](https://github.com/maxulysse/compile-latex/blob/main/sample.pdf)
 - [Presentations](https://github.com/maxulysse/Presentations)
 - [CV](https://github.com/maxulysse/myCV)
 
@@ -83,7 +83,7 @@ Based on `debian:stretch-slim` contain:
 [docker-link]: https://hub.docker.com/r/maxulysse/compile-latex
 [latex-link]: https://www.latex-project.org
 [license-badge]: https://img.shields.io/github/license/maxulysse/compile-latex.svg
-[license-link]: https://github.com/maxulysse/compile-latex/blob/master/LICENSE
+[license-link]: https://github.com/maxulysse/compile-latex/blob/main/LICENSE
 [metropolis-link]: https://ctan.org/pkg/beamertheme-metropolis
 [moderncv-link]: https://ctan.org/pkg/moderncv
 [nextflow-badge]: https://img.shields.io/badge/nextflow-%E2%89%A518.10.1-brightgreen.svg
