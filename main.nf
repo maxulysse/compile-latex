@@ -5,16 +5,16 @@
 =                     C  O  M  P  I  L  E  -  L  A  T  E  X                    =
 ================================================================================
   @Author
-  Maxime Garcia <max.u.garcia@gmail.com> [@MaxUlysse]
+  Maxime Garcia <max.u.garcia@gmail.com> [@maxulysse]
 --------------------------------------------------------------------------------
   @Homepage
-  https://github.com/MaxUlysse/compile-latex
+  https://github.com/maxulysse/compile-latex
 --------------------------------------------------------------------------------
   @Documentation
-  https://github.com/MaxUlysse/compile-latex/blob/master/README.md
+  https://github.com/maxulysse/compile-latex/blob/master/README.md
 --------------------------------------------------------------------------------
   @Licence
-  https://github.com/MaxUlysse/compile-latex/blob/master/LICENSE
+  https://github.com/maxulysse/compile-latex/blob/master/LICENSE
 --------------------------------------------------------------------------------
   Process overview
   - RunXelatex
@@ -42,7 +42,7 @@ startMessage()
 process RunXelatex {
   tag {tex}
 
-  publishDir params.outDir, mode: 'link'
+  publishDir params.outdir, mode: 'link'
 
   input:
     file biblio
@@ -54,10 +54,10 @@ process RunXelatex {
 
   script:
     notes = params.notes == '' ? "" : "\"\\PassOptionsToClass{notes}{beamer}\\input{$tex}\""
-    notes = params.notesOnly == '' ? notes : "\"\\PassOptionsToClass{notes=only}{beamer}\\input{$tex}\""
+    notes = params.notes_only == '' ? notes : "\"\\PassOptionsToClass{notes=only}{beamer}\\input{$tex}\""
     xelatexScript = notes == '' ? "xelatex -shell-escape ${tex}" : "xelatex -shell-escape ${notes}"
     biberScript = biblio.exists() ? "biber ${tex.baseName}.bcf ; ${xelatexScript}" : ""
-    renameScript = params.outName == '' ? "" : "cp ${tex.baseName}.pdf ${params.outName}"
+    renameScript = params.outname == '' ? "" : "cp ${tex.baseName}.pdf ${params.outname}"
 
   """
   ${xelatexScript}
@@ -100,7 +100,7 @@ def helpMessage() {
   // Display help message
   this.compileLatexMessage()
   log.info "    Usage:"
-  log.info "      nextflow run MaxUlysse/compile-latex --tex <input.tex>"
+  log.info "      nextflow run maxulysse/compile-latex --tex <input.tex>"
   log.info "    --tex"
   log.info "      Compile the given tex file"
   log.info "    --biblio"
@@ -113,9 +113,9 @@ def helpMessage() {
   log.info "      Default: pictures/"
   log.info "    --tag"
   log.info "      Specify with tag to use for the docker container"
-  log.info "    --outName"
+  log.info "    --outname"
   log.info "      Specify output name"
-  log.info "    --outDir"
+  log.info "    --outdir"
   log.info "      Specify output directory"
   log.info "    --help"
   log.info "      You're reading it"
