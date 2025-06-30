@@ -1,132 +1,102 @@
 #!/usr/bin/env nextflow
-
 /*
-================================================================================
-=                     C  O  M  P  I  L  E  -  L  A  T  E  X                    =
-================================================================================
-  @Author
-  Maxime Garcia <max.u.garcia@gmail.com> [@maxulysse]
---------------------------------------------------------------------------------
-  @Homepage
-  https://github.com/maxulysse/compile-latex
---------------------------------------------------------------------------------
-  @Documentation
-  https://github.com/maxulysse/compile-latex/blob/main/README.md
---------------------------------------------------------------------------------
-  @Licence
-  https://github.com/maxulysse/compile-latex/blob/main/LICENSE
---------------------------------------------------------------------------------
-  Process overview
-  - RUNXELATEX
-      Run xelatex, optionally biber and xelatex and finally xelatex again
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    maxulysse/compile-latex
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Github : https://github.com/maxulysse/compile-latex
+----------------------------------------------------------------------------------------
 */
 
-process RUNXELATEX {
-  tag { tex }
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    IMPORT FUNCTIONS / MODULES / SUBWORKFLOWS / WORKFLOWS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
 
-  publishDir params.outdir, mode: 'link'
+include { COMPILE-LATEX  } from './workflows/compile-latex'
+include { PIPELINE_INITIALISATION } from './subworkflows/local/utils_nfcore_compile-latex_pipeline'
+include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_compile-latex_pipeline'
+include { getGenomeAttribute      } from './subworkflows/local/utils_nfcore_compile-latex_pipeline'
 
-  input:
-  path biblio
-  path pictures
-  path tex
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    GENOME PARAMETER VALUES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
 
-  output:
-  path "*.pdf", emit: pdf
+// TODO nf-core: Remove this line if you don't need a FASTA file
+//   This is an example of how to use getGenomeAttribute() to fetch parameters
+//   from igenomes.config using `--genome`
+params.fasta = getGenomeAttribute('fasta')
 
-  script:
-  notes = params.notes ? "\"\\PassOptionsToClass{notes}{beamer}\\input{${tex}}\"" : ""
-  notes = params.notes_only ? notes : "\"\\PassOptionsToClass{notes=only}{beamer}\\input{${tex}}\""
-  xelatexScript = notes ? "xelatex -shell-escape ${tex}" : "xelatex -shell-escape ${notes}"
-  biberScript = biblio.exists() ? "biber ${tex.baseName}.bcf ; ${xelatexScript}" : ""
-  renameScript = params.outname ? "cp ${tex.baseName}.pdf ${params.outname}" : ""
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    NAMED WORKFLOWS FOR PIPELINE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
 
-  """
-  ${xelatexScript}
-  ${biberScript}
-  ${xelatexScript}
-  ${renameScript}
-  """
+//
+// WORKFLOW: Run main analysis pipeline depending on type of input
+//
+workflow MAXULYSSE_COMPILE-LATEX {
+
+    take:
+    samplesheet // channel: samplesheet read in from --input
+
+    main:
+
+    //
+    // WORKFLOW: Run pipeline
+    //
+    COMPILE-LATEX (
+        samplesheet
+    )
+    emit:
+    multiqc_report = COMPILE-LATEX.out.multiqc_report // channel: /path/to/multiqc_report.html
 }
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    RUN MAIN WORKFLOW
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
 
 workflow {
-  if (params.help) {
-    log.info(helpMessage())
-    exit(0)
-  }
-  if (!params.tex) {
-    log.error('No tex file, see --help for more information')
-    exit(1)
-  }
 
-  // Display start message
-  compileLatex_ascii()
-  minimalInformationMessage()
+    main:
+    //
+    // SUBWORKFLOW: Run initialisation tasks
+    //
+    PIPELINE_INITIALISATION (
+        params.version,
+        params.validate_params,
+        params.monochrome_logs,
+        args,
+        params.outdir,
+        params.input
+    )
 
-  // Create input channels
-  biblio_ch = Channel.fromPath(params.biblio)
-  pictures_ch = Channel.fromPath(params.pictures)
-  tex_ch = Channel.fromPath(params.tex)
-
-  // Run the main process
-  RUNXELATEX(biblio_ch, pictures_ch, tex_ch)
+    //
+    // WORKFLOW: Run main workflow
+    //
+    MAXULYSSE_COMPILE-LATEX (
+        PIPELINE_INITIALISATION.out.samplesheet
+    )
+    //
+    // SUBWORKFLOW: Run completion tasks
+    //
+    PIPELINE_COMPLETION (
+        params.email,
+        params.email_on_fail,
+        params.plaintext_email,
+        params.outdir,
+        params.monochrome_logs,
+        params.hook_url,
+        MAXULYSSE_COMPILE-LATEX.out.multiqc_report
+    )
 }
 
 /*
-================================================================================
-=                               F U N C T I O N S                              =
-================================================================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    THE END
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
-
-def compileLatex_ascii() {
-  println("")
-  println("     _.-´`-._                                 _ _          _       _")
-  println(" _.-´  T   X `-._                            (_) |        | |     | |")
-  println("|`-._    E   _.-´|   ___ ___  _ __ ___  _ __  _| | ___    | | __ _| |_ _____  __")
-  println("|--. `-.__.-´  . |  / __/ _ \\| '_ ` _ \\| '_ \\| | |/ _ \\___| |/ _` | __/ _ \\ \\/ /")
-  println("|   \\.---| . | | | | (_| (_) | | | | | | |_) | | |  __/___| | (_| | ||  __/>  <")
-  println("|---´\\   | | | | |  \\___\\___/|_| |_| |_| .__/|_|_|\\___|   |_|\\__,_|\\__\\___/_/\\_\\")
-  println(" `-._ `--| | '_.-´                     | |")
-  println("     `-._|_.-´                         |_|")
-  println("")
-  println("compile-latex ~ ${workflow.manifest.version}")
-}
-
-def helpMessage() {
-  // Display help message
-  log.info("    Usage:")
-  log.info("      nextflow run maxulysse/compile-latex --tex <input.tex>")
-  log.info("    --tex")
-  log.info("      Compile the given tex file")
-  log.info("    --biblio")
-  log.info("      Specify the bibliography")
-  log.info("      Default: biblio.bib")
-  log.info("    --notes")
-  log.info("      Generate notes with presentation")
-  log.info("    --pictures")
-  log.info("      Specify in which directory are the pictures")
-  log.info("      Default: pictures/")
-  log.info("    --tag")
-  log.info("      Specify with tag to use for the docker container")
-  log.info("    --outname")
-  log.info("      Specify output name")
-  log.info("    --outdir")
-  log.info("      Specify output directory")
-  log.info("    --help")
-  log.info("      You're reading it")
-}
-
-def minimalInformationMessage() {
-  // Minimal information message
-  log.info("Command Line: " + workflow.commandLine)
-  log.info("Launch Dir  : " + workflow.launchDir)
-  log.info("Work Dir    : " + workflow.workDir)
-  log.info("Container   : " + workflow.container)
-  log.info("Tex file(s) : " + params.tex)
-  if (file(params.biblio).exists()) {
-    log.info("Bibliography: " + params.biblio)
-  }
-  if (file(params.pictures).exists()) {
-    log.info("Pictures in : " + params.pictures)
-  }
-}

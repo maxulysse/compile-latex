@@ -1,0 +1,21 @@
+lint:
+  files_exist:
+    - .github/workflows/awsfulltest.yml
+    - .github/workflows/awstest.yml
+    - .github/workflows/ci.yml
+    - conf/modules.config
+  files_unchanged:
+    - .gitignore
+  modules_config: false
+  template_strings: false
+nf_core_version: 3.3.1
+repository_type: pipeline
+template:
+  author: Maxime Garcia
+  description: Simple beamer/latex compiler using Nextflow, provided with Docker container
+  force: false
+  is_nfcore: false
+  name: compile-latex
+  org: maxulysse
+  outdir: .
+  version: 3.5.0dev
