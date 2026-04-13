@@ -49,7 +49,7 @@ jobs:
           NFT_WORKDIR: ${{ env.NFT_WORKDIR }}
         run: |
           nf-test test \
-            --profile=+test \
+            --profile=+docker \
             --ci \
             --verbose \
             --tap=test.tap
