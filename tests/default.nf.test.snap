@@ -8,10 +8,10 @@
             ],
             "No stable content"
         ],
-        "timestamp": "2026-04-13T17:19:08.060434995",
+        "timestamp": "2026-04-13T17:39:03.029648843",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.03.2"
+            "nextflow": "25.10.2"
         }
     }
 }
