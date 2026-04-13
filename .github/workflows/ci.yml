@@ -19,6 +19,7 @@ jobs:
     name: Run pipeline with test data
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         NXF_VER:
           - "25.10.2"
