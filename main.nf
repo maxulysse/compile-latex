@@ -22,7 +22,7 @@
 */
 
 process RUNXELATEX {
-  tag { tex }
+  tag tex
 
   publishDir params.outdir, mode: 'link'
 
@@ -64,9 +64,9 @@ workflow {
   minimalInformationMessage()
 
   // Create input channels
-  biblio_ch = Channel.fromPath(params.biblio)
-  pictures_ch = Channel.fromPath(params.pictures)
-  tex_ch = Channel.fromPath(params.tex)
+  biblio_ch = channel.fromPath(params.biblio)
+  pictures_ch = channel.fromPath(params.pictures)
+  tex_ch = channel.fromPath(params.tex)
 
   // Run the main process
   RUNXELATEX(biblio_ch, pictures_ch, tex_ch)
