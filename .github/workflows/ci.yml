@@ -51,6 +51,5 @@ jobs:
           nf-test test \
             --profile=+test \
             --ci \
-            --changed-since HEAD^ \
             --verbose \
             --tap=test.tap
