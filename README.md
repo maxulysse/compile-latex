@@ -1,22 +1,20 @@
 # [![compile-latex](https://raw.githubusercontent.com/maxulysse/compile-latex/main/pictures/compile-latex_logo.png "compile-latex")](https://github.com/maxulysse/compile-latex/) compile-latex
 
-[![Version][version-badge]][version-link]
-[![License][license-badge]][license-link]
-[![Nextflow needed][nextflow-badge]][nextflow-link]
-[![Docker status][docker-badge]][docker-link]
-[![DOI][zenodo-badge]][zenodo-link]
+[![Version](https://img.shields.io/github/release/maxulysse/compile-latex.svg)](https://github.com/maxulysse/compile-latex/releases/latest)
+[![License](https://img.shields.io/github/license/maxulysse/compile-latex.svg)](https://github.com/maxulysse/compile-latex/blob/main/LICENSE)
+[![Nextflow needed](https://img.shields.io/badge/nextflow-%E2%89%A525.10.2-brightgreen.svg)](https://nextflow.io/)
+[![DOI](https://zenodo.org/badge/70491982.svg)](https://zenodo.org/badge/latestdoi/70491982)
 
-[LaTeX][latex-link] compiler in [Nextflow][nextflow-link] using [XeLaTex][xetex-link] within a Docker container.
-Made for compiling [Beamer][beamer-link] theme [Metropolis][metropolis-link], but works also with [moderncv][moderncv-link].
+[LaTeX](https://www.latex-project.org) compiler in [Nextflow](https://nextflow.io/) using [XeLaTex](http://xetex.sourceforge.net) within a Docker container.
+Made for compiling [Beamer](https://github.com/josephwright/beamer) theme [Metropolis](https://ctan.org/pkg/beamertheme-metropolis), but works also with [moderncv](https://ctan.org/pkg/moderncv).
 
 ## Usage
 
 ```console
 nextflow run maxulysse/compile-latex /
   --tex <file.tex> /
-  [--biblio <biblio.bib>] /
-  [--notes|--notesOnly] /
   [--outdir </path>] /
+  [--biblio <biblio.bib>] /
   [--outname <file.pdf>] /
   [--pictures </path/folder>] /
   [--tag <tag>]
@@ -33,14 +31,6 @@ Compile the given tex file
 Specify the bibliography
 
 Default: `biblio.bib`
-
-### --notes
-
-Generate notes with presentation
-
-### --notes_only
-
-Generate only the notes
 
 ### --pictures
 
@@ -75,21 +65,5 @@ You're reading it
 Based on `debian:stretch-slim` contain:
 
 - Fonts and LaTeX utilities for themes:
-  - [`metropolis`][metropolis-link]
-  - [`moderncv`][moderncv-link]
-
-[beamer-link]: https://github.com/josephwright/beamer
-[docker-badge]: https://img.shields.io/docker/automated/maxulysse/compile-latex.svg
-[docker-link]: https://hub.docker.com/r/maxulysse/compile-latex
-[latex-link]: https://www.latex-project.org
-[license-badge]: https://img.shields.io/github/license/maxulysse/compile-latex.svg
-[license-link]: https://github.com/maxulysse/compile-latex/blob/main/LICENSE
-[metropolis-link]: https://ctan.org/pkg/beamertheme-metropolis
-[moderncv-link]: https://ctan.org/pkg/moderncv
-[nextflow-badge]: https://img.shields.io/badge/nextflow-%E2%89%A518.10.1-brightgreen.svg
-[nextflow-link]: https://www.nextflow.io/
-[version-badge]: https://img.shields.io/github/release/maxulysse/compile-latex.svg
-[version-link]: https://github.com/maxulysse/compile-latex/releases/latest
-[xetex-link]: http://xetex.sourceforge.net
-[zenodo-badge]: https://zenodo.org/badge/70491982.svg
-[zenodo-link]: https://zenodo.org/badge/latestdoi/70491982
+  - [`metropolis`](https://ctan.org/pkg/beamertheme-metropolis)
+  - [`moderncv`](https://ctan.org/pkg/moderncv)
