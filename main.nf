@@ -17,35 +17,11 @@
     https://github.com/maxulysse/compile-latex/blob/main/LICENSE
 --------------------------------------------------------------------------------
     Process overview
-    - RUNXELATEX
+    - XELATEX
         Run xelatex, optionally biber and xelatex and finally xelatex again
 */
 
-process RUNXELATEX {
-    tag tex
-
-    container 'texlive/texlive:latest'
-
-    input:
-    path biblio
-    path pictures
-    path tex
-
-    output:
-    path "*.pdf", emit: pdf
-
-    script:
-    notes = params.notes ? "\"\\PassOptionsToClass{notes}{beamer}\\input{${tex}}\"" : ""
-    notes = params.notes_only ? notes : "\"\\PassOptionsToClass{notes=only}{beamer}\\input{${tex}}\""
-    xelatexScript = notes ? "xelatex -shell-escape ${tex}" : "xelatex -shell-escape ${notes}"
-    biberScript = biblio.exists() ? "biber ${tex.baseName}.bcf ; ${xelatexScript}" : ""
-
-    """
-    ${xelatexScript}
-    ${biberScript}
-    ${xelatexScript}
-    """
-}
+include { XELATEX } from './modules/local/xelatex'
 
 workflow {
 
@@ -64,15 +40,15 @@ workflow {
     minimalInformationMessage()
 
     // Create input channels
-    biblio_ch = channel.fromPath(params.biblio)
-    pictures_ch = channel.fromPath(params.pictures)
-    tex_ch = channel.fromPath(params.tex)
+    biblio = channel.fromPath(params.biblio, checkIfExists: true)
+    pictures = channel.fromPath(params.pictures, checkIfExists: true)
+    tex = channel.fromPath(params.tex, checkIfExists: true)
 
     // Run the main process
-    RUNXELATEX(biblio_ch, pictures_ch, tex_ch)
+    XELATEX(biblio, pictures, tex)
 
     publish:
-    pdf = RUNXELATEX.out.pdf
+    pdf = XELATEX.out.pdf
 }
 
 output {

@@ -4,11 +4,11 @@
             1,
             [
                 "pipeline_info",
-                "sample.pdf:md5,6f2f458722264192be71479eeee727e5"
+                "sample.pdf:md5,df393fbc6ff98356ff937599bc11e681"
             ],
             "No stable content"
         ],
-        "timestamp": "2026-04-13T16:52:18.328352952",
+        "timestamp": "2026-04-13T17:19:08.060434995",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.03.2"
