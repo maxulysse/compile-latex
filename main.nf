@@ -25,6 +25,7 @@ process RUNXELATEX {
   tag tex
 
   publishDir params.outdir, mode: 'link'
+  container 'texlive/texlive:latest'
 
   input:
   path biblio
@@ -51,7 +52,7 @@ process RUNXELATEX {
 
 workflow {
   if (params.help) {
-    log.info(helpMessage())
+    log.info(helpmessage())
     exit(0)
   }
   if (!params.tex) {
@@ -60,7 +61,7 @@ workflow {
   }
 
   // Display start message
-  compileLatex_ascii()
+  compilelatex_ascii()
   minimalInformationMessage()
 
   // Create input channels
@@ -78,7 +79,7 @@ workflow {
 ================================================================================
 */
 
-def compileLatex_ascii() {
+def compilelatex_ascii() {
   println("")
   println("     _.-´`-._                                 _ _          _       _")
   println(" _.-´  T   X `-._                            (_) |        | |     | |")
@@ -92,7 +93,7 @@ def compileLatex_ascii() {
   println("compile-latex ~ ${workflow.manifest.version}")
 }
 
-def helpMessage() {
+def helpmessage() {
   // Display help message
   log.info("    Usage:")
   log.info("      nextflow run maxulysse/compile-latex --tex <input.tex>")

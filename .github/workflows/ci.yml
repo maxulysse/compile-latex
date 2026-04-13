@@ -16,18 +16,16 @@ jobs:
     name: Run pipeline with test data
     runs-on: ubuntu-latest
     strategy:
-      # HACK Remove after DSL2 rewrite is done
-      fail-fast: false
       matrix:
         NXF_VER:
-          - "21.10.3"
+          - "25.10.2"
           - "latest-everything"
     steps:
       - name: Check out pipeline code
         uses: actions/checkout@v2
 
       - name: Install Nextflow
-        uses: nf-core/setup-nextflow@v1
+        uses: nf-core/setup-nextflow@v2
         with:
           version: "${{ matrix.NXF_VER }}"
 
