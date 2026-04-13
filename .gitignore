@@ -1,2 +1,5 @@
 .nextflow*
+.nf-test*
+null
+results
 work
