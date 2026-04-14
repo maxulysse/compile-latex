@@ -1,3 +1,9 @@
+<h1>
+  <picture>
+    <img alt="compile-latex" src="docs/pictures/compile-latex_logo.png">
+  </picture>
+</h1>
+
 # maxulysse/compile-latex
 
 [![Open in GitHub Codespaces](https://img.shields.io/badge/Open_In_GitHub_Codespaces-black?labelColor=grey&logo=github)](https://github.com/codespaces/new/maxulysse/compile-latex)
