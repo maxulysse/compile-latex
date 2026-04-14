@@ -69,7 +69,7 @@ workflow {
 output {
     pdf {
         path { file ->
-            file >> (params.outname ? "${params.outname}" : "${file.name}")
+            file >> (params.outname ? "xelatex/${params.outname}" : "xelatex/${file.name}")
         }
     }
 }
