@@ -4,14 +4,15 @@
             1,
             [
                 "pipeline_info",
-                "sample.pdf:md5,df393fbc6ff98356ff937599bc11e681"
+                "xelatex",
+                "xelatex/example.pdf"
             ],
             "No stable content"
         ],
-        "timestamp": "2026-04-13T17:39:03.029648843",
+        "timestamp": "2026-04-14T15:07:00.710883199",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "25.10.2"
+            "nextflow": "26.03.2"
         }
     }
 }

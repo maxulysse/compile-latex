@@ -1,5 +1,4 @@
 #!/usr/bin/env nextflow
-
 /*
 ================================================================================
 =                     C  O  M  P  I  L  E  -  L  A  T  E  X                    =
@@ -21,31 +20,47 @@
         Run xelatex, optionally biber and xelatex and finally xelatex again
 */
 
-include { XELATEX } from './modules/local/xelatex'
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    IMPORT FUNCTIONS / MODULES / SUBWORKFLOWS / WORKFLOWS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
+
+include { XELATEX                 } from './modules/local/xelatex'
+include { PIPELINE_INITIALISATION } from './subworkflows/local/utils_nfcore_compile-latex_pipeline'
+include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_compile-latex_pipeline'
+
+
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    RUN MAIN WORKFLOW
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
 
 workflow {
 
     main:
-    if (params.help) {
-        log.info(helpmessage())
-        exit(0)
-    }
-    if (!params.tex) {
-        log.error('No tex file, see --help for more information')
-        exit(1)
-    }
+    // SUBWORKFLOW: Run initialisation tasks
+    PIPELINE_INITIALISATION(
+        params.version,
+        params.validate_params,
+        args,
+        params.outdir,
+        params.input,
+        params.help,
+        params.help_full,
+        params.show_hidden,
+    )
 
-    // Display start message
-    compilelatex_ascii()
-    minimalInformationMessage()
+    // WORKFLOW: Run main workflow
+    XELATEX(
+        channel.fromPath(params.input, checkIfExists: true),
+        channel.fromPath(params.biblio, checkIfExists: true),
+        channel.fromPath(params.pictures, checkIfExists: true),
+    )
 
-    // Create input channels
-    biblio = channel.fromPath(params.biblio, checkIfExists: true)
-    pictures = channel.fromPath(params.pictures, checkIfExists: true)
-    tex = channel.fromPath(params.tex, checkIfExists: true)
-
-    // Run the main process
-    XELATEX(biblio, pictures, tex)
+    // SUBWORKFLOW: Run completion tasks
+    PIPELINE_COMPLETION(params.monochrome_logs)
 
     publish:
     pdf = XELATEX.out.pdf
@@ -54,63 +69,7 @@ workflow {
 output {
     pdf {
         path { file ->
-            file >> (params.outname ? "${params.outname}" : "${file.name}")
+            file >> (params.outname ? "xelatex/${params.outname}" : "xelatex/${file.name}")
         }
-    }
-}
-
-/*
-================================================================================
-=                               F U N C T I O N S                              =
-================================================================================
-*/
-
-def compilelatex_ascii() {
-    println("")
-    println("     _.-´`-._                                 _ _          _       _")
-    println(" _.-´  T   X `-._                            (_) |        | |     | |")
-    println("|`-._    E   _.-´|   ___ ___  _ __ ___  _ __  _| | ___    | | __ _| |_ _____  __")
-    println("| -. `-.__.-´  . |  / __/ _ \\| '_ ` _ \\| '_ \\| | |/ _ \\___| |/ _` | __/ _ \\ \\/ /")
-    println("|   \\.-- | . | | | | (_| (_) | | | | | | |_) | | |  __/___| | (_| | ||  __/>  <")
-    println("| --´\\   | | | | |  \\___\\___/|_| |_| |_| .__/|_|_|\\___|   |_|\\__,_|\\__\\___/_/\\_\\")
-    println(" `-._ `- | | '_.-´                     | |")
-    println("     `-._|_.-´                         |_|")
-    println("")
-    println("compile-latex ~ ${workflow.manifest.version}")
-}
-
-def helpmessage() {
-    // Display help message
-    log.info("    Usage:")
-    log.info("      nextflow run maxulysse/compile-latex --tex <input.tex>")
-    log.info("    --tex")
-    log.info("      Compile the given tex file")
-    log.info("    --biblio")
-    log.info("      Specify the bibliography")
-    log.info("      Default: biblio.bib")
-    log.info("    --notes")
-    log.info("      Generate notes with presentation")
-    log.info("    --pictures")
-    log.info("      Specify in which directory are the pictures")
-    log.info("      Default: pictures/")
-    log.info("    --outname")
-    log.info("      Specify output name")
-    log.info("    --outdir")
-    log.info("      Specify output directory")
-    log.info("    --help")
-    log.info("      You're reading it")
-}
-
-def minimalInformationMessage() {
-    // Minimal information message
-    log.info("Command Line: " + workflow.commandLine)
-    log.info("Launch Dir  : " + workflow.launchDir)
-    log.info("Work Dir    : " + workflow.workDir)
-    log.info("Tex file(s) : " + params.tex)
-    if (file(params.biblio).exists()) {
-        log.info("Bibliography: " + params.biblio)
-    }
-    if (file(params.pictures).exists()) {
-        log.info("Pictures in : " + params.pictures)
     }
 }

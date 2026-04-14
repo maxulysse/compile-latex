@@ -1,12 +1,12 @@
 process XELATEX {
     tag { tex }
 
-    container 'texlive/texlive:latest'
+    container 'docker.io/texlive/texlive:latest'
 
     input:
+    path tex
     path biblio
     path pictures
-    path tex
 
     output:
     path "*.pdf", emit: pdf
