@@ -15,6 +15,7 @@ lint:
     - docs/images/nf-core-compile-latex_logo_dark.png
     - docs/images/nf-core-compile-latex_logo_light.png
   files_unchanged:
+    - .github/ISSUE_TEMPLATE/bug_report.yml
     - .github/workflows/linting.yml
     - .github/workflows/linting_comment.yml
   modules_config: false
