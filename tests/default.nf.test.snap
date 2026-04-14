@@ -1,0 +1,17 @@
+{
+    "-profile test": {
+        "content": [
+            1,
+            [
+                "pipeline_info",
+                "sample.pdf"
+            ],
+            "No stable content"
+        ],
+        "timestamp": "2026-04-14T12:58:27.90141005",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "26.03.2"
+        }
+    }
+}
