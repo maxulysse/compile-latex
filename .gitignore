@@ -8,4 +8,4 @@ testing*
 *.pyc
 null/
 .nf-test*
-!results/xelatex/example.pdf
+!**/example.pdf
