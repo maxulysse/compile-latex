@@ -11,15 +11,12 @@
 include { checkCondaChannels   } from 'plugin/nf-core-utils'
 include { checkConfigProvided  } from 'plugin/nf-core-utils'
 include { checkProfileProvided } from 'plugin/nf-core-utils'
-include { completionEmail      } from 'plugin/nf-core-utils'
 include { completionSummary    } from 'plugin/nf-core-utils'
 include { dumpParametersToJSON } from 'plugin/nf-core-utils'
 include { getWorkflowVersion   } from 'plugin/nf-core-utils'
 
 include { paramsHelp           } from 'plugin/nf-schema'
 include { paramsSummaryLog     } from 'plugin/nf-schema'
-include { paramsSummaryMap     } from 'plugin/nf-schema'
-include { samplesheetToList    } from 'plugin/nf-schema'
 include { validateParameters   } from 'plugin/nf-schema'
 
 /*
@@ -34,6 +31,7 @@ workflow PIPELINE_INITIALISATION {
     validate_params // boolean: Boolean whether to validate parameters against the schema at runtime
     nextflow_cli_args //   array: List of positional nextflow CLI args
     outdir //  string: The output directory where the results will be saved
+    input //  string: Path to input samplesheet
     help // boolean: Display help message and exit
     help_full // boolean: Show the full help message
     show_hidden // boolean: Show hidden parameters in the help message

@@ -21,7 +21,7 @@ lint:
   multiqc_config: false
   nf_test_content: false
   template_strings: false
-nf_core_version: 3.3.1
+nf_core_version: 3.5.2
 repository_type: pipeline
 template:
   author: Maxime Garcia
