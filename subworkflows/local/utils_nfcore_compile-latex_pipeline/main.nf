@@ -8,7 +8,6 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-include { checkCondaChannels   } from 'plugin/nf-core-utils'
 include { checkConfigProvided  } from 'plugin/nf-core-utils'
 include { checkProfileProvided } from 'plugin/nf-core-utils'
 include { completionSummary    } from 'plugin/nf-core-utils'
@@ -46,11 +45,6 @@ workflow PIPELINE_INITIALISATION {
     // Dump pipeline parameters to a JSON file
     if (outdir) {
         dumpParametersToJSON(outdir, params)
-    }
-
-    // When running with Conda, warn if channels have not been set-up appropriately
-    if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
-        checkCondaChannels()
     }
 
     checkConfigProvided()
