@@ -26,7 +26,7 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-include { COMPILELATEX            } from './workflows/compilelatex'
+include { XELATEX                 } from './modules/local/xelatex'
 include { PIPELINE_INITIALISATION } from './subworkflows/local/utils_nfcore_compile-latex_pipeline'
 include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_compile-latex_pipeline'
 
@@ -53,7 +53,7 @@ workflow {
     )
 
     // WORKFLOW: Run main workflow
-    COMPILELATEX(
+    XELATEX(
         channel.fromPath(params.input, checkIfExists: true),
         channel.fromPath(params.biblio, checkIfExists: true),
         channel.fromPath(params.pictures, checkIfExists: true),
@@ -63,7 +63,7 @@ workflow {
     PIPELINE_COMPLETION(params.monochrome_logs)
 
     publish:
-    pdf = COMPILELATEX.out.pdf
+    pdf = XELATEX.out.pdf
 }
 
 output {
