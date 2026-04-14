@@ -12,11 +12,14 @@ process XELATEX {
     path "*.pdf", emit: pdf
 
     script:
-    biberScript = biblio.exists() ? "biber ${tex.baseName}.bcf ; xelatex -shell-escape ${tex}" : ""
-
     """
     xelatex -shell-escape ${tex}
-    ${biberScript}
+
+    if [[ -f ${biblio} ]]; then
+        biber ${tex.baseName}.bcf
+        xelatex -shell-escape ${tex}
+    fi
+
     xelatex -shell-escape ${tex}
     """
 }
