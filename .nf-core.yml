@@ -1,0 +1,42 @@
+lint:
+  files_exist:
+    - .github/ISSUE_TEMPLATE/config.yml
+    - .github/workflows/awsfulltest.yml
+    - .github/workflows/awstest.yml
+    - .github/workflows/ci.yml
+    - CODE_OF_CONDUCT.md
+    - assets/email_template.html
+    - assets/email_template.txt
+    - assets/multiqc_config.yml
+    - assets/nf-core-compile-latex_logo_light.png
+    - assets/sendmail_template.txt
+    - conf/igenomes.config
+    - conf/igenomes_ignored.config
+    - conf/modules.config
+    - conf/test_full.config
+    - docs/README.md
+    - docs/images/nf-core-compile-latex_logo_dark.png
+    - docs/images/nf-core-compile-latex_logo_light.png
+    - docs/output.md
+    - docs/usage.md
+  files_unchanged:
+    - .github/ISSUE_TEMPLATE/bug_report.yml
+    - .github/workflows/linting.yml
+    - .github/workflows/linting_comment.yml
+  modules_config: false
+  multiqc_config: false
+  nf_test_content: false
+  pipeline_name_conventions: false
+  schema_lint: false
+  template_strings: false
+nf_core_version: 3.5.2
+repository_type: pipeline
+template:
+  author: Maxime Garcia
+  description: Simple beamer/latex compiler using Nextflow, provided with Docker container
+  force: false
+  is_nfcore: false
+  name: compile-latex
+  org: maxulysse
+  outdir: .
+  version: 3.0.0
