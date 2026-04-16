@@ -22,8 +22,8 @@
             "@id": "./",
             "@type": "Dataset",
             "creativeWorkStatus": "Stable",
-            "datePublished": "2026-04-14T11:10:45+00:00",
-            "description": "<h1>\n  <picture>\n    <img alt=\"compile-latex\" src=\"docs/pictures/compile-latex_logo.png\">\n  </picture>\n</h1>\n\n# maxulysse/compile-latex\n\n[![Open in GitHub Codespaces](https://img.shields.io/badge/Open_In_GitHub_Codespaces-black?labelColor=grey&logo=github)](https://github.com/codespaces/new/maxulysse/compile-latex)\n[![GitHub Actions CI Status](https://github.com/maxulysse/compile-latex/actions/workflows/nf-test.yml/badge.svg)](https://github.com/maxulysse/compile-latex/actions/workflows/nf-test.yml)\n[![GitHub Actions Linting Status](https://github.com/maxulysse/compile-latex/actions/workflows/linting.yml/badge.svg)](https://github.com/maxulysse/compile-latex/actions/workflows/linting.yml)[![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.1155669-1073c8?labelColor=000000)](https://doi.org/10.5281/zenodo.1155669)\n[![nf-test](https://img.shields.io/badge/unit_tests-nf--test-337ab7.svg)](https://www.nf-test.com)\n\n[![Nextflow](https://img.shields.io/badge/version-%E2%89%A525.10.4-green?style=flat&logo=nextflow&logoColor=white&color=%230DC09D&link=https%3A%2F%2Fnextflow.io)](https://www.nextflow.io/)\n[![nf-core template version](https://img.shields.io/badge/nf--core_template-3.5.2-green?style=flat&logo=nfcore&logoColor=white&color=%2324B064&link=https%3A%2F%2Fnf-co.re)](https://github.com/nf-core/tools/releases/tag/3.5.2)\n[![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)\n[![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)\n[![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)\n[![Launch on Seqera Platform](https://img.shields.io/badge/Launch%20%F0%9F%9A%80-Seqera%20Platform-%234256e7)](https://cloud.seqera.io/launch?pipeline=https://github.com/maxulysse/compile-latex)\n\n## Introduction\n\n**maxulysse/compile-latex** is a simple pipeline that compiles LaTeX documents into PDF format using XeLaTeX.\n\n## Usage\n\n> [!NOTE]\n> If you are new to Nextflow and nf-core, please refer to [this page](https://nf-co.re/docs/usage/installation) on how to set-up Nextflow. Make sure to [test your setup](https://nf-co.re/docs/usage/introduction#how-to-run-a-pipeline) with `-profile test` before running the workflow on actual data.\n\nProvide the input tex file with the `--input` parameter.\n\nNow, you can run the pipeline using:\n\n```bash\nnextflow run maxulysse/compile-latex \\\n   -profile <docker/singularity/.../institute> \\\n   --input file.tex \\\n   --outdir <OUTDIR>\n```\n\n> [!WARNING]\n> Please provide pipeline parameters via the CLI or Nextflow `-params-file` option. Custom config files including those provided by the `-c` Nextflow option can be used to provide any configuration _**except for parameters**_; see [docs](https://nf-co.re/docs/usage/getting_started/configuration#custom-configuration-files).\n\n## Credits\n\nmaxulysse/compile-latex was originally written by Maxime U Garcia for its own use.\nAnd testing around things with Nextflow and nf-core.\n\n## Contributions and Support\n\nIf you would like to contribute to this pipeline, please see the [contributing guidelines](.github/CONTRIBUTING.md).\n\n## Citations\n\nIf you use maxulysse/compile-latex for your analysis, please cite it using the following doi: [10.5281/zenodo.1155669](https://doi.org/10.5281/zenodo.1155669)\n\nThis pipeline uses code and infrastructure developed and maintained by the [nf-core](https://nf-co.re) community, reused here under the [MIT license](https://github.com/nf-core/tools/blob/main/LICENSE).\n\n> **The nf-core framework for community-curated bioinformatics pipelines.**\n>\n> Philip Ewels, Alexander Peltzer, Sven Fillinger, Harshil Patel, Johannes Alneberg, Andreas Wilm, Maxime Ulysse Garcia, Paolo Di Tommaso & Sven Nahnsen.\n>\n> _Nat Biotechnol._ 2020 Feb 13. doi: [10.1038/s41587-020-0439-x](https://dx.doi.org/10.1038/s41587-020-0439-x).\n",
+            "datePublished": "2026-04-16T12:20:56+00:00",
+            "description": "<h1>\n  <picture>\n    <img alt=\"compile-latex\" src=\"assets/pictures/compile-latex_logo.png\">\n  </picture>\n</h1>\n\n# maxulysse/compile-latex\n\n[![Open in GitHub Codespaces](https://img.shields.io/badge/Open_In_GitHub_Codespaces-black?labelColor=grey&logo=github)](https://github.com/codespaces/new/maxulysse/compile-latex)\n[![GitHub Actions CI Status](https://github.com/maxulysse/compile-latex/actions/workflows/nf-test.yml/badge.svg)](https://github.com/maxulysse/compile-latex/actions/workflows/nf-test.yml)\n[![GitHub Actions Linting Status](https://github.com/maxulysse/compile-latex/actions/workflows/linting.yml/badge.svg)](https://github.com/maxulysse/compile-latex/actions/workflows/linting.yml)[![Cite with Zenodo](http://img.shields.io/badge/DOI-10.5281/zenodo.1155669-1073c8?labelColor=000000)](https://doi.org/10.5281/zenodo.1155669)\n[![nf-test](https://img.shields.io/badge/unit_tests-nf--test-337ab7.svg)](https://www.nf-test.com)\n\n[![Nextflow](https://img.shields.io/badge/version-%E2%89%A525.10.4-green?style=flat&logo=nextflow&logoColor=white&color=%230DC09D&link=https%3A%2F%2Fnextflow.io)](https://www.nextflow.io/)\n[![nf-core template version](https://img.shields.io/badge/nf--core_template-3.5.2-green?style=flat&logo=nfcore&logoColor=white&color=%2324B064&link=https%3A%2F%2Fnf-co.re)](https://github.com/nf-core/tools/releases/tag/3.5.2)\n[![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)\n[![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)\n[![Launch on Seqera Platform](https://img.shields.io/badge/Launch%20%F0%9F%9A%80-Seqera%20Platform-%234256e7)](https://cloud.seqera.io/launch?pipeline=https://github.com/maxulysse/compile-latex)\n\n## Introduction\n\n**maxulysse/compile-latex** is a lightweight Nextflow pipeline that compiles LaTeX documents into PDF using XeLaTeX.\n\n## Usage\n\n> [!NOTE]\n> If you are new to Nextflow and nf-core, please refer to [this page](https://nf-co.re/docs/usage/installation) on how to set-up Nextflow. Make sure to [test your setup](https://nf-co.re/docs/usage/introduction#how-to-run-a-pipeline) with `-profile test` before running the workflow on actual data.\n\nProvide the input tex file with the `--input` parameter.\n\nRun the pipeline using:\n\n```bash\nnextflow run maxulysse/compile-latex \\\n   -profile <docker/singularity/.../institute> \\\n   --input file.tex \\\n   --outdir <OUTDIR>\n```\n\n> [!WARNING]\n> Please provide pipeline parameters via the CLI or Nextflow `-params-file` option. Custom config files including those provided by the `-c` Nextflow option can be used to provide any configuration _**except for parameters**_; see [docs](https://nf-co.re/docs/usage/getting_started/configuration#custom-configuration-files).\n\n## Main parameters\n\n- `--input`: Path to the input `.tex` file.\n- `--outdir`: Output directory for results and reports.\n- `--outname`: Optional output PDF filename.\n- `--biblio`: Path to bibliography file (default: `assets/biblio.bib`).\n- `--pictures`: Path to image folder (default: `assets/pictures`).\n\n## Output\n\nAfter completion, the output directory contains:\n\n- Compiled PDF file (`<FILE>.pdf` or `--outname` if provided)\n- `pipeline_info/` with execution reports (`execution_report`, `execution_timeline`, `execution_trace`, `pipeline_dag`) and run parameters (`params.json`)\n\nExample: [example.pdf](https://github.com/maxulysse/compile-latex/blob/main/example.pdf)\n\n## Credits\n\nmaxulysse/compile-latex was originally written by Maxime U Garcia for his own usage.\nAnd testing around things with Nextflow and nf-core.\n\n## Contributions and Support\n\nIf you would like to contribute to this pipeline, please see the [contributing guidelines](.github/CONTRIBUTING.md).\n\n## Citations\n\nIf you use maxulysse/compile-latex for your analysis, please cite it using the following doi: [10.5281/zenodo.1155669](https://doi.org/10.5281/zenodo.1155669)\n\nThis pipeline uses code and infrastructure developed and maintained by the [nf-core](https://nf-co.re) community, reused here under the [MIT license](https://github.com/nf-core/tools/blob/main/LICENSE).\n\n> **The nf-core framework for community-curated bioinformatics pipelines.**\n>\n> Philip Ewels, Alexander Peltzer, Sven Fillinger, Harshil Patel, Johannes Alneberg, Andreas Wilm, Maxime Ulysse Garcia, Paolo Di Tommaso & Sven Nahnsen.\n>\n> _Nat Biotechnol._ 2020 Feb 13. doi: [10.1038/s41587-020-0439-x](https://dx.doi.org/10.1038/s41587-020-0439-x).\n",
             "hasPart": [
                 {
                     "@id": "main.nf"
@@ -35,16 +35,10 @@
                     "@id": "conf/"
                 },
                 {
-                    "@id": "docs/"
-                },
-                {
                     "@id": "modules/"
                 },
                 {
-                    "@id": "modules/nf-core/"
-                },
-                {
-                    "@id": "workflows/"
+                    "@id": "modules/local/"
                 },
                 {
                     "@id": "subworkflows/"
@@ -71,12 +65,6 @@
                     "@id": "modules.json"
                 },
                 {
-                    "@id": "docs/usage.md"
-                },
-                {
-                    "@id": "docs/output.md"
-                },
-                {
                     "@id": ".nf-core.yml"
                 },
                 {
@@ -93,7 +81,7 @@
             },
             "mentions": [
                 {
-                    "@id": "#ef65e52c-94a9-4947-9002-493e50cbe853"
+                    "@id": "#5199c481-2f50-4599-ab6b-4d8c2da257ed"
                 }
             ],
             "name": "maxulysse/compile-latex"
@@ -123,10 +111,13 @@
             "creator": [
                 {
                     "@id": "#max.u.garcia@gmail.com"
+                },
+                {
+                    "@id": "#max.u.garcia@gmail.com"
                 }
             ],
             "dateCreated": "",
-            "dateModified": "2026-04-14T13:10:45Z",
+            "dateModified": "2026-04-16T14:20:56Z",
             "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalWorkflow/1.0-RELEASE/",
             "keywords": [
                 "nf-core",
@@ -134,11 +125,6 @@
             ],
             "license": [
                 "MIT"
-            ],
-            "maintainer": [
-                {
-                    "@id": "#max.u.garcia@gmail.com"
-                }
             ],
             "name": [
                 "maxulysse/compile-latex"
@@ -167,14 +153,14 @@
             "url": {
                 "@id": "https://www.nextflow.io/"
             },
-            "version": "!>=25.04.0"
+            "version": "!>=25.10.4"
         },
         {
-            "@id": "#ef65e52c-94a9-4947-9002-493e50cbe853",
+            "@id": "#5199c481-2f50-4599-ab6b-4d8c2da257ed",
             "@type": "TestSuite",
             "instance": [
                 {
-                    "@id": "#5dbb00fd-40b3-4d84-892b-cc72322c45d1"
+                    "@id": "#afab23c7-ffd7-4107-8524-c67e422ca08e"
                 }
             ],
             "mainEntity": {
@@ -183,7 +169,7 @@
             "name": "Test suite for maxulysse/compile-latex"
         },
         {
-            "@id": "#5dbb00fd-40b3-4d84-892b-cc72322c45d1",
+            "@id": "#afab23c7-ffd7-4107-8524-c67e422ca08e",
             "@type": "TestInstance",
             "name": "GitHub Actions workflow for testing maxulysse/compile-latex",
             "resource": "repos/maxulysse/compile-latex/actions/workflows/nf-test.yml",
@@ -211,24 +197,14 @@
             "description": "Configuration files"
         },
         {
-            "@id": "docs/",
-            "@type": "Dataset",
-            "description": "Markdown files for documenting the pipeline"
-        },
-        {
             "@id": "modules/",
             "@type": "Dataset",
             "description": "Modules used by the pipeline"
         },
         {
-            "@id": "modules/nf-core/",
+            "@id": "modules/local/",
             "@type": "Dataset",
-            "description": "nf-core modules"
-        },
-        {
-            "@id": "workflows/",
-            "@type": "Dataset",
-            "description": "Main pipeline workflows to be executed in main.nf"
+            "description": "Pipeline-specific modules"
         },
         {
             "@id": "subworkflows/",
@@ -269,16 +245,6 @@
             "@id": "modules.json",
             "@type": "File",
             "description": "Version information for modules from nf-core/modules"
-        },
-        {
-            "@id": "docs/usage.md",
-            "@type": "File",
-            "description": "Usage documentation"
-        },
-        {
-            "@id": "docs/output.md",
-            "@type": "File",
-            "description": "Output documentation"
         },
         {
             "@id": ".nf-core.yml",

@@ -1,6 +1,6 @@
 <h1>
   <picture>
-    <img alt="compile-latex" src="docs/pictures/compile-latex_logo.png">
+    <img alt="compile-latex" src="assets/pictures/compile-latex_logo.png">
   </picture>
 </h1>
 
@@ -19,7 +19,7 @@
 
 ## Introduction
 
-**maxulysse/compile-latex** is a simple pipeline that compiles LaTeX documents into PDF format using XeLaTeX.
+**maxulysse/compile-latex** is a lightweight Nextflow pipeline that compiles LaTeX documents into PDF using XeLaTeX.
 
 ## Usage
 
@@ -28,7 +28,7 @@
 
 Provide the input tex file with the `--input` parameter.
 
-Now, you can run the pipeline using:
+Run the pipeline using:
 
 ```bash
 nextflow run maxulysse/compile-latex \
@@ -39,6 +39,23 @@ nextflow run maxulysse/compile-latex \
 
 > [!WARNING]
 > Please provide pipeline parameters via the CLI or Nextflow `-params-file` option. Custom config files including those provided by the `-c` Nextflow option can be used to provide any configuration _**except for parameters**_; see [docs](https://nf-co.re/docs/usage/getting_started/configuration#custom-configuration-files).
+
+## Main parameters
+
+- `--input`: Path to the input `.tex` file.
+- `--outdir`: Output directory for results and reports.
+- `--outname`: Optional output PDF filename.
+- `--biblio`: Path to bibliography file (default: `assets/biblio.bib`).
+- `--pictures`: Path to image folder (default: `assets/pictures`).
+
+## Output
+
+After completion, the output directory contains:
+
+- Compiled PDF file (`<FILE>.pdf` or `--outname` if provided)
+- `pipeline_info/` with execution reports (`execution_report`, `execution_timeline`, `execution_trace`, `pipeline_dag`) and run parameters (`params.json`)
+
+Example: [example.pdf](https://github.com/maxulysse/compile-latex/blob/main/example.pdf)
 
 ## Credits
 
