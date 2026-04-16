@@ -42,7 +42,7 @@ nextflow run maxulysse/compile-latex \
 
 ## Credits
 
-maxulysse/compile-latex was originally written by Maxime U Garcia for its own use.
+maxulysse/compile-latex was originally written by Maxime U Garcia for his own usage.
 And testing around things with Nextflow and nf-core.
 
 ## Contributions and Support
