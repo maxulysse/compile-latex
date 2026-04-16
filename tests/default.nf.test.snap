@@ -3,16 +3,15 @@
         "content": [
             1,
             [
-                "pipeline_info",
-                "xelatex",
-                "xelatex/example.pdf"
+                "example.pdf:md5,ffcf9a851b0cdd773212845ccf64ffc6",
+                "pipeline_info"
             ],
             "No stable content"
         ],
-        "timestamp": "2026-04-14T15:07:00.710883199",
+        "timestamp": "2026-04-16T16:00:51.753538896",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.03.2"
+            "nextflow": "25.10.4"
         }
     }
 }

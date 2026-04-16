@@ -10,10 +10,15 @@ lint:
     - assets/multiqc_config.yml
     - assets/nf-core-compile-latex_logo_light.png
     - assets/sendmail_template.txt
+    - conf/igenomes.config
+    - conf/igenomes_ignored.config
     - conf/modules.config
     - conf/test_full.config
+    - docs/README.md
     - docs/images/nf-core-compile-latex_logo_dark.png
     - docs/images/nf-core-compile-latex_logo_light.png
+    - docs/output.md
+    - docs/usage.md
   files_unchanged:
     - .github/ISSUE_TEMPLATE/bug_report.yml
     - .github/workflows/linting.yml
@@ -21,6 +26,8 @@ lint:
   modules_config: false
   multiqc_config: false
   nf_test_content: false
+  pipeline_name_conventions: false
+  schema_lint: false
   template_strings: false
 nf_core_version: 3.5.2
 repository_type: pipeline
