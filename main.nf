@@ -55,8 +55,9 @@ workflow {
     // WORKFLOW: Run main workflow
     XELATEX(
         channel.fromPath(params.input, checkIfExists: true),
-        channel.fromPath(params.biblio, checkIfExists: true),
-        channel.fromPath(params.pictures, checkIfExists: true),
+        params.biblio ? channel.fromPath(params.biblio, checkIfExists: true) : [],
+        params.pictures ? channel.fromPath(params.pictures, checkIfExists: true) : [],
+        params.github_avatar ? channel.fromPath(params.github_avatar, checkIfExists: true) : [],
     )
 
     // SUBWORKFLOW: Run completion tasks

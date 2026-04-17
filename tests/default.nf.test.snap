@@ -3,15 +3,15 @@
         "content": [
             1,
             [
-                "example.pdf:md5,ffcf9a851b0cdd773212845ccf64ffc6",
+                "example.pdf",
                 "pipeline_info"
             ],
             "No stable content"
         ],
-        "timestamp": "2026-04-16T16:00:51.753538896",
+        "timestamp": "2026-04-17T11:28:27.388788946",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "25.10.4"
+            "nextflow": "26.03.2"
         }
     }
 }
