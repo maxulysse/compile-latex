@@ -52,17 +52,19 @@ workflow PIPELINE_INITIALISATION {
     // Validate parameters and generate parameter summary to stdout
     //
     before_text = """
+-\033[2m----------------------------------------------------\033[0m-
 
-            _.-´`-._                                 _ _          _       _
-        _.-´  T   X `-._                            (_) |        | |     | |
-       |`-._    E   _.-´|   ___ ___  _ __ ___  _ __  _| | ___    | | __ _| |_ _____  __
-       | -. `-.__.-´  . |  / __/ _ \\| '_ ` _ \\| '_ \\| | |/ _ \\___| |/ _` | __/ _ \\ \\/ /
-       |   \\.-- | . | | | | (_| (_) | | | | | | |_) | | |  __/___| | (_| | ||  __/>  <
-       | --´\\   | | | | |  \\___\\___/|_| |_| |_| .__/|_|_|\\___|   |_|\\__,_|\\__\\___/_/\\_\\
-        `-._ `- | | '_.-´                     | |
-            `-._|_.-´                         |_|
+       _.-´`-._                                 _ _          _       _
+   _.-´  T   X `-._                            (_) |        | |     | |
+  |`-._    E   _.-´|   ___ ___  _ __ ___  _ __  _| | ___    | | __ _| |_ _____  __
+  | -. `-.__.-´  . |  / __/ _ \\| '_ ` _ \\| '_ \\| | |/ _ \\___| |/ _` | __/ _ \\ \\/ /
+  |   \\.-- | . | | | | (_| (_) | | | | | | |_) | | |  __/___| | (_| | ||  __/>  <
+  | --´\\   | | | | |  \\___\\___/|_| |_| |_| .__/|_|_|\\___|   |_|\\__,_|\\__\\___/_/\\_\\
+   `-._ `- | | '_.-´                     | |
+       `-._|_.-´                         |_|
 
-       compile-latex ~ ${workflow.manifest.version}
+  maxulysse/compile-latex ~ ${workflow.manifest.version}
+-\033[2m----------------------------------------------------\033[0m-
 """
     after_text = """${workflow.manifest.doi ? "\n* The pipeline\n" : ""}${workflow.manifest.doi.tokenize(",").collect { doi -> "    https://doi.org/${doi.trim().replace('https://doi.org/', '')}" }.join("\n")}${workflow.manifest.doi ? "\n" : ""}
 * The nf-core framework
@@ -98,6 +100,10 @@ workflow PIPELINE_INITIALISATION {
     //
 
     summary_options = [:]
+    if (null) {
+        summary_options << [parametersSchema: null]
+    }
+    log.info(before_text)
     log.info(paramsSummaryLog(summary_options, workflow))
     log.info(after_text)
 

@@ -7,6 +7,7 @@ process XELATEX {
     path tex
     path biblio
     path pictures
+    path github_avatar, stageAs: 'github_avatar.jpeg'
 
     output:
     path "*.pdf", emit: pdf

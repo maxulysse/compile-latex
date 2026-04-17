@@ -32,23 +32,22 @@
                     "format": "directory-path",
                     "description": "The output directory where the results will be saved. You have to use absolute paths to storage on Cloud infrastructure.",
                     "fa_icon": "fas fa-folder-open"
-                }
-            }
-        },
-        "reference_options": {
-            "title": "Reference options",
-            "type": "object",
-            "fa_icon": "fas fa-dna",
-            "description": "Related files and options required for the workflow.",
-            "properties": {
+                },
                 "biblio": {
                     "type": "string",
                     "format": "file-path",
                     "exists": true,
                     "mimetype": "text/plain",
                     "pattern": "^\\S+\\.bib?$",
-                    "description": "Path to FASTA genome file.",
-                    "help_text": "This parameter is *mandatory* if `--genome` is not specified. If you don't have a BWA index available this will be generated for you automatically. Combine with `--save_reference` to save BWA index for future runs.",
+                    "description": "Path to biblio file.",
+                    "fa_icon": "far fa-file-code"
+                },
+                "github_avatar": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "mimetype": "text/plain",
+                    "description": "html link github avatar",
                     "fa_icon": "far fa-file-code"
                 },
                 "pictures": {
@@ -56,8 +55,7 @@
                     "format": "folder-path",
                     "exists": true,
                     "mimetype": "text/plain",
-                    "description": "Path to FASTA genome file.",
-                    "help_text": "This parameter is *mandatory* if `--genome` is not specified. If you don't have a BWA index available this will be generated for you automatically. Combine with `--save_reference` to save BWA index for future runs.",
+                    "description": "Path to picture folder.",
                     "fa_icon": "far fa-file-code"
                 }
             }
@@ -169,9 +167,6 @@
     "allOf": [
         {
             "$ref": "#/$defs/input_output_options"
-        },
-        {
-            "$ref": "#/$defs/reference_options"
         },
         {
             "$ref": "#/$defs/institutional_config_options"
