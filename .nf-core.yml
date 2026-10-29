@@ -3,6 +3,7 @@ lint:
     - .github/ISSUE_TEMPLATE/config.yml
     - .github/workflows/awsfulltest.yml
     - .github/workflows/awstest.yml
+    - .github/workflows/branch.yml
     - .github/workflows/ci.yml
     - CODE_OF_CONDUCT.md
     - assets/email_template.html

@@ -6,7 +6,7 @@ Many thanks for contributing to maxulysse/compile-latex!
 Please fill in the appropriate checklist below (delete whatever is not relevant).
 These are the most common things requested on pull requests (PRs).
 
-Remember that PRs should be made against the dev branch, unless you're preparing a pipeline release.
+Remember that PRs should be made against the `main` branch.
 
 Learn more about contributing: [CONTRIBUTING.md](https://github.com/maxulysse/compile-latex/tree/master/.github/CONTRIBUTING.md)
 -->
