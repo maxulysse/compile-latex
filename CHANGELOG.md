@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [#26](https://github.com/maxulysse/compile-latex/pull/26) - Removed `.github/workflows/branch.yml` (no longer needed with direct-to-main workflow)
 - [#26](https://github.com/maxulysse/compile-latex/pull/26) - Removed singularity from nf-test CI
+- [#26](https://github.com/maxulysse/compile-latex/pull/26) - Removed download pipeline test workflow
 
 ## v3.0.0 - [date]
 
