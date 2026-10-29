@@ -16,7 +16,7 @@ nextflow_pipeline {
 
         then {
             // stable_name: All files + folders in ${outputDir}/ with a stable name
-            def stable_name = getAllFilesFromDir(outputDir, relative: true, includeDir: true, ignore: ['pipeline_info/*.{html,json,txt}'])
+            def stable_path = getAllFilesFromDir(outputDir, relative: true, includeDir: true, ignore: ['pipeline_info/*.{html,json,txt}'])
             // stable_content: All files in ${outputDir}/ with stable content
             def stable_content = getAllFilesFromDir(outputDir, ignoreFile: 'tests/.nftignore')
 
@@ -26,7 +26,7 @@ nextflow_pipeline {
                     // Number of successful tasks
                     workflow.trace.succeeded().size(),
                     // All stable path name, with a relative path
-                    stable_name,
+                    stable_path,
                     // All files with stable contents
                     stable_content.isEmpty() ? 'No stable content' : stable_content
                 ).match() }
