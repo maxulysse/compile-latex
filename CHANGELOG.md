@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [#26](https://github.com/maxulysse/compile-latex/pull/26) - Switched to a simplified contributing workflow with PRs directly to `main` (no `dev` branch)
 - [#27](https://github.com/maxulysse/compile-latex/pull/27) - Template update for nf-core/tools version 4.2.1
+- [#27](https://github.com/maxulysse/compile-latex/pull/27) - Run `nf-core pipelines lint --release` only on release events, not on PRs to `main`
 
 ### Removed
 
