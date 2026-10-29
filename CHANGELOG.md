@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - [#26](https://github.com/maxulysse/compile-latex/pull/26) - Switched to a simplified contributing workflow with PRs directly to `main` (no `dev` branch)
+- [#27](https://github.com/maxulysse/compile-latex/pull/27) - Template update for nf-core/tools version 4.2.1
 
 ### Removed
 
